@@ -19,7 +19,8 @@ class Document extends Model
         'sender',
         'subject',
         'assigned_area',
-        'observations'
+        'observations',
+        'document'
     ];
 
     function document_type(){

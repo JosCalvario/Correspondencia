@@ -13,7 +13,7 @@ class UpdateAreaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,21 @@ class UpdateAreaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        'name'=>'required',
+        'manager_id'=>'required|exists:managers,id',
+        'phone'=>'required|digits:10',
+        'address'=>'required',
+        'unit_id'=>'required|exists:units,id'
         ];
+    }
+
+    function attributes() {
+        return [
+            'name'=>'Nombre de área',
+            'manager_id'=>'Gerente',
+            'phone'=>'Número telefónico',
+            'address'=>'Dirección',
+            'unit_id'=>'Departamento'
+            ];
     }
 }

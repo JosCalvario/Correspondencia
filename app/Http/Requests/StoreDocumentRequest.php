@@ -13,7 +13,7 @@ class StoreDocumentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,28 @@ class StoreDocumentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        'name'=>'prohibited',
+        'document_type_id'=>'required|exists:document_types,id',
+        'date'=>'required|date',
+        'number'=>'required',
+        'sender'=>'required',
+        'subject'=>'required',
+        'assigned_area'=>'required|exists:areas,id',
+        'observations'=>'required|max:200',
+        'document' => 'required|file'
+        ];
+    }
+
+    function attributes() {
+        return [
+            'document_type_id'=>'Tipo de documento',
+            'date'=>'Fecha',
+            'number'=>'Número',
+            'sender'=>'Emisor',
+            'subject'=>'Asunto',
+            'assigned_area'=>'Área asignada',
+            'observations'=>'Observaciones',
+            'document' => 'Documento'
         ];
     }
 }

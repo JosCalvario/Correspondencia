@@ -5,82 +5,99 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Http\Requests\StoreAreaRequest;
 use App\Http\Requests\UpdateAreaRequest;
+use File;
 
 class AreaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $storage="storage/areas/";
+    protected $variableS="area";
+    protected $variableP="areas";
+    protected $viewRoutes=[
+        'index'   =>  'web.areas.index'
+    ];
+    protected $permissions=[
+        'index',
+        'create',
+        'store',
+        'edit',
+        'update',
+        'show',
+        'destroy'
+
+    ];
+    protected $files=[
+
+    ];
+
+    public function __construct()
+    {
+        //Ponemos el permiso y luego el método que protege
+        foreach($this->permissions as $per){
+            $this->middleware('can:'.$this->variableP.'.'.$per)->only($per);
+        }
+    }
     public function index()
     {
-        //
+        $data=Area::paginate(12);
+        return view($this->viewRoutes['index'])->with(
+            [
+                $this->variableP=>$data
+            ]
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreAreaRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreAreaRequest $request)
     {
-        //
+        $data = $request->all();
+
+        foreach($this->files as $file){
+            $newFile=$request->file($file);
+            $extension=$newFile->getClientOriginalExtension();
+            $fileName=$file.date('YmdHis').'.'.$extension;
+            $newFile->move($this->storage, $fileName);
+            $data[$file]=$fileName;
+        }
+
+        Area::create($data);
+        return redirect()->action([AreaController::class,'index']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Area  $area
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Area $area)
+    public function update(UpdateAreaRequest $request, $id)
     {
-        //
+        $input=$request->all();
+        $data=Area::find($id);
+        foreach($this->files as $file){
+            if($request->hasFile($file)){
+                $oldFile=$this->storage.$data->{$file};
+                File::delete(public_path($oldFile));
+
+                $newFile=$request->file($file);
+                $extension=$newFile->getClientOriginalExtension();
+                //Nombre de imagen en base de datos 
+                $fileName=$file.date('YmdHis').'.'.$extension;
+
+                $newFile->move($this->storage, $fileName);
+                $data[$file]=$fileName;
+            }
+            else{
+                unset($input[$file]);
+            }
+        }
+        $data->update($input);
+
+        return redirect()->action([AreaController::class,'index']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Area  $area
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Area $area)
+    public function destroy($id)
     {
-        //
-    }
+        $data=Area::find($id);
+        foreach($this->files as $file){
+            $delete=$this->storage.$data->{$file};
+            File::delete($delete);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAreaRequest  $request
-     * @param  \App\Models\Area  $area
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateAreaRequest $request, Area $area)
-    {
-        //
-    }
+        $data->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Area  $area
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Area $area)
-    {
-        //
+        return redirect()->to(action([AreaController::class,'index']));
     }
 }
