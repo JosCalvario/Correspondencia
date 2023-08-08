@@ -23,11 +23,11 @@ class Document extends Model
         'document'
     ];
 
-    function document_type(){
-        return $this->belongsTo(DocumentType::class);
+    function doc_type(){
+        return $this->belongsTo(DocumentType::class,'document_type_id');
     }
 
     function area(){
-        return $this->belongsTo(Area::class);
+        return $this->belongsTo(Area::class,'assigned_area');
     }
 }

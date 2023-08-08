@@ -12,7 +12,8 @@ class Unit extends Model
     protected $table = 'units';
 
     protected $fillable = [
-        'name'
+        'name',
+        'abbr'
     ];
 
     function areas(){

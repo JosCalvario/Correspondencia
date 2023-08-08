@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
             $table->foreignId('unit_id')->constrained();
+            $table->string('abbr');
             $table->timestamps();
         });
     }

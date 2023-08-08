@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
@@ -22,5 +22,6 @@ class UsersSeeder extends Seeder
         $user->password=Hash::make('1234');
         $user->area_id="1";
         $user->save();
+        $user->assignRole('admin');
     }
 }

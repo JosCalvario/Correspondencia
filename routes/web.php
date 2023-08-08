@@ -26,6 +26,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/', [CorrespondenceController::class,'index'])->name('index');
-
+    Route::get('/', [DocumentController::class,'index'])->name('index');
+    Route::post('/',[DocumentController::class,'store'])->name('store-document');
 });

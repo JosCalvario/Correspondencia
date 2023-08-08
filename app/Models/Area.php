@@ -16,7 +16,8 @@ class Area extends Model
         'manager_id',
         'phone',
         'address',
-        'unit_id'
+        'unit_id',
+        'abbr'
     ];
 
     function manager() {

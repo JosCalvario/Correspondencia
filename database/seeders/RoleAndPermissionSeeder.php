@@ -26,13 +26,13 @@ class RoleAndPermissionSeeder extends Seeder
 
         foreach ($sections as $key => $section) {
             $permissions[$section] = [
-                'index'=> Permission::create(['name' => 'index-'. $section]),
-                'create'=> Permission::create(['name' => 'create-'. $section]),
-                'store'=> Permission::create(['name' => 'store-' . $section]),
-                'edit'=> Permission::create(['name' => 'edit-' . $section]),
-                'update'=> Permission::create(['name' => 'update-' . $section]),
-                'delete'=> Permission::create(['name' => 'delete-' . $section]),
-                'destroy'=> Permission::create(['name' => 'destroy-' . $section]),
+                'index'=> Permission::create(['name' => $section.'.index']),
+                'create'=> Permission::create(['name' => $section.'.create']),
+                'store'=> Permission::create(['name' => $section.'.store']),
+                'edit'=> Permission::create(['name' => $section.'.edit']),
+                'update'=> Permission::create(['name' => $section.'.update']),
+                'delete'=> Permission::create(['name' => $section.'.delete']),
+                'destroy'=> Permission::create(['name' =>  $section.'.destroy']),
             ];
         }
 
