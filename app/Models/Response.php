@@ -13,20 +13,27 @@ class Response extends Model
         'folio',
         'email',
         'date',  //Manual
-        'recipt', //Manual
+        'recieves', //Manual
         'cargo', //Manual
         'subject', //Manual
         'solicitante', //Persona que pide el folio
-        'area', 
+        'area_id', 
         'document_type_id',
         'status', //Editable
         'cancelation', //Si se cancela se tiene que llenar
         'document',
-        'document_id'
+        'request_id'
     ];
 
     function application(){
         return $this->hasOne(Request::class);
     }
 
+    function area(){
+        return $this->belongsTo(Area::class);
+    }
+
+    function document_type(){
+        return $this->belongsTo(DocumentType::class);
+    }
 }

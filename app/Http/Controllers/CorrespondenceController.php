@@ -10,8 +10,7 @@ class CorrespondenceController extends Controller
 {
 
     function index(){
-        $user = auth()->user();
-        return view('web.requests.index');
+        return view('web.index');
     }
     function createFolio(){
         return view('web.createInvoice');

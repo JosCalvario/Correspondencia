@@ -23,5 +23,13 @@ class UsersSeeder extends Seeder
         $user->area_id="1";
         $user->save();
         $user->assignRole('admin');
+
+        $user = User::create([
+            'name' => 'rodo',
+            'email' => 'rodo@correo.com',
+            'password' => Hash::make('1234'),
+            'area_id' => 1
+        ])->assignRole('recepcionist');
+
     }
 }

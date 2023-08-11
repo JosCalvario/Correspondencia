@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('document_type_id');
             $table->foreign('document_type_id')->references('id')->on('document_types');
+            $table->string('other_document_type')->nullable();
             $table->date('date');
             $table->string('number');
             $table->string('sender');

@@ -8,6 +8,7 @@ use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,15 +28,19 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/',[RequestController::class,'index'])->name('index');
+    Route::get('/',[CorrespondenceController::class,'index'])->name('index');
 
     Route::prefix('/requests')->name('requests.')->group(function(){
         Route::get('/', [RequestController::class,'index'])->name('index');
         Route::post('/',[RequestController::class,'store'])->name('store');
     });
     
-    Route::prefix('folios.')->group(function(){
+    Route::prefix('/folios')->name('folios.')->group(function(){
         Route::get('/createFolio',[CorrespondenceController::class,'createFolio'])->name('create');
         Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store');
     });
+
+    Route::prefix('/users')->name('users.')->group(function(){
+        Route::get('/',[UserController::class,'index'])->name('index');
+    })->middleware('can:users.index');
 });
