@@ -102,12 +102,12 @@
         @endforeach
         {{-- Create Modal --}}
         @can('requests.create')
-        <div id="createModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-scroll overflow-x-hidden fixed m-auto top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-auto">
-            <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
+        <div id="createModal" tabindex="-1" aria-hidden="true" class="hidden  overflow-x-hidden fixed m-auto top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen">
+            <div class="relative p-4 w-full max-w-3xl h-screen md:h-auto ">
                 <!-- Modal content -->
-                <div class="relative m-auto p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                <div class="relative m-auto px-4 pt-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-5 sm:pt-5 overflow-y-hidden h-[calc(100vh-5rem)]">
                     <!-- Modal header -->
-                    <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                    <div class="flex justify-between items-center mb-4 rounded-t sm:mb-5 dark:border-gray-600">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                             Agregar documento
                         </h3>
@@ -116,11 +116,12 @@
                             <span class="sr-only">Cerrar</span>
                         </button>
                     </div>
+                    <hr>
                     <!-- Modal body -->
-                    <form action="{{route('requests.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('requests.store')}}" method="POST" enctype="multipart/form-data" class="h-full pt-4">
                      @csrf
                      @method('POST')
-                        <div class="grid gap-2 mb-4 sm:grid-cols-2">
+                        <div class="grid gap-2 sm:grid-cols-2 overflow-y-scroll sm:h-3/4 h-[78%] relative">
 
                             <div>
                                 <label for="document_type_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de documento</label>
@@ -169,10 +170,12 @@
                             </div>
 
                         </div>
-                        <button type="submit" class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                            Agregar
-                        </button>
+                            <div class="flex items-center sm:justify-left relative -bottom-5 h-9">
+                                <button type="submit" class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600  dark:hover:bg-primary-700 sm:w-auto w-full dark:focus:ring-primary-800">
+                                    <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+                                    Agregar
+                                </button>
+                            </div>
                     </form>
                 </div>
             </div>
