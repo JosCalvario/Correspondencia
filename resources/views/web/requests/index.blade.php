@@ -32,7 +32,7 @@
           </form>
          </div>
          <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-          @can('documents.create')
+          @can('requests.create')
           <button type="button" data-modal-toggle="createModal"
           class="flex items-center justify-center text-white bg-sc_greeny hover:bg-primary-800 focus:border-sc_greener focus:ring-sc_greener font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
           <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@
              <li>{{ $error }}</li>
         @endforeach
         {{-- Create Modal --}}
-        @can('documents.create')
+        @can('requests.create')
         <div id="createModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-scroll overflow-x-hidden fixed m-auto top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-auto">
             <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                 <!-- Modal content -->
@@ -117,7 +117,7 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form action="{{route('store-document')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('requests.store')}}" method="POST" enctype="multipart/form-data">
                      @csrf
                      @method('POST')
                         <div class="grid gap-2 mb-4 sm:grid-cols-2">
@@ -200,18 +200,18 @@
           </thead>
           <tbody>
 
-           @foreach ($documents as $doc)
+           @foreach ($requests as $request)
 
            <tr class="border-b text-sm text-gray-900 font-medium">
-            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 text-xs sm:table-cell block before:block before:font-semibold" >{{$doc->name}}</td>
-            <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$doc->doc_type->name}}</td>
-            <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$doc->date}}</td>
-            <td data-label="Número" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$doc->number}}</td>
-            <td data-label="Remitente" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$doc->sender}}</td>
-            <td data-label="Asunto" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$doc->subject}}</td>
-            <td data-label="Área asignada" class=" before:content-[attr(data-label)] text-left  before:mb-2 sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$doc->area->name}}</td>
-            @if ($doc->document != '')
-            <td data-label="Documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" align="center"><a href="{{asset('storage/documents/'.$doc->document)}}" target="_BLANK">
+            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 text-xs sm:table-cell block before:block before:font-semibold" >{{$request->name}}</td>
+            <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->doc_type->name}}</td>
+            <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->date}}</td>
+            <td data-label="Número" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->number}}</td>
+            <td data-label="Remitente" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->sender}}</td>
+            <td data-label="Asunto" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->subject}}</td>
+            <td data-label="Área asignada" class=" before:content-[attr(data-label)] text-left  before:mb-2 sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->area->name}}</td>
+            @if ($request->document != '')
+            <td data-label="Documento" class=" before:content-[attr(data-label)]  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" align="center"><a href="{{asset('storage/requests/'.$request->document)}}" target="_BLANK">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
                  <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
                </svg></a></td>
@@ -220,7 +220,7 @@
             @endif
 
             <td class="px-4 py-3 flex items-center justify-end">
-             <button data-modal-toggle="showDocument{{$doc->id}}"
+             <button data-modal-toggle="showDocument{{$request->id}}"
               class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
               type="button">
               <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
@@ -228,7 +228,7 @@
                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
               </svg>
              </button>
-             <div id="showDocument{{$doc->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+             <div id="showDocument{{$request->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
                 <div class="relative p-4 w-full max-w-xl h-full md:h-auto">
                     <!-- Modal content -->
                     <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
@@ -240,11 +240,11 @@
                                     </h3>
                                     <p class="font-bold">
                                         {{-- Folio --}}
-                                        Folio: {{$doc->number}}
+                                        Folio: {{$request->number}}
                                     </p>
                                 </div>
                                 <div>
-                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="showDocument{{$doc->id}}">
+                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="showDocument{{$request->id}}">
                                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                         <span class="sr-only">Close modal</span>
                                     </button>
@@ -252,13 +252,13 @@
                             </div>
                             <dl>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Nombre</dt>
-                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$doc->name}}</dd>
+                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$request->name}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Fecha</dt>
-                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$doc->date}}</dd>
+                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$request->date}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Remitente</dt>
-                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$doc->sender}}</dd>
+                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$request->sender}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Asunto</dt>
-                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$doc->subject}}</dd>
+                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$request->subject}}</dd>
                             </dl>
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center space-x-3 sm:space-x-4">
@@ -290,7 +290,7 @@
         </div>
         <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
          aria-label="Table navigation">
-         {{ $documents->links() }}
+         {{ $requests->links() }}
         </nav>
        </div>
       </div>

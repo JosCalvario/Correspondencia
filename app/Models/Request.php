@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class Request extends Model
 {
     use HasFactory;
 
-    protected $table = 'documents';
+    protected $table = 'requests';
 
     protected $fillable = [
         'name',
@@ -29,5 +29,9 @@ class Document extends Model
 
     function area(){
         return $this->belongsTo(Area::class,'assigned_area');
+    }
+
+    function response(){
+        return $this->belongsTo(Response::class,'document_id');
     }
 }

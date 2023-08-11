@@ -22,7 +22,7 @@ class RoleAndPermissionSeeder extends Seeder
 
         //Permisos
 
-        $sections = ['roles', 'areas', 'documents', 'users'];
+        $sections = ['roles', 'areas', 'requests', 'users'];
 
         foreach ($sections as $key => $section) {
             $permissions[$section] = [
@@ -46,6 +46,9 @@ class RoleAndPermissionSeeder extends Seeder
         ]);
         Role::create([
             'name' => 'manager'
+        ]);
+        Role::create([
+            'name'=> 'invoicer'
         ]);
         Role::create([
             'name' => 'analist'

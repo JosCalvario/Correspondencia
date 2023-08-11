@@ -5,8 +5,8 @@ namespace Database\Seeders;
 use App\Models\Area;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Document;
 use App\Models\DocumentType;
+use App\Models\Request;
 use App\Models\Unit;
 use Carbon\Carbon;
 
@@ -34,7 +34,7 @@ class DocumentSeeder extends Seeder
             'unit_id'=>1,
             'abbr' =>'DGCP'
         ]);
-        Document::create([
+        Request::create([
             'name'=> 'name',
             'document_type_id'=> 1,
             'date' => Carbon::now(),

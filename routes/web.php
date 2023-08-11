@@ -4,10 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CorrespondenceController;
-use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RequestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/', [DocumentController::class,'index'])->name('index');
-    Route::post('/',[DocumentController::class,'store'])->name('store-document');
+    Route::get('/',[RequestController::class,'index'])->name('index');
+
+    Route::prefix('/requests')->name('requests.')->group(function(){
+        Route::get('/', [RequestController::class,'index'])->name('index');
+        Route::post('/',[RequestController::class,'store'])->name('store');
+    });
+    
+    Route::prefix('folios.')->group(function(){
+        Route::get('/createFolio',[CorrespondenceController::class,'createFolio'])->name('create');
+        Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store');
+    });
 });

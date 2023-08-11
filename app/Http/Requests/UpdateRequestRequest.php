@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDocumentRequest extends FormRequest
+class UpdateRequestRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,7 +32,7 @@ class StoreDocumentRequest extends FormRequest
         'subject'=>'required',
         'assigned_area'=>'required|exists:areas,id',
         'observations'=>'required|max:200',
-        'document' => 'required|file'
+        'document' => 'file'
         ];
     }
 

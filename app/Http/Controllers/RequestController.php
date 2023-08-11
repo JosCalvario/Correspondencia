@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Document;
-use App\Http\Requests\StoreDocumentRequest;
-use App\Http\Requests\UpdateDocumentRequest;
+use App\Models\Request;
+use App\Http\Requests\StoreRequestRequest;
+use App\Http\Requests\UpdateRequestRequest;
 use App\Models\Area;
 use App\Models\Unit;
 use App\Models\DocumentType;
 use Carbon\Carbon;
 use File;
-//TODO: Separar documentos de solicitud y documentos de respuesta
-class DocumentController extends Controller
+class RequestController extends Controller
 {
 
-    protected $storage="storage/documents/";
-    protected $variableS="document";
-    protected $variableP="documents";
+    protected $storage="storage/requests/";
+    protected $variableS="request";
+    protected $variableP="requests";
     protected $viewRoutes=[
-        'index'   =>  'web.documents.index'
+        'index'   =>  'web.requests.index'
     ];
     protected $permissions=[
         'index',
@@ -43,7 +42,7 @@ class DocumentController extends Controller
     }
     public function index()
     {
-        $data=Document::paginate(12);
+        $data=Request::paginate(12);
         $types = DocumentType::all();
         $areas = Area::all();
         return view($this->viewRoutes['index'])->with(
@@ -55,7 +54,7 @@ class DocumentController extends Controller
         );
     }
 
-    public function store(StoreDocumentRequest $request)
+    public function store(StoreRequestRequest $request)
     {
         $data = $request->all();
         $area = Area::find($data['assigned_area']);
@@ -71,14 +70,14 @@ class DocumentController extends Controller
         }
         $data['name'] = $unit->abbr.'-'.$area->abbr.'-'.$data['number'].'-'.$year;
 
-        Document::create($data);
-        return redirect()->action([DocumentController::class,'index']);
+        Request::create($data);
+        return redirect()->action([RequestController::class,'index']);
     }
 
-    public function update(UpdateDocumentRequest $request, $id)
+    public function update(UpdateRequestRequest $request, $id)
     {
         $input=$request->all();
-        $data=Document::find($id);
+        $data=Request::find($id);
         foreach($this->files as $file){
             if($request->hasFile($file)){
                 $oldFile=$this->storage.$data->{$file};
@@ -98,12 +97,12 @@ class DocumentController extends Controller
         }
         $data->update($input);
 
-        return redirect()->action([DocumentController::class,'index']);
+        return redirect()->action([RequestController::class,'index']);
     }
 
     public function destroy($id)
     {
-        $data=Document::find($id);
+        $data=Request::find($id);
         foreach($this->files as $file){
             $delete=$this->storage.$data->{$file};
             File::delete($delete);
@@ -111,6 +110,6 @@ class DocumentController extends Controller
 
         $data->delete();
 
-        return redirect()->to(action([DocumentController::class,'index']));
+        return redirect()->to(action([RequestController::class,'index']));
     }
 }
