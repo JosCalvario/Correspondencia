@@ -184,16 +184,16 @@
          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class=" uppercase text-gray-800 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
            <tr>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Nombre de documento</th>
-            <th id="12" scope="col" class="hidden sm:table-cell px-4 py-3">Tipo de documento</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Fecha</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Número</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Remitente</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Asunto</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Área asignada</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Documento</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">Contestación</th>
-            <th scope="col" class="hidden sm:table-cell px-4 py-3">
+            <th scope="col" class="hidden sm:table-cell px-4 py-3">Nombre</th>
+            <th id="12" scope="col" class="hidden sm:table-cell px-4 py-3">Tipo</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Fecha</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Número</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Remitente</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Asunto</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Área asignada</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Documento</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">Contestación</th>
+            <th scope="col" class="hidden sm:table-cell px-2 py-3">
              <span class="sr-only">Actions</span>
             </th>
            </tr>
@@ -203,7 +203,7 @@
            @foreach ($requests as $request)
 
            <tr class="border-b text-sm text-gray-900 font-medium">
-            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 text-xs sm:table-cell block before:block before:font-semibold" >{{$request->name}}</td>
+            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$request->name}}</td>
             <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->doc_type->name}}</td>
             <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->date}}</td>
             <td data-label="Número" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->number}}</td>
