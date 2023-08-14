@@ -41,6 +41,12 @@ Route::middleware([
     });
 
     Route::prefix('/users')->name('users.')->group(function(){
-        Route::get('/',[UserController::class,'index'])->name('index');
-    })->middleware('can:users.index');
+        Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
+        Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store,users.create');
+    });
+
+    Route::prefix('/areas')->name('areas.')->group(function(){
+        Route::get('/',[AreaController::class,'index'])->name('index')->middleware('can:areas.index');
+        Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store,areas.create');
+    });
 });

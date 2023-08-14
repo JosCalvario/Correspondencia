@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('manager_id');
-            $table->foreign('manager_id')->references('id')->on('users');
+            $table->unsignedBigInteger('manager_id')->nullable();
+            $table->foreign('manager_id')->nullable()->references('id')->on('users')->nullOnDelete();
+            
             $table->string('phone');
             $table->string('address');
-            $table->foreignId('unit_id')->constrained();
+            $table->foreignId('unit_id')->nullable()->constrained()->nullOnDelete();
             $table->string('abbr');
             $table->timestamps();
         });

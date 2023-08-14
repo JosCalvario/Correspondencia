@@ -2,7 +2,7 @@
 
 
     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-        <h2 class="text-lg pt-4 pl-4 font-medium text-gray-900 dark:text-white">Usuarios</h2>
+        <h2 class="text-lg pt-4 pl-4 font-medium text-gray-900 dark:text-white">Departamentos</h2>
        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
         
         <div class="w-full md:w-1/2">
@@ -25,7 +25,7 @@
          </form>
         </div>
         <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-         @can('users.create')
+         @can('areas.create')
          <button type="button" data-modal-toggle="createModal"
          class="flex items-center justify-center text-white bg-sc_greeny hover:bg-primary-800 focus:border-sc_greener focus:ring-sc_greener font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
          <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
           <path clip-rule="evenodd" fill-rule="evenodd"
            d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
          </svg>
-         Agregar usuario
+         Agregar departamento
         </button>
          @endcan
          <div class="flex items-center space-x-3 w-full md:w-auto">
@@ -94,7 +94,7 @@
             <li>{{ $error }}</li>
        @endforeach
        {{-- Create Modal --}}
-       @can('users.create')
+       @can('areas.create')
        <div id="createModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-scroll overflow-x-hidden fixed m-auto top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-auto">
            <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
                <!-- Modal content -->
@@ -102,7 +102,7 @@
                    <!-- Modal header -->
                    <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                           Agregar usuario
+                           Agregar departamento
                        </h3>
                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="createModal">
                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -110,7 +110,7 @@
                        </button>
                    </div>
                    <!-- Modal body -->
-                   <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data">
+                   <form action="{{route('areas.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('POST')
                        <div class="grid gap-2 mb-4 sm:grid-cols-2">
@@ -119,27 +119,35 @@
                                 <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                             </div>
                            <div>
-                               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
-                               <input type="text" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                               <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
+                               <input type="text" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                            </div>
                            <div>
-                            <label for="area_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Departamento</label>
-                            <select id="area_id" name="area_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected disabled hidden>Asigna un departamento</option>
-                                @foreach ($areas as $area)
-                                <option value="{{$area->id}}">{{$area->name}}</option>
+                            <label for="manager_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encargado</label>
+                            <select id="manager_id" name="manager_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option selected disabled hidden>Asigna un encargado</option>
+                                @foreach ($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
                                 @endforeach
                             </select>
                             </div>
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-                                <input type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                                <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
+                                <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                             </div>
                             <div>
-                                <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirma contraseña</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                                <label for="unit_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Secretaría</label>
+                                <select id="unit_id" name="unit_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option selected disabled hidden>Asigna una secretaría</option>
+                                    @foreach ($units as $unit)
+                                    <option value="{{$unit->id}}">{{$unit->name}}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div>
+                                <label for="abbr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Abreviación</label>
+                                <input type="text" name="abbr" id="abbr" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                             </div>
-
                        </div>
                        <button type="submit" class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                            <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
@@ -156,10 +164,12 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
          <thead class=" uppercase text-gray-800 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
           <tr>
+           <th scope="col" class="hidden sm:table-cell px-4 py-3">Abreviación</th>
            <th scope="col" class="hidden sm:table-cell px-4 py-3">Nombre</th>
-           <th scope="col" class="hidden sm:table-cell px-2 py-3">Correo</th>
-           <th scope="col" class="hidden sm:table-cell px-2 py-3">Área</th>
-           @can('users.edit')
+           <th scope="col" class="hidden sm:table-cell px-2 py-3">Encargado de área</th>
+           <th scope="col" class="hidden sm:table-cell px-2 py-3">Teléfono</th>
+           <th scope="col" class="hidden sm:table-cell px-2 py-3">Dirección</th>
+           @can('areas.edit')
            <th scope="col" class="hidden sm:table-cell px-2 py-3">Permisos</th>
            @endcan
 
@@ -170,23 +180,24 @@
          </thead>
          <tbody>
 
-          @foreach ($users as $user)
+          @foreach ($areas as $area)
 
           <tr class="border-b text-sm text-gray-900 font-medium">
-           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$user->name}}</td>
-           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$user->email}}</td>
-           @if ($user->area != null)
-           <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$user->area->name}}</td>
-           @else
-           <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">Sin asignar</td>
-           @endif
-        
-           @can('users.edit')
-           <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold"><a type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer">Editar</a></td>
-           @endcan
+           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$area->abbr}}</td>
+           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$area->name}}</td>
+            @if ($area->manager != null)
+           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$area->manager->name}}</td>
+            @else
+           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold"></td>
+                
+            @endif
+           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$area->phone}}</td>
+           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$area->address}}</td>
+           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$area->unit->name}}</td>
+
 
            <td class="px-4 py-3 flex items-center justify-end">
-            <button data-modal-toggle="showDocument{{$user->id}}"
+            <button data-modal-toggle="showDocument{{$area->id}}"
              class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
              type="button">
              <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
@@ -194,7 +205,7 @@
               <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
              </svg>
             </button>
-            <div id="showDocument{{$user->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+            <div id="showDocument{{$area->id}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
                <div class="relative p-4 w-full max-w-xl h-full md:h-auto">
                    <!-- Modal content -->
                    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
@@ -206,11 +217,11 @@
                                    </h3>
                                    <p class="font-bold">
                                        {{-- Folio --}}
-                                       Folio: {{$user->number}}
+                                       Folio: {{$area->number}}
                                    </p>
                                </div>
                                <div>
-                                   <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="showDocument{{$user->id}}">
+                                   <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="showDocument{{$area->id}}">
                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                        <span class="sr-only">Close modal</span>
                                    </button>
@@ -218,13 +229,13 @@
                            </div>
                            <dl>
                                <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Nombre</dt>
-                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$user->name}}</dd>
+                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$area->name}}</dd>
                                <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Fecha</dt>
-                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$user->date}}</dd>
+                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$area->date}}</dd>
                                <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Remitente</dt>
-                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$user->sender}}</dd>
+                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$area->sender}}</dd>
                                <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Asunto</dt>
-                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$user->subject}}</dd>
+                               <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$area->subject}}</dd>
                            </dl>
                            <div class="flex justify-between items-center">
                                <div class="flex items-center space-x-3 sm:space-x-4">

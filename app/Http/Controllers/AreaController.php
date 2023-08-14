@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\User;
 use App\Http\Requests\StoreAreaRequest;
 use App\Http\Requests\UpdateAreaRequest;
+use App\Models\Unit;
 use File;
 
 class AreaController extends Controller
@@ -39,9 +41,13 @@ class AreaController extends Controller
     public function index()
     {
         $data=Area::paginate(12);
+        $users = User::whereNull('area_id')->get();
+        $units = Unit::all();
         return view($this->viewRoutes['index'])->with(
             [
-                $this->variableP=>$data
+                $this->variableP=>$data,
+                'users' => $users,
+                'units'=> $units
             ]
         );
     }
@@ -58,7 +64,11 @@ class AreaController extends Controller
             $data[$file]=$fileName;
         }
 
-        Area::create($data);
+        $area = Area::create($data);
+        $user = User::find($data['manager_id']);
+        $user->area_id = $area->id;
+        $user->update();
+        
         return redirect()->action([AreaController::class,'index']);
     }
 

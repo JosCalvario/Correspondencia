@@ -21,7 +21,7 @@ class Area extends Model
     ];
 
     function manager() {
-        return $this->hasOne(User::class,'manager_id','id');
+        return $this->hasOne(User::class,'id','manager_id');
     }
 
     function users(){

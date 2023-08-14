@@ -22,10 +22,17 @@
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')
-
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                <div class="font-sans text-gray-900 antialiased">
+                    <div class="p-4 sm:ml-64">
+                        <div class="py-4 mt-14">
+                            <div class="mx-auto max-w-screen-xl px-4">
+                                {{ $slot }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
 
