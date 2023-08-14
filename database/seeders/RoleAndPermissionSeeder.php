@@ -22,7 +22,7 @@ class RoleAndPermissionSeeder extends Seeder
 
         //Permisos
 
-        $sections = ['roles', 'areas', 'requests', 'users','folios','states'];
+        $sections = ['roles', 'areas', 'requests', 'users','folios','states','permissions'];
 
         foreach ($sections as $key => $section) {
             $permissions[$section] = [
@@ -39,20 +39,20 @@ class RoleAndPermissionSeeder extends Seeder
 
         //Roles y asignación de permisos
         Role::create([
-            'name' => 'admin'
+            'name' => 'Administrador'
         ])->givePermissionTo([Permission::all()]); //asignación de todos los permisos
          
         Role::create([
-            'name' => 'recepcionist'
+            'name' => 'Recepcionista'
         ])->givePermissionTo($permissions['requests']);
         Role::create([
-            'name' => 'manager'
+            'name' => 'Encargado de área'
         ]);
         Role::create([
-            'name' => 'analist'
+            'name' => 'Analista'
         ]);
         Role::create([
-            'name'=> 'folios'
+            'name'=> 'Folios'
         ]);
 
         

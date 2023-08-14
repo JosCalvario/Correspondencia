@@ -7,15 +7,18 @@ use App\Models\Area;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     function index() {
         $users = User::all();
         $areas = Area::all();
+        $roles = Role::all();
         return view('web.users.index',[
             'users' => $users,
-            'areas' => $areas
+            'areas' => $areas,
+            'roles' => $roles
         ]);
     }
 
