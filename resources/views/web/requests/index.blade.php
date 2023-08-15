@@ -114,35 +114,53 @@
                     @csrf
                     @method('POST')
                        <div class="grid gap-2 mb-4 sm:grid-cols-2">
-
+                        <div>
+                            <label for="folio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Folio asignado</label>
+                            <input type="text" name="folio" id="folio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" readonly value="{{$folio}}">
+                        </div>
                            <div>
-                               <label for="document_type_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de documento</label>
-                               <select id="document_type_id" name="document_type_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                   <option selected disabled hidden>Tipo de documento</option>
-                                   @foreach ($types as $type)
-                                   <option value="{{$type->id}}">{{$type->name}}</option>
-                                   @endforeach
-                               </select>
+                               <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de documento</label>
+                               <input type="text" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="" list="document_types">
+                               <datalist id="document_types">
+                                <option value="Oficio"></option>
+                                <option value="Memorándum"></option>
+                                <option value="Circular"></option>
+                               </datalist>
                            </div>
-
+                           <div>
+                               <label for="dependency" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dependencia</label>
+                               <input type="text" name="dependency" id="dependency" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                           </div>
+                           <div>
+                            <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Departamento</label>
+                            <input type="text" name="department" id="department" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                        </div>
                            <div>
                                <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
                                <input type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                            </div>
                            <div>
-                               <label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Folio</label>
+                               <label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número</label>
                                <input type="text" name="number" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                            </div>
                            <div>
                                <label for="sender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Remitente</label>
                                <input type="text" name="sender" id="sender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                            </div>
+                           <div>
+                            <label for="sender_position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posición del remitente</label>
+                            <input type="text" name="sender_position" id="sender_position" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tema</label>
+                            <input type="text" name="subject" id="subject" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                        </div>
                            <div class="sm:col-span-2">
                                <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asunto</label>
                                <input type="text" name="subject" id="subject" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                            </div>
                            <div>
-                               <label for="assigned_area" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Departamento</label>
+                               <label for="assigned_area" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asignar departamento</label>
                                <select id="assigned_area" name="assigned_area" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                    <option selected disabled hidden>Asigna un departamento</option>
                                    @foreach ($areas as $area)
@@ -179,10 +197,10 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
          <thead class=" uppercase text-gray-800 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
           <tr>
+           <th scope="col" class="hidden sm:table-cell px-2 py-3">Número</th>
            <th scope="col" class="hidden sm:table-cell px-4 py-3">Nombre</th>
            <th id="12" scope="col" class="hidden sm:table-cell px-4 py-3">Tipo</th>
            <th scope="col" class="hidden sm:table-cell px-2 py-3">Fecha</th>
-           <th scope="col" class="hidden sm:table-cell px-2 py-3">Número</th>
            <th scope="col" class="hidden sm:table-cell px-2 py-3">Remitente</th>
            <th scope="col" class="hidden sm:table-cell px-2 py-3">Asunto</th>
            <th scope="col" class="hidden sm:table-cell px-2 py-3">Área asignada</th>
@@ -198,10 +216,10 @@
           @foreach ($requests as $request)
 
           <tr class="border-b text-sm text-gray-900 font-medium">
+            <td data-label="Número" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->number}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$request->name}}</td>
-           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->doc_type->name}}</td>
+           <td data-label="Tipo de documento" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none  px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->document_type}}</td>
            <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->date}}</td>
-           <td data-label="Número" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->number}}</td>
            <td data-label="Remitente" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->sender}}</td>
            <td data-label="Asunto" class=" before:content-[attr(data-label)] text-left  before:mb-2   sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->subject}}</td>
            <td data-label="Área asignada" class=" before:content-[attr(data-label)] text-left  before:mb-2 sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold">{{$request->area->name}}</td>

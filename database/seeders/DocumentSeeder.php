@@ -23,9 +23,6 @@ class DocumentSeeder extends Seeder
             'name'=>'asd',
             'abbr'=>'SC'
         ]);
-        DocumentType::create([
-            'name' => 'Documento'
-        ]);
         Area::create([
             'name'=>'Area 1',
             'manager_id'=> 1,
@@ -35,11 +32,16 @@ class DocumentSeeder extends Seeder
             'abbr' =>'DGCP'
         ]);
         Request::create([
+            'folio' => 1,
             'name'=> 'name',
-            'document_type_id'=> 1,
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
             'date' => Carbon::now(),
             'number'=> 1,
-            'sender'=>'Yo mero',
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'theme' => 'Documentación',
             'subject'=> 'Documentar',
             'assigned_area' => 1,
             'observations' => 'os',

@@ -43,13 +43,12 @@ class RequestController extends Controller
     public function index()
     {
         $data=Request::paginate(12);
-        $types = DocumentType::all();
         $areas = Area::all();
         return view($this->viewRoutes['index'])->with(
             [
                 $this->variableP=>$data,
-                'types' => $types,
-                'areas' => $areas
+                'areas' => $areas,
+                'folio' => Request::getFolioForRequest()
             ]
         );
     }
