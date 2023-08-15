@@ -23,9 +23,7 @@ return new class extends Migration
             $table->string('subject');
             $table->string('applicant');
             $table->foreignId('area_id')->constrained();
-            $table->unsignedBigInteger('document_type_id');
-            $table->string('other_document_type')->nullable();
-            $table->foreign('document_type_id')->references('id')->on('document_types');
+            $table->string('document_type');
             $table->string('status');
             $table->string('cancelation')->nullable();
             $table->string('document')->nullable();

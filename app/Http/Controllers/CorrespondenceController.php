@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateInvoiceRequest;
+use App\Http\Requests\CreateFolioRequest;
 use App\Models\Response;
-use Illuminate\Http\Request;
+use App\Models\Request;
 
 class CorrespondenceController extends Controller
 {
@@ -13,13 +13,17 @@ class CorrespondenceController extends Controller
         return view('web.index');
     }
     function createFolio(){
-        return view('web.createInvoice');
+        $requests = Request::getAllWithoutResponseOrFolio();
+
+        return view('web.responses.createFolio',[
+            'requests' => $requests
+        ]);
     }
 
-    function storeFolio(CreateInvoiceRequest $request){
+    function storeFolio(CreateFolioRequest $request){
         $data = $request->all();
-
+        $folio = 1;
         Response::create($data);
-        return redirect()->action([CorrespondenceController::class,'index']);
+        return redirect()->action([CorrespondenceController::class,'index'])->with(['folio' => 'Tu número de folio es: '.$folio]);
     }
 }

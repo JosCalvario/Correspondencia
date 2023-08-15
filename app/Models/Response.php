@@ -14,18 +14,18 @@ class Response extends Model
         'email',
         'date',  //Manual
         'recieves', //Manual
-        'cargo', //Manual
+        'position', //Manual
         'subject', //Manual
-        'solicitante', //Persona que pide el folio
+        'applicant', //Persona que pide el folio
         'area_id', 
-        'document_type_id',
+        'document_type',
         'status', //Editable
         'cancelation', //Si se cancela se tiene que llenar
         'document',
         'request_id'
     ];
 
-    function application(){
+    function request(){
         return $this->hasOne(Request::class);
     }
 

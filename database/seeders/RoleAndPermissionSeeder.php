@@ -22,7 +22,7 @@ class RoleAndPermissionSeeder extends Seeder
 
         //Permisos
 
-        $sections = ['roles', 'areas', 'requests', 'users','folios','states','permissions'];
+        $sections = ['roles', 'areas', 'requests', 'users','responses','permissions'];
 
         foreach ($sections as $key => $section) {
             $permissions[$section] = [
