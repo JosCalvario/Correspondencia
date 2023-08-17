@@ -32,27 +32,28 @@ Route::middleware([
     Route::get('/',[CorrespondenceController::class,'index'])->name('index');
 
     Route::prefix('/requests')->name('requests.')->group(function(){
-        Route::get('/', [RequestController::class,'index'])->name('index');
-        Route::post('/',[RequestController::class,'store'])->name('store');
+        Route::get('/', [RequestController::class,'index'])->name('index')->middleware('can:requests.index');
+        Route::post('/',[RequestController::class,'store'])->name('store')->middleware('can:requests.store');
     });
 
     Route::prefix('/responses')->name('responses.')->group(function(){
-        Route::get('/',[ResponseController::class,'index'])->name('index');
-        Route::post('/',[ResponseController::class,'store'])->name('store');
+        Route::get('/',[ResponseController::class,'index'])->name('index')->middleware('can:responses.index');
+        Route::post('/',[ResponseController::class,'store'])->name('store')->middleware('can:responses.store'); //Agregar respuesta
+        Route::put('/',[ResponseController::class,'update'])->name('update')->middleware('can:responses.update'); //Cancelar
     });
 
     Route::prefix('/folios')->name('folios.')->group(function(){
-        Route::get('/createFolio',[CorrespondenceController::class,'createFolio'])->name('create');
-        Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store');
+        Route::get('/createFolio',[CorrespondenceController::class,'createFolio'])->name('create')->middleware('can:responses.createFolio');
+        Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store')->middleware('can:responses.createFolio');
     });
 
     Route::prefix('/users')->name('users.')->group(function(){
         Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
-        Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store,users.create');
+        Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
     });
 
     Route::prefix('/areas')->name('areas.')->group(function(){
         Route::get('/',[AreaController::class,'index'])->name('index')->middleware('can:areas.index');
-        Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store,areas.create');
+        Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store');
     });
 });

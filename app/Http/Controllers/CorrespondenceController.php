@@ -26,6 +26,6 @@ class CorrespondenceController extends Controller
         $data['folio'] = $folio;
         $data['status'] = 'Vigente';
         Response::create($data);
-        return redirect()->action([CorrespondenceController::class,'index'])->with(['folio' => 'Tu número de folio es: '.$folio]);
+        return redirect()->action([CorrespondenceController::class,'createFolio'])->with(['folio' => 'Tu número de folio es: '.$folio]);
     }
 }

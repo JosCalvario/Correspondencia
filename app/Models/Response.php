@@ -27,7 +27,7 @@ class Response extends Model
     ];
 
     function request(){
-        return $this->hasOne(Request::class);
+        return $this->belongsTo(Request::class);
     }
 
     function area(){
@@ -36,6 +36,10 @@ class Response extends Model
 
     function document_type(){
         return $this->belongsTo(DocumentType::class);
+    }
+
+    function applicant(){
+        return $this->belongsTo(User::class,'applicant_id','id');
     }
 
     static function getFolioForResponse(){

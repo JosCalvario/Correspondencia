@@ -35,7 +35,7 @@ class RoleAndPermissionSeeder extends Seeder
                 'destroy'=> Permission::create(['name' =>  $section.'.destroy']),
             ];
         }
-
+        $permissions['responses']['createFolio'] = Permission::create(['name'=> 'responses.createFolio']);
 
         //Roles y asignación de permisos
         Role::create([
@@ -50,7 +50,7 @@ class RoleAndPermissionSeeder extends Seeder
         ]);
         Role::create([
             'name' => 'Analista'
-        ]);
+        ])->givePermissionTo($permissions['responses']['createFolio']);
         Role::create([
             'name'=> 'Folios'
         ]);

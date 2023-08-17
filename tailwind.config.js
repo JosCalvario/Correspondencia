@@ -24,7 +24,8 @@ module.exports = {
                 sc_sandy: '#C2BA98',
                 sc_rat: '#61615F',
                 sc_gravel: '#BBBABA',
-                sc_quartz: '#FFFFFF'
+                sc_quartz: '#FFFFFF',
+                
             }
         },
     },

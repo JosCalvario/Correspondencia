@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Area;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -52,7 +53,7 @@ class Request extends Model
 
     static function getAllWithoutResponseOrFolio(){
         $responses = Response::all('id');
-        $requests = DB::table('requests')->whereNotIn('id',$responses)->get();
+        $requests = DB::table('requests')->where('assigned_area','=',auth()->user()->area->id)->whereNotIn('id',$responses)->get();
         return $requests;
     }
 }

@@ -27,9 +27,17 @@ class DocumentSeeder extends Seeder
             'name'=>'Area 1',
             'manager_id'=> 1,
             'phone' => '1234567890',
-            'address'=>'aqui',
+            'address'=>'Dirección 1',
             'unit_id'=>1,
             'abbr' =>'DGCP'
+        ]);
+        Area::create([
+            'name'=>'Area 2',
+            'manager_id'=> 2,
+            'phone' => '1234567891',
+            'address'=>'Dirección 2',
+            'unit_id'=>1,
+            'abbr' =>'ABC'
         ]);
         Request::create([
             'folio' => 1,
@@ -46,6 +54,23 @@ class DocumentSeeder extends Seeder
             'assigned_area' => 1,
             'observations' => 'os',
             'document'=>'asd'
+        ]);
+
+        Request::create([
+            'folio' => 2,
+            'name'=> 'Oficio-SC-CG-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::now(),
+            'number'=> 2,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'theme' => 'Documentación',
+            'subject'=> 'Documentar',
+            'assigned_area' => 2,
+            'observations' => 'os',
+            'document'=>'assd'
         ]);
     }
 }
