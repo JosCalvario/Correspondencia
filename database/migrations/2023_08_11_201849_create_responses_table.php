@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('recieves');
             $table->string('position');
             $table->string('subject');
-            $table->string('applicant');
+            $table->string('applicant_id');
             $table->foreignId('area_id')->constrained();
             $table->string('document_type');
             $table->string('status');

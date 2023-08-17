@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +17,7 @@ class Response extends Model
         'recieves', //Manual
         'position', //Manual
         'subject', //Manual
-        'applicant', //Persona que pide el folio
+        'applicant_id', //Persona que pide el folio
         'area_id', 
         'document_type',
         'status', //Editable
@@ -35,5 +36,15 @@ class Response extends Model
 
     function document_type(){
         return $this->belongsTo(DocumentType::class);
+    }
+
+    static function getFolioForResponse(){
+        $thisYear = Carbon::today()->toDateString();
+        $response = Response::whereDate('created_at',$thisYear)->get()->last();
+        if($response == null){
+            return 1;
+        }
+        $folio = $response->folio + 1;
+        return $folio;
     }
 }

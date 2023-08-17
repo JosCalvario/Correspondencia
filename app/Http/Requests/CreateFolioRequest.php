@@ -13,7 +13,7 @@ class CreateFolioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,38 @@ class CreateFolioRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        'folio' => 'prohibited',
+        'email' => 'required|email',
+        'date' => 'required|date',  //Manual
+        'recieves' => 'required', //Manual
+        'position' => 'required', //Manual
+        'subject' => 'required', //Manual
+        'applicant_id' => 'required|exists:users,id', //Persona que pide el folio
+        'area_id' => 'required|exists:areas,id', 
+        'document_type' => 'required',
+        'status' => 'prohibited', //Editable
+        'cancelation' => 'prohibited', //Si se cancela se tiene que llenar
+        'document' => 'prohibited',
+        'request_id' => 'required|exists:requests,id'
         ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'folio' => 'Folio',
+            'email' => 'Correo electrónico',
+            'date' => 'Fecha',  //Manual
+            'recieves' => 'Receptor', //Manual
+            'position' => 'Cargo del receptor', //Manual
+            'subject' => 'Asunto', //Manual
+            'applicant_id' => 'Solicitante', //Persona que pide el folio
+            'area_id' => 'Departamento', 
+            'document_type' => 'Tipo de documento',
+            'status' => 'Estado', //Editable
+            'cancelation' => 'Motivo de cancelación', //Si se cancela se tiene que llenar
+            'document' => 'Documento',
+            'request_id' => 'Solicitud'
+        ];    
     }
 }

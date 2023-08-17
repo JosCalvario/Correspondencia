@@ -22,7 +22,9 @@ class CorrespondenceController extends Controller
 
     function storeFolio(CreateFolioRequest $request){
         $data = $request->all();
-        $folio = 1;
+        $folio = Response::getFolioForResponse();
+        $data['folio'] = $folio;
+        $data['status'] = 'Vigente';
         Response::create($data);
         return redirect()->action([CorrespondenceController::class,'index'])->with(['folio' => 'Tu número de folio es: '.$folio]);
     }

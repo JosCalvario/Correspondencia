@@ -52,7 +52,7 @@ class Request extends Model
 
     static function getAllWithoutResponseOrFolio(){
         $responses = Response::all('id');
-        $requests = DB::table('requests')->whereNotIn('request_id',$responses)->get();
+        $requests = DB::table('requests')->whereNotIn('id',$responses)->get();
         return $requests;
     }
 }

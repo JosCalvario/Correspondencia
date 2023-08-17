@@ -8,6 +8,7 @@ use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -34,7 +35,12 @@ Route::middleware([
         Route::get('/', [RequestController::class,'index'])->name('index');
         Route::post('/',[RequestController::class,'store'])->name('store');
     });
-    
+
+    Route::prefix('/responses')->name('responses.')->group(function(){
+        Route::get('/',[ResponseController::class,'index'])->name('index');
+        Route::post('/',[ResponseController::class,'store'])->name('store');
+    });
+
     Route::prefix('/folios')->name('folios.')->group(function(){
         Route::get('/createFolio',[CorrespondenceController::class,'createFolio'])->name('create');
         Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store');
