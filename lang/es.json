@@ -1,0 +1,37 @@
+{
+    "roles.index": "Ver roles",
+    "roles.store":"Guardar roles",
+    "roles.update":"Actualizar roles",
+    "roles.show":"Ver detalle roles",
+    "roles.destroy":"Eliminar roles",
+
+    "areas.index": "Ver departamentos",
+    "areas.store":"Guardar departamentos",
+    "areas.update":"Actualizar departamentos",
+    "areas.show":"Ver detalle departamentos",
+    "areas.destroy":"Eliminar departamentos",
+
+    "requests.index": "Ver solicitudes",
+    "requests.store":"Guardar solicitudes",
+    "requests.update":"Actualizar solicitudes",
+    "requests.show":"Ver detalle solicitudes",
+    "requests.destroy":"Eliminar solicitudes",
+
+    "users.index": "Ver usuarios",
+    "users.store":"Guardar usuarios",
+    "users.update":"Actualizar usuarios",
+    "users.show":"Ver detalle usuarios",
+    "users.destroy":"Eliminar usuarios",
+
+    "responses.index": "Ver respuestas",
+    "responses.store":"Guardar respuestas",
+    "responses.update":"Actualizar respuestas",
+    "responses.show":"Ver detalle respuestas",
+    "responses.destroy":"Eliminar respuestas",
+
+    "permissions.index": "Ver permisos",
+    "permissions.store":"Guardar permisos",
+    "permissions.update":"Actualizar permisos",
+    "permissions.show":"Ver detalle permisos",
+    "permissions.destroy":"Eliminar permisos"
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRolesRequest;
 use App\Models\Area;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,5 +29,14 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         User::create($data);
         return redirect()->action([UserController::class,'index'])->with('success','Usuario creado exitosamente');
+    }
+
+    function updateRoles(UpdateUserRolesRequest $request){
+        $data = $request->all();
+        $roles = $request->input('roles');
+        $user = User::find($data['user_id']);
+        $user->roles()->sync($roles);
+
+        return redirect()->action([UserController::class,'index'])->with('success','Roles actualizados correctamente');
     }
 }

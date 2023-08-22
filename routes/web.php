@@ -47,13 +47,22 @@ Route::middleware([
         Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store')->middleware('can:responses.createFolio');
     });
 
-    Route::prefix('/users')->name('users.')->group(function(){
-        Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
-        Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
-    });
-
     Route::prefix('/areas')->name('areas.')->group(function(){
         Route::get('/',[AreaController::class,'index'])->name('index')->middleware('can:areas.index');
         Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store');
     });
+
+    Route::prefix('/users')->name('users.')->group(function(){
+        Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
+        Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
+        Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
+    });
+
+    Route::prefix('/roles')->name('roles.')->group(function(){
+        Route::get('/',[RoleController::class,'index'])->name('index')->middleware('can:roles.index');
+        Route::post('/',[RoleController::class,'store'])->name('store')->middleware('can:roles.store');
+    });
+
+    
+
 });

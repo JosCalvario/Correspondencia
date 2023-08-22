@@ -4,7 +4,7 @@
    <x-web.table headers="Número|Nombre|Tipo|Fecha|Remitente|Asunto|Área asignada|Documento|Contestación">
     <x-slot name="data">
      @foreach ($requests as $request)
-      <x-web.tableRow requestId="showDocument{{ $request->id }}">
+      <x-web.tableRow requestId="showModal{{ $request->id }}">
 
        <x-slot name="tableData">
         <x-web.tableData>{{ $request->number }}</x-web.tableData>

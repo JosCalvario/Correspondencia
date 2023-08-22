@@ -1,5 +1,5 @@
 {{-- Create Modal --}}
-@can('requests.create')
+@can('requests.store')
 <div id="createModal" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed m-auto top-0 right-0 left-0 z-50 justify-center items-center w-full md:h-auto ">
  {{-- overflow-x-hidden fixed m-auto top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen --}}
     <div class="relative p-4 w-full max-w-3xl h-full md:h-auto">
