@@ -24,6 +24,9 @@
     @case('file')
         <input type="file" 
         @break
+    @case('date')
+        <input type="date" 
+        @break
     @default
         
 @endswitch
