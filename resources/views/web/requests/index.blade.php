@@ -22,10 +22,10 @@
        </x-slot>
 
        <x-slot name="modalTitle">
-            Acuse
+        Acuse
        </x-slot>
        <x-slot name="modalHeader">
-            Folio: {{ $request->number }}
+        Folio: {{ $request->number }}
        </x-slot>
        <x-slot name="dataList">
         <x-web.dataTerm>Nombre</x-web.dataTerm>
@@ -43,15 +43,21 @@
 
        <x-slot name="modalActions">
 
-            <x-web.modalAnchor>
-                <x-slot name="icon">
-                    <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                </x-slot>
-                Responder
-            </x-web.modalAnchor>
-            <x-web.modalButton>
-                Previsualizar
-            </x-web.modalButton>
+        <x-web.modalAnchor>
+         <x-slot name="icon">
+          <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+           xmlns="http://www.w3.org/2000/svg">
+           <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
+           <path fill-rule="evenodd"
+            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+            clip-rule="evenodd"></path>
+          </svg>
+         </x-slot>
+         Responder
+        </x-web.modalAnchor>
+        <x-web.modalButton>
+         Previsualizar
+        </x-web.modalButton>
        </x-slot>
       </x-web.tableRow>
      @endforeach
@@ -67,98 +73,86 @@
       @method('POST')
       <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-scroll h-[calc(100%-8rem)] relative">
        <div>
-        <label for="folio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Folio asignado</label>
-        <input type="text" name="folio" id="folio"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         readonly value="{{ $folio }}">
+        <x-web.formLabel for="folio">Folio asignado</x-web.formLabel>
+        <x-web.formInput type="text" name="folio" id="folio" readonly="true">
+         {{ $folio }}
+        </x-web.formInput>
        </div>
        <div>
-        <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de
-         documento</label>
-        <input type="text" name="date" id="date"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="" list="document_types">
-        <datalist id="document_types">
-         <option value="Oficio"></option>
-         <option value="Memorándum"></option>
-         <option value="Circular"></option>
-        </datalist>
+        <x-web.formLabel for="document_type">Tipo de documento</x-web.formLabel>
+        <x-web.formInput type="comboBox" name="date" id="date" required="true" list="document_types">
+         <x-slot name="dataListOptions">
+          <option value="Oficio"></option>
+          <option value="Memorándum"></option>
+          <option value="Circular"></option>
+         </x-slot>
+        </x-web.formInput>
        </div>
        <div>
-        <label for="dependency" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dependencia</label>
-        <input type="text" name="dependency" id="dependency"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="dependency">Dependencia</x-web.formLabel>
+        <x-web.formInput type="text" name="dependency" id="dependency" required="true">
+        </x-web.formInput>
        </div>
        <div>
-        <label for="department"
-         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Departamento</label>
-        <input type="text" name="department" id="department"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="department">Departamento</x-web.formLabel>
+        <x-web.formInput type="text" name="department" id="department" required="true">
+        </x-web.formInput>
        </div>
        <div>
-        <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
-        <input type="date" name="date" id="date"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="date">Date</x-web.formLabel>
+        <x-web.formInput type="text" name="date" id="date" required="true">
+        </x-web.formInput>
        </div>
        <div>
-        <label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número</label>
-        <input type="text" name="number" id="number"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="number">Número</x-web.formLabel>
+        <x-web.formInput type="text" name="number" id="number" required="true">
+        </x-web.formInput>
        </div>
        <div>
-        <label for="sender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Remitente</label>
-        <input type="text" name="sender" id="sender"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="sender">Remitente</x-web.formLabel>
+        <x-web.formInput type="text" name="sender" id="sender" required="true">
+        </x-web.formInput>
        </div>
        <div>
-        <label for="sender_position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Posición del
-         remitente</label>
-        <input type="text" name="sender_position" id="sender_position"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="sender_position">Posición del
+         remitente</x-web.formLabel>
+        <x-web.formInput type="text" name="sender_position" id="sender_position" required="true">
+        </x-web.formInput>
        </div>
        <div class="sm:col-span-2">
-        <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tema</label>
-        <input type="text" name="subject" id="subject"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="subject">Tema</x-web.formLabel>
+        <x-web.formInput type="text" name="subject" id="subject" required="true">
+        </x-web.formInput>
        </div>
        <div class="sm:col-span-2">
-        <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asunto</label>
-        <input type="text" name="subject" id="subject"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="subject">Asunto</x-web.formLabel>
+        <x-web.formInput type="text" name="subject" id="subject" required="true">
+        </x-web.formInput>
        </div>
        <div>
-        <label for="assigned_area" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asignar
-         departamento</label>
-        <select id="assigned_area" name="assigned_area"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-         <option selected disabled hidden>Asigna un departamento</option>
-         @foreach ($areas as $area)
-          <option value="{{ $area->id }}">{{ $area->name }}</option>
-         @endforeach
-        </select>
+        <x-web.formLabel for="assigned_area">Asignar
+         departamento</x-web.formLabel>
+        <x-web.formInput type="select" name="assigned_area" id="assigned_area" required="true"
+         placeholder="Asigna un departamento">
+
+         <x-slot name="options">
+          @foreach ($areas as $area)
+           <option value="{{ $area->id }}">{{ $area->name }}</option>
+          @endforeach
+         </x-slot>
+        </x-web.formInput>
        </div>
 
        <div class="sm:col-span-2">
-        <label for="observations"
-         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Observaciones</label>
-        <textarea id="observations" name="observations" rows="2"
-         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         placeholder="Observaciones del documento"></textarea>
+        <x-web.formLabel for="observations">Observaciones</x-web.formLabel>
+        <x-web.formInput type="textarea" name="observations" id="observations" rows="2" required="true" placeholder="Observaciones del documento">
+        </x-web.formInput>
        </div>
 
        <div class="sm:col-span-2">
-        <label for="document" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Documento</label>
-        <input type="file" name="document" id="document"
-         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-         required="">
+        <x-web.formLabel for="document">Documento</x-web.formLabel>
+        <x-web.formInput type="file" name="document" id="document" required="true">
+        </x-web.formInput>
        </div>
 
       </div>
