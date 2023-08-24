@@ -20,7 +20,9 @@ class ShowRequests extends Component
 
     public function render()
     {
-        $requests=Request::where('folio', 'LIKE', '%' . $this->search . '%')->orWhere('name', 'LIKE', '%' . $this->search . '%')->paginate(12);
+        $requests=Request::where('folio', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('name', 'LIKE', '%' . $this->search . '%')
+                        ->paginate(12);
         $areas = Area::all();
         $folio = Request::getFolioForRequest();
 

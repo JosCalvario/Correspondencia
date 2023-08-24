@@ -16,9 +16,12 @@ type="button">
                       <h3 class="font-semibold ">
                           {{$modalTitle}}
                       </h3>
-                      <p class="font-bold">
+                      @isset($modalHeader)
+                          <p class="font-bold">
                           {{$modalHeader}}
                       </p>
+                      @endisset
+                      
                   </div>
                   <div>
                       <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="{{$toggleId}}">

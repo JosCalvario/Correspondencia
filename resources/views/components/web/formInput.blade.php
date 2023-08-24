@@ -27,6 +27,9 @@
     @case('date')
         <input type="date" 
         @break
+    @case('password')
+        <input type="password"
+        @break
     @default
         
 @endswitch
