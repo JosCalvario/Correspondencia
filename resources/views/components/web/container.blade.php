@@ -24,7 +24,7 @@
   <div
    class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
    @can('requests.store')
-    <button type="button" data-modal-toggle="createModal"
+    <button type="button" data-modal-toggle="{{$createmodalId}}"
      class="flex items-center justify-center text-white bg-sc_greeny hover:bg-primary-800 focus:border-sc_greener focus:ring-sc_greener font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
      <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true">
@@ -43,7 +43,7 @@
       <path clip-rule="evenodd" fill-rule="evenodd"
        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
      </svg>
-     Actions
+     Acciones
     </button>
     <div id="actionsDropdown"
      class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
@@ -68,7 +68,7 @@
        d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
        clip-rule="evenodd" />
      </svg>
-     Filter
+     Filtros
      <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true">
       <path clip-rule="evenodd" fill-rule="evenodd"
