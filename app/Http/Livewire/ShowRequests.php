@@ -11,9 +11,16 @@ class ShowRequests extends Component
 {
     use WithPagination;
 
+    public $search;
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $requests=Request::paginate(12);
+        $requests=Request::where('folio', 'LIKE', '%' . $this->search . '%')->orWhere('name', 'LIKE', '%' . $this->search . '%')->paginate(12);
         $areas = Area::all();
         $folio = Request::getFolioForRequest();
 
