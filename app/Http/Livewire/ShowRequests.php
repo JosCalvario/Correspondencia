@@ -22,6 +22,10 @@ class ShowRequests extends Component
     {
         $requests=Request::where('folio', 'LIKE', '%' . $this->search . '%')
                         ->orWhere('name', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('document_type', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('sender', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('subject', 'LIKE', '%' . $this->search . '%')
+                        ->orWhereIn('assigned_area', Area::select('id')->where('name', 'LIKE', '%' . $this->search . '%')->get())
                         ->paginate(12);
         $areas = Area::all();
         $folio = Request::getFolioForRequest();

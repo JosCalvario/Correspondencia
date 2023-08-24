@@ -22,7 +22,11 @@ class ShowUsers extends Component
 
     public function render()
     {
-        $users = User::paginate(10);
+        $users = User::where('name', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('id', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('email', 'LIKE', '%' . $this->search . '%')
+        ->orWhereIn('area_id', Area::select('id')->where('name', 'LIKE', '%' . $this->search . '%')->get())
+        ->paginate(10);
         $roles = Role::all();
         $areas = Area::all();
 
