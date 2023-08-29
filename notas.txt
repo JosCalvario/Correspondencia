@@ -10,3 +10,8 @@ Cuando se sube la respuesta ya no se muestra el folio de respuesta
 -Tema de documento
 
 Poner mensaje de status arriba de las tablas (success, status)
+
+Se puede solicitar folio aunque no haya documento de entrada
+Se puede solicitar folio para 2 o más documentos de entrada
+-//Ya se arregló la base de datos para estos cambios
+-//Falta arreglar las vistas y controladores para que funcione correctamente

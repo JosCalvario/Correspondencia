@@ -22,12 +22,11 @@ class Response extends Model
         'document_type',
         'status', //Editable
         'cancelation', //Si se cancela se tiene que llenar
-        'document',
-        'request_id'
+        'document'
     ];
 
-    function request(){
-        return $this->belongsTo(Request::class);
+    function requests(){
+        return $this->belongsToMany(Request::class);
     }
 
     function area(){

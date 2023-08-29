@@ -36,7 +36,7 @@ class CreateFolioRequest extends FormRequest
         'status' => 'prohibited', //Editable
         'cancelation' => 'prohibited', //Si se cancela se tiene que llenar
         'document' => 'prohibited',
-        'request_id' => 'required|exists:requests,id'
+        'request_id' => 'nullable|exists:requests,id'
         ];
     }
 

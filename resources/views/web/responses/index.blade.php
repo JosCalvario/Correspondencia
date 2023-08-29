@@ -2,7 +2,7 @@
 
 
     <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
-        <h2 class="text-lg pt-4 pl-4 font-medium text-gray-900 dark:text-white">Respuestas</h2>
+        <h2 class="text-lg pt-4 pl-4 font-medium text-gray-900 dark:text-white">Documentos salientes</h2>
        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
         
         <div class="w-full md:w-1/2">
@@ -110,7 +110,7 @@
           <tr class="border-b text-sm text-gray-900 font-medium">
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->folio}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->date}}</td>
-           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->request->name}}</td>
+           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->request?->name ?? 'Sin solicitud'}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->subject}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->applicant->name}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->status}}</td>
@@ -135,7 +135,7 @@
                                <div class="text-lg text-gray-900 md:text-xl dark:text-white">
                                     
                                    <h3 class="font-semibold ">
-                                       Respuesta
+                                       Documento saliente
                                    </h3>
                                    <p class="font-bold">
                                        {{-- Folio --}}
@@ -169,7 +169,7 @@
                            <div class="sm:flex">
                             <dl class=" mr-10">
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Nombre de solicitud</dt>
-                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$response->request->name}}</dd>
+                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$response->request?->name ?? 'Sin solicitud'}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Fecha</dt>
                                 <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$response->date}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Tipo de documento de respuesta</dt>
@@ -180,7 +180,7 @@
                             @if ($response->status == 'Contestado' )
                             <dl>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Nombre de solicitud</dt>
-                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$response->request->name}}</dd>
+                                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$response->request?->name}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Fecha</dt>
                                 <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{$response->date}}</dd>
                                 <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Tipo de documento de respuesta</dt>
@@ -197,9 +197,14 @@
                                <div class="flex items-center space-x-3 sm:space-x-4">
                                    <button type="button" class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                        <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                                       Agregar respuesta
+                                       Agregar documento
                                    </button>
-                               </div>              
+                               </div>     
+                               <div class="flex items-center space-x-3 sm:space-x-4">
+                                <button type="button" class="text-white inline-flex items-center bg-sc_red hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                    Cancelar
+                                </button>
+                            </div>              
                            </div>
                    </div>
                </div>

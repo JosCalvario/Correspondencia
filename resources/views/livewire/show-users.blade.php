@@ -1,5 +1,35 @@
-<x-web.container createmodalId="createModal" title="Usuarios" addText="Agregar usuario">
- <x-slot name="Table">
+<x-web.container title="Usuarios" search="true" actions="true" filters="true" add="true">
+
+    <x-slot name="searchInput">
+        <x-web.searchInput placeholder="Nombre documento, número o asunto" searchModel="search"></x-web.searchInput>
+    </x-slot>
+    
+    <x-slot name="addbutton">
+        @can('requests.store')
+        <x-web.addTableButton createModalId="createModal">Agregar documento</x-web.addTableButton>
+        @endcan
+    </x-slot>
+    
+    <x-slot name="actionsSelect">
+        <x-web.actionsSelect dropDownId="actionsDropdown">
+        <x-slot name="actions">
+        <x-web.actionAnchor actionModel="xd">acción 1</x-web.actionAnchor>
+        </x-slot>
+    
+        <x-slot name="mainAction">
+        <x-web.mainActionAnchor actionModel="xd">acción principal</x-web.mainActionAnchor>
+        </x-slot>
+        </x-web.actionsSelect>
+    </x-slot>
+    
+    <x-slot name="filtersSelect">
+        <x-web.filtersSelect dropDownId="filterDropdown">
+        <x-slot name="filterOptions">
+        <x-web.filterOption filterModel="xd">filtro 1</x-web.filterOption>
+        </x-slot>
+        </x-web.filtersSelect>
+    </x-slot>
+    <x-slot name="Table">
   <x-web.table headers="Id|Nombre|Correo|Area asignada|Roles|Opciones">
    <x-slot name="data">
     @foreach ($users as $user)

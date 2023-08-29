@@ -38,7 +38,7 @@ class Request extends Model
     }
 
     function responses(){
-        return $this->belongsTo(Response::class,'document_id');
+        return $this->belongsToMany(Response::class);
     }
 
     static function getFolioForRequest(){

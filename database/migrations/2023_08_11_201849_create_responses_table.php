@@ -27,7 +27,6 @@ return new class extends Migration
             $table->string('status');
             $table->string('cancelation')->nullable();
             $table->string('document')->nullable();
-            $table->foreignId('request_id')->constrained();
             $table->timestamps();
         });
     }
