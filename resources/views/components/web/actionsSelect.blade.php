@@ -4,7 +4,7 @@
 ])
 
 <button id="actionsDropdownButton" data-dropdown-toggle="{{$dropDownId}}"
-      class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-sc_green focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-1 focus:border-sc_greener focus:ring-sc_greener dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+      class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-sc_green focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-1 focus:border-sc_greener focus:ring-sc_greener dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 h-10"
       type="button">
       <svg class="-ml-1 mr-1.5 w-5 h-5 text-sc_green" fill="currentColor" viewbox="0 0 20 20"
        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
