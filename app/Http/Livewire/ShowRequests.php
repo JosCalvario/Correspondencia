@@ -13,6 +13,13 @@ class ShowRequests extends Component
 
     public $search;
 
+    public $options = [
+        'number' => 'Número',
+        'name' => 'Nombre',
+        'type' => 'Tipo de documento'
+    ];
+    public $option;
+
     public function updatingSearch()
     {
         $this->resetPage();
@@ -20,16 +27,38 @@ class ShowRequests extends Component
 
     public function render()
     {
-        $requests=Request::where('folio', 'LIKE', '%' . $this->search . '%')
-                        ->orWhere('name', 'LIKE', '%' . $this->search . '%')
-                        ->orWhere('document_type', 'LIKE', '%' . $this->search . '%')
-                        ->orWhere('sender', 'LIKE', '%' . $this->search . '%')
-                        ->orWhere('subject', 'LIKE', '%' . $this->search . '%')
-                        ->orWhereIn('assigned_area', Area::select('id')->where('name', 'LIKE', '%' . $this->search . '%')->get())
-                        ->paginate(12);
+        $requests = $this->search();
         $areas = Area::all();
         $folio = Request::getFolioForRequest();
+        $options = $this->options;
 
-        return view('livewire.show-requests', compact('requests','areas', 'folio'));
+        return view('livewire.show-requests', compact('requests','areas', 'folio', 'options'));
+    }
+
+    private function search()
+    {
+        if($this->option == '')
+        {
+            return Request::paginate(12);
+        }
+
+        $requests = Request::query();
+        $query = '%' . $this->search . '%';
+
+        switch ($this->option) {
+            case 'number':
+                $requests->where('number','LIKE', $query);
+                break;
+
+            case 'name':
+                $requests->where('name','LIKE', $query);
+                break;
+
+            case 'type':
+                $requests->where('document_type','LIKE', $query);
+                break;
+        }
+
+        return $requests->paginate(12);
     }
 }
