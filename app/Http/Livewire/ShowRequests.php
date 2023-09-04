@@ -10,15 +10,18 @@ use Livewire\WithPagination;
 class ShowRequests extends Component
 {
     use WithPagination;
+    use Search;
 
-    public $search;
+    public function __construct(){
 
-    public $options = [
-        'number' => 'Número',
-        'name' => 'Nombre',
-        'type' => 'Tipo de documento'
-    ];
-    public $option;
+        $this->model = Request::class;
+        $this->options = [
+            'number' => 'Número',
+            'name' => 'Nombre',
+            'document_type' => 'Tipo de documento'
+        ];
+        
+    }
 
     public function updatingSearch()
     {
@@ -35,30 +38,4 @@ class ShowRequests extends Component
         return view('livewire.show-requests', compact('requests','areas', 'folio', 'options'));
     }
 
-    private function search()
-    {
-        if($this->option == '')
-        {
-            return Request::paginate(12);
-        }
-
-        $requests = Request::query();
-        $query = '%' . $this->search . '%';
-
-        switch ($this->option) {
-            case 'number':
-                $requests->where('number','LIKE', $query);
-                break;
-
-            case 'name':
-                $requests->where('name','LIKE', $query);
-                break;
-
-            case 'type':
-                $requests->where('document_type','LIKE', $query);
-                break;
-        }
-
-        return $requests->paginate(12);
-    }
 }

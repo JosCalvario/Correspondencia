@@ -1,12 +1,12 @@
 <x-web.container title="Usuarios" search="true" actions="true" filters="true" add="true">
 
     <x-slot name="searchInput">
-        <x-web.searchInput placeholder="Nombre documento, número o asunto" searchModel="search"></x-web.searchInput>
+        <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option" searchModel="search"></x-web.searchInput>
     </x-slot>
     
     <x-slot name="addbutton">
-        @can('requests.store')
-        <x-web.addTableButton createModalId="createModal">Agregar documento</x-web.addTableButton>
+        @can('users.store')
+            <x-web.addTableButton createModalId="createModal">Agregar usuario</x-web.addTableButton>
         @endcan
     </x-slot>
     
@@ -141,7 +141,7 @@
  </x-slot>
 
  <x-slot name="Modal">
-  <x-web.createModal-lg createmodalId="createModal">
+  <x-web.createModal-lg createmodalId="createModal" title="Agregar usuario" permission="users.store">
    <x-slot name="form">
     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
      @csrf

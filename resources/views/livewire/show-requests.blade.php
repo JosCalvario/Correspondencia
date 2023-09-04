@@ -101,7 +101,7 @@
  </x-slot>
 
  <x-slot name="Modal">
-  <x-web.createModal-lg createmodalId="createModal" title="Agregar documento">
+  <x-web.createModal-lg createmodalId="createModal" title="Agregar documento" permission="requests.store">
    <x-slot name="form">
     <form action="{{ route('requests.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
      @csrf

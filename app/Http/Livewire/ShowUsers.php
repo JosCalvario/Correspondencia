@@ -12,8 +12,19 @@ use Spatie\Permission\Models\Role;
 class ShowUsers extends Component
 {
     use WithPagination;
+    use Search;
 
-    public $search;
+    public function __construct(){
+
+        $this->model = User::class;
+        $this->options = [
+            'id' => 'Id',
+            'name' => 'Nombre',
+            'email' => 'Correo electrónico',
+            'area_id' => 'Departamento'
+        ];
+        
+    }
 
     public function updatingSearch()
     {
@@ -22,14 +33,11 @@ class ShowUsers extends Component
 
     public function render()
     {
-        $users = User::where('name', 'LIKE', '%' . $this->search . '%')
-        ->orWhere('id', 'LIKE', '%' . $this->search . '%')
-        ->orWhere('email', 'LIKE', '%' . $this->search . '%')
-        ->orWhereIn('area_id', Area::select('id')->where('name', 'LIKE', '%' . $this->search . '%')->get())
-        ->paginate(10);
+        $users = $this->search();
         $roles = Role::all();
         $areas = Area::all();
 
         return view('livewire.show-users', compact('users','areas', 'roles'));
     }
+
 }
