@@ -30,7 +30,7 @@
         </x-web.filtersSelect>
     </x-slot>
     <x-slot name="Table">
-  <x-web.table headers="Id|Nombre|Correo|Area asignada|Roles|Opciones">
+  <x-web.table headers="Id|Nombre|Correo|Area asignada|Roles">
    <x-slot name="data">
     @foreach ($users as $user)
      <x-web.tableRow options="true" extra="true">

@@ -5,7 +5,7 @@
  </x-slot>
 
  <x-slot name="addbutton">
-  @can('requests.store')
+  @can('roles.store')
    <x-web.addTableButton createModalId="createModal">Agregar documento</x-web.addTableButton>
   @endcan
  </x-slot>
@@ -31,49 +31,29 @@
  </x-slot>
 
  <x-slot name="Table">
-  <x-web.table headers="Número|Nombre|Tipo|Fecha|Remitente|Asunto|Área asignada|Documento|Contestación">
+  <x-web.table headers="Id|Nombre">
    <x-slot name="data">
-    @foreach ($requests as $request)
+    @foreach ($roles as $role)
      <x-web.tableRow options="true">
 
       <x-slot name="tableData">
-       <x-web.tableData label='Número'>{{ $request->number }}</x-web.tableData>
-       <x-web.tableData label='Nombre'>{{ $request->name }}</x-web.tableData>
-       <x-web.tableData label='Tipo de documento'>{{ $request->document_type }}</x-web.tableData>
-       <x-web.tableData label='Fecha'>{{ $request->date }}</x-web.tableData>
-       <x-web.tableData label='Emisor'>{{ $request->sender }}</x-web.tableData>
-       <x-web.tableData label='Asunto'>{{ $request->subject }}</x-web.tableData>
-       <x-web.tableData label='Departamento'>{{ $request->area->name }}</x-web.tableData>
-       @if ($request->document != '')
-        <x-web.tableDataFile>{{ $request->number }}</x-web.tableDataFile>
-       @else
-        <td></td>
-       @endif
+       <x-web.tableData label='Número'>{{ $role->id }}</x-web.tableData>
+       <x-web.tableData label='Nombre'>{{ $role->name }}</x-web.tableData>
+       
       </x-slot>
 
       <x-slot name="detailModal">
-       <x-web.detailModal-sm toggleId="showModal{{ $request->id }}">
+       <x-web.detailModal-sm toggleId="showModal{{ $role->id }}">
         <x-slot name="modalTitle">
          Acuse
         </x-slot>
-        <x-slot name="modalHeader">
-         Folio: {{ $request->number }}
-        </x-slot>
         <x-slot name="dataList">
          <x-web.dataTerm>Nombre</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->name }}</x-web.dataDescription>
+         <x-web.dataDescription>{{ $role->id }}</x-web.dataDescription>
 
          <x-web.dataTerm>Fecha</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->date }}</x-web.dataDescription>
+         <x-web.dataDescription>{{ $role->name }}</x-web.dataDescription>
 
-         <x-web.dataTerm>Remitente</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->sender }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Asunto</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->subject }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Departamento asignado</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->area->name }}</x-web.dataDescription>
         </x-slot>
 
         <x-slot name="modalActions">
@@ -104,18 +84,12 @@
  </x-slot>
 
  <x-slot name="Modal">
-  <x-web.createModal-lg createmodalId="createModal" title="Agregar documento" permission="requests.store">
+  <x-web.createModal-lg createmodalId="createModal" title="Agregar documento" permission="roles.store">
    <x-slot name="form">
-    <form action="{{ route('requests.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
+    <form action="{{ route('roles.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
      @csrf
      @method('POST')
      <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-scroll h-[calc(100%-8rem)] relative p-1">
-      <div>
-       <x-web.formLabel for="folio">Folio asignado</x-web.formLabel>
-       <x-web.formInput type="text" name="folio" id="folio" readonly="true">
-        {{ $folio }}
-       </x-web.formInput>
-      </div>
       <div>
        <x-web.formLabel for="document_type">Tipo de documento</x-web.formLabel>
        <x-web.formInput type="comboBox" name="date" id="date" required="true" list="document_types">
@@ -167,19 +141,7 @@
        <x-web.formInput type="text" name="subject" id="subject" required="true">
        </x-web.formInput>
       </div>
-      <div>
-       <x-web.formLabel for="assigned_area">Asignar
-        departamento</x-web.formLabel>
-       <x-web.formInput type="select" name="assigned_area" id="assigned_area" required="true"
-        placeholder="Asigna un departamento">
 
-        <x-slot name="options">
-         @foreach ($areas as $area)
-          <option value="{{ $area->id }}">{{ $area->name }}</option>
-         @endforeach
-        </x-slot>
-       </x-web.formInput>
-      </div>
 
       <div class="sm:col-span-2">
        <x-web.formLabel for="observations">Observaciones</x-web.formLabel>
@@ -202,6 +164,6 @@
  </x-slot>
 
  <x-slot name="navigation">
-  {{ $requests->links() }}
+  {{ $roles->links() }}
  </x-slot>
 </x-web.container>

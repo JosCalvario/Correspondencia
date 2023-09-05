@@ -13,14 +13,7 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     function index() {
-        $users = User::all();
-        $areas = Area::all();
-        $roles = Role::all();
-        return view('web.users.index',[
-            'users' => $users,
-            'areas' => $areas,
-            'roles' => $roles
-        ]);
+        return view('web.users.index');
     }
 
     function store(StoreUserRequest $request) {

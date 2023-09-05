@@ -19,38 +19,14 @@ class RequestController extends Controller
     protected $viewRoutes=[
         'index'   =>  'web.requests.index'
     ];
-    protected $permissions=[
-        'index',
-        'create',
-        'store',
-        'edit',
-        'update',
-        'show',
-        'destroy'
-
-    ];
+    
     protected $files=[
         'document'
     ];
 
-    public function __construct()
-    {
-        //Ponemos el permiso y luego el método que protege
-        foreach($this->permissions as $per){
-            $this->middleware('can:'.$this->variableP.'.'.$per)->only($per);
-        }
-    }
     public function index()
     {
-        $data=Request::paginate(12);
-        $areas = Area::all();
-        return view($this->viewRoutes['index'])->with(
-            [
-                $this->variableP=>$data,
-                'areas' => $areas,
-                'folio' => Request::getFolioForRequest()
-            ]
-        );
+        return view($this->viewRoutes['index']);
     }
 
     public function store(StoreRequestRequest $request)
