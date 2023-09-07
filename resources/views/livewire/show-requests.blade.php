@@ -1,7 +1,8 @@
 <x-web.container title="Solicitudes" search="true" actions="true" filters="true" add="true">
 
  <x-slot name="searchInput">
-  <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option" searchModel="search"></x-web.searchInput>
+  <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option"
+   searchModel="search"></x-web.searchInput>
  </x-slot>
 
  <x-slot name="addbutton">
@@ -49,6 +50,7 @@
        @else
         <td></td>
        @endif
+       <x-web.tableData label='Contestación'></x-web.tableData>
       </x-slot>
 
       <x-slot name="detailModal">
@@ -195,7 +197,7 @@
       </div>
 
      </div>
-      <x-web.addModalButton>Agregar</x-web.addModalButton>
+     <x-web.addModalButton>Agregar</x-web.addModalButton>
     </form>
    </x-slot>
   </x-web.createModal-lg>
