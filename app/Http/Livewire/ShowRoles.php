@@ -18,9 +18,10 @@ class ShowRoles extends Component
 
         $this->model = Role::class;
         $this->options = [
-            'number' => 'Número',
+            'id' => 'Id',
             'name' => 'Nombre'
         ];
+        $this->pagination = false;
         
     }
 

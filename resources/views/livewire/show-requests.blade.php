@@ -118,7 +118,7 @@
       </div>
       <div>
        <x-web.formLabel for="document_type">Tipo de documento</x-web.formLabel>
-       <x-web.formInput type="comboBox" name="date" id="date" required="true" list="document_types">
+       <x-web.formInput type="comboBox" name="document_type" id="date" required="true" list="document_types">
         <x-slot name="dataListOptions">
          <option value="Oficio"></option>
          <option value="Memorándum"></option>
@@ -158,8 +158,8 @@
        </x-web.formInput>
       </div>
       <div class="sm:col-span-2">
-       <x-web.formLabel for="subject">Tema</x-web.formLabel>
-       <x-web.formInput type="text" name="subject" id="subject" required="true">
+       <x-web.formLabel for="theme">Tema</x-web.formLabel>
+       <x-web.formInput type="text" name="theme" id="subject" required="true">
        </x-web.formInput>
       </div>
       <div class="sm:col-span-2">

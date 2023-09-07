@@ -42,8 +42,3 @@ type="button">
   </div>
 </div>
 
-{{-- Edit Modal --}}
-<div></div>
-
-{{-- Delete Modal --}}
-</div>

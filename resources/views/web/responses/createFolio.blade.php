@@ -48,16 +48,15 @@
                         <input type="text" name="position" id="position" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="request_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Solicitud</label>
-                        <select name="request_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" id="">
-                            <option value="" disabled selected hidden>Selecciona una solicitud</option>
-                            @foreach ($requests as $request)
-                            @php
-                                $name = $request->number .'. '.$request->name;
-                            @endphp
-                                <option value="{{$request->id}}">{{$name}}</option>
-                            @endforeach
-                        </select>
+                        <label for="request_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona las solicitudes a responder</label>
+                        @foreach ($requests as $request)
+                        @php
+                            $name = $request->number .'. '.$request->name;
+                        @endphp
+                            <div>
+                                <input type="checkbox" value="{{$request->id}}" name="requests[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> {{$name}}
+                            </div>
+                        @endforeach
                     </div>
 
                     {{-- Hiddens--}}

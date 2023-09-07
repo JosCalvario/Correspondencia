@@ -1,13 +1,7 @@
-<x-web.container title="Solicitudes" search="true" actions="true" filters="true" add="true">
+<x-web.container title="Roles" search="true" actions="true" filters="true" add="false" nav="false">
 
  <x-slot name="searchInput">
   <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option" searchModel="search"></x-web.searchInput>
- </x-slot>
-
- <x-slot name="addbutton">
-  @can('roles.store')
-   <x-web.addTableButton createModalId="createModal">Agregar documento</x-web.addTableButton>
-  @endcan
  </x-slot>
 
  <x-slot name="actionsSelect">
@@ -83,87 +77,4 @@
   </x-web.table>
  </x-slot>
 
- <x-slot name="Modal">
-  <x-web.createModal-lg createmodalId="createModal" title="Agregar documento" permission="roles.store">
-   <x-slot name="form">
-    <form action="{{ route('roles.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
-     @csrf
-     @method('POST')
-     <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-scroll h-[calc(100%-8rem)] relative p-1">
-      <div>
-       <x-web.formLabel for="document_type">Tipo de documento</x-web.formLabel>
-       <x-web.formInput type="comboBox" name="date" id="date" required="true" list="document_types">
-        <x-slot name="dataListOptions">
-         <option value="Oficio"></option>
-         <option value="Memorándum"></option>
-         <option value="Circular"></option>
-        </x-slot>
-       </x-web.formInput>
-      </div>
-      <div>
-       <x-web.formLabel for="dependency">Dependencia</x-web.formLabel>
-       <x-web.formInput type="text" name="dependency" id="dependency" required="true">
-       </x-web.formInput>
-      </div>
-      <div>
-       <x-web.formLabel for="department">Departamento</x-web.formLabel>
-       <x-web.formInput type="text" name="department" id="department" required="true">
-       </x-web.formInput>
-      </div>
-      <div>
-       <x-web.formLabel for="date">Date</x-web.formLabel>
-       <x-web.formInput type="date" name="date" id="date" required="true">
-       </x-web.formInput>
-      </div>
-      <div>
-       <x-web.formLabel for="number">Número</x-web.formLabel>
-       <x-web.formInput type="text" name="number" id="number" required="true">
-       </x-web.formInput>
-      </div>
-      <div>
-       <x-web.formLabel for="sender">Remitente</x-web.formLabel>
-       <x-web.formInput type="text" name="sender" id="sender" required="true">
-       </x-web.formInput>
-      </div>
-      <div>
-       <x-web.formLabel for="sender_position">Posición del
-        remitente</x-web.formLabel>
-       <x-web.formInput type="text" name="sender_position" id="sender_position" required="true">
-       </x-web.formInput>
-      </div>
-      <div class="sm:col-span-2">
-       <x-web.formLabel for="subject">Tema</x-web.formLabel>
-       <x-web.formInput type="text" name="subject" id="subject" required="true">
-       </x-web.formInput>
-      </div>
-      <div class="sm:col-span-2">
-       <x-web.formLabel for="subject">Asunto</x-web.formLabel>
-       <x-web.formInput type="text" name="subject" id="subject" required="true">
-       </x-web.formInput>
-      </div>
-
-
-      <div class="sm:col-span-2">
-       <x-web.formLabel for="observations">Observaciones</x-web.formLabel>
-       <x-web.formInput type="textarea" name="observations" id="observations" rows="2" required="true"
-        placeholder="Observaciones del documento">
-       </x-web.formInput>
-      </div>
-
-      <div class="sm:col-span-2">
-       <x-web.formLabel for="document">Documento</x-web.formLabel>
-       <x-web.formInput type="file" name="document" id="document" required="true">
-       </x-web.formInput>
-      </div>
-
-     </div>
-      <x-web.addModalButton>Agregar</x-web.addModalButton>
-    </form>
-   </x-slot>
-  </x-web.createModal-lg>
- </x-slot>
-
- <x-slot name="navigation">
-  {{ $roles->links() }}
- </x-slot>
 </x-web.container>

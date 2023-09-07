@@ -72,5 +72,21 @@ class DocumentSeeder extends Seeder
             'observations' => 'os',
             'document'=>'assd'
         ]);
+        Request::create([
+            'folio' => 3,
+            'name'=> 'Oficio-SC-3-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::now(),
+            'number'=> 2,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'theme' => 'Documentación',
+            'subject'=> 'Documentar',
+            'assigned_area' => 1,
+            'observations' => 'os',
+            'document'=>'assd'
+        ]);
     }
 }

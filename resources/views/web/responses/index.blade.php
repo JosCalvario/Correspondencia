@@ -110,7 +110,7 @@
           <tr class="border-b text-sm text-gray-900 font-medium">
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->folio}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->date}}</td>
-           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->request?->name ?? 'Sin solicitud'}}</td>
+           <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->requests()?->name ?? 'Sin solicitud'}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->subject}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->applicant->name}}</td>
            <td data-label="Nombre de documento" scope="row" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold" >{{$response->status}}</td>
@@ -210,15 +210,6 @@
                </div>
            </div>
   
-            {{-- Responder Modal --}}
-            <div>
-
-            </div>
-  
-            {{-- Cancelar Modal --}}
-            <div>
-                
-            </div>
             </div>
            </td>
           </tr>

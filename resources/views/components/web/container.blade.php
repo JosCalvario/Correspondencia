@@ -1,4 +1,4 @@
-@props(['title', 'search' => 'true', 'add' => 'true', 'actions' => 'false', 'filters' => 'false'])
+@props(['title', 'search' => 'true', 'add' => 'true', 'actions' => 'false', 'filters' => 'false', 'nav' => 'true'])
 
 <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
  <h2 class="text-lg pt-4 pl-4 font-medium text-gray-900 dark:text-white">{{ $title }}</h2>
@@ -36,15 +36,21 @@
  @endforeach
 
  {{-- Modal agregar --}}
+
+ @if ($add == 'true')
  {{ $Modal }}
+@endif
 
  <div class="overflow-x-auto">
 
   {{-- Tabla --}}
   {{ $Table }}
  </div>
+ @if ($nav == 'true')
  <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
   aria-label="Table navigation">
   {{ $navigation }}
  </nav>
+@endif
+
 </div>

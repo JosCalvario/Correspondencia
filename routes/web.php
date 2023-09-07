@@ -43,8 +43,8 @@ Route::middleware([
     });
 
     Route::prefix('/folios')->name('folios.')->group(function(){
-        Route::get('/createFolio',[CorrespondenceController::class,'createFolio'])->name('create')->middleware('can:responses.createFolio');
-        Route::post('/createFolio',[CorrespondenceController::class,'storeFolio'])->name('store')->middleware('can:responses.createFolio');
+        Route::get('/createFolio',[ResponseController::class,'createFolioRequisition'])->name('create')->middleware('can:responses.createFolio');
+        Route::post('/createFolio',[ResponseController::class,'storeFolioRequisition'])->name('store')->middleware('can:responses.createFolio');
     });
 
     Route::prefix('/areas')->name('areas.')->group(function(){

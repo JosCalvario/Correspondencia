@@ -25,7 +25,7 @@ class StoreRequestRequest extends FormRequest
     {
         return [
         'name'=>'prohibited',
-        'document_type_id'=>'required|exists:document_types,id',
+        'document_type'=>'required',
         'date'=>'required|date',
         'number'=>'required',
         'sender'=>'required',
@@ -38,7 +38,7 @@ class StoreRequestRequest extends FormRequest
 
     function attributes() {
         return [
-            'document_type_id'=>'Tipo de documento',
+            'document_type'=>'Tipo de documento',
             'date'=>'Fecha',
             'number'=>'Número',
             'sender'=>'Emisor',

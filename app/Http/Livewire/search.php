@@ -9,12 +9,13 @@ trait Search
     public $options = [
         'id' => 'Id'
     ];
-    public $pagination = 12 ;
+    public $pagination = true;
+    public $pages = 12;
     private function search()
     {
         if($this->search == '')
         {
-            return $this->model::paginate($this->pagination);
+            return $this->model::paginate($this->pages);
         }
         
         if($this->option == '')
@@ -33,7 +34,10 @@ trait Search
             }
         }
 
-        return $data->paginate($this->pagination);
+        if($this->pagination)
+            return $data->paginate($this->pages);
+
+        return $data->get();
     }
 
     private function completeSearch()
@@ -46,6 +50,9 @@ trait Search
             $data->where($opt,'LIKE',$query,'or');
         }
 
-        return $data->paginate($this->pagination);
+        if($this->pagination)
+            return $data->paginate($this->pages);
+
+        return $data->get();
     }
 }
