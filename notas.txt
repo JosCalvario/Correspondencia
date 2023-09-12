@@ -1,7 +1,7 @@
 -Rol de generar Folio y permisos
 -Formulario para generar folios
-Solo un usuario de cada área puede subir respuestas
-El usuario puede ver sus folios generados y puede cancelarlos
+-Solo un usuario de cada área puede subir respuestas
+-El usuario puede ver sus folios generados y puede cancelarlos
 Cuando se sube la respuesta ya no se muestra el folio de respuesta
 -Hay 3 tipos de documenos principales que son Oficios, memorandums, Circulares, pero puede haber otra opción que sea otros y sea editable
 
@@ -12,6 +12,13 @@ Cuando se sube la respuesta ya no se muestra el folio de respuesta
 Poner mensaje de status arriba de las tablas (success, status)
 
 -Se puede solicitar folio aunque no haya documento de entrada
-Se puede solicitar folio para 2 o más documentos de entrada
+-Se puede solicitar folio para 2 o más documentos de entrada
 -//Ya se arregló la base de datos para estos cambios
 -//Falta arreglar las vistas y controladores para que funcione correctamente
+
+Revisar la parte de subir las contestaciones y ver cómo se van a mostrar
+Cambiar colores en la tabla según Fecha
+Edición de permisos de roles
+Checar los reportes
+Modals con búsqueda
+Cancelar folios

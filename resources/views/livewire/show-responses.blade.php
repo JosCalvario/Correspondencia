@@ -42,7 +42,7 @@
 
             @if (count($requests)>0)
                 @foreach ($requests as $request)
-                    {{$request->name}}
+                    {{$request->folio}}: {{$request->name}}
                     @if(!$loop->last)
                     <br>
                     @endif

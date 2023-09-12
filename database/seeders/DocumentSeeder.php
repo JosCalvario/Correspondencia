@@ -41,8 +41,8 @@ class DocumentSeeder extends Seeder
         ]);
         Request::create([
             'folio' => 1,
-            'name'=> 'name',
-            'document_type'=> 'Oficio',
+            'name'=> 'Memo-SC-CG-2023',
+            'document_type'=> 'Memorándum',
             'dependency' => 'SC',
             'department' => 'CG',
             'date' => Carbon::now(),
@@ -79,7 +79,7 @@ class DocumentSeeder extends Seeder
             'dependency' => 'SC',
             'department' => 'CG',
             'date' => Carbon::now(),
-            'number'=> 2,
+            'number'=> 3,
             'sender'=>'Rodolfo Pulido',
             'sender_position' => 'Administrador',
             'theme' => 'Documentación',
