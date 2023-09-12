@@ -14,11 +14,7 @@ class ResponseController extends Controller
 
     public function index()
     {
-        $data = Response::orderByRaw("Field(status, 'Vigente','Contestado','Cancelado')")->get();
-
-        return view('web.responses.index',[
-            'responses' => $data
-        ]);
+        return view('web.responses.index');
     }
 
     public function createFolioRequisition()

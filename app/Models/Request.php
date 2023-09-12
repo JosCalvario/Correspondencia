@@ -52,8 +52,7 @@ class Request extends Model
     }
 
     static function getAllWithoutResponseOrFolio(){
-        $responses = DB::table('request_response')->get('request_id')->toArray(); 
-        $requests = DB::table('requests')->where('assigned_area','=',auth()->user()->area->id)->whereNotIn('id',$responses)->get();
-        return $requests;
+        return Request::doesntHave('responses')->where('assigned_area','=',auth()->user()->area->id)->get();
+        
     }
 }

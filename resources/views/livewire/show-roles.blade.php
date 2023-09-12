@@ -38,16 +38,20 @@
 
       <x-slot name="detailModal">
        <x-web.detailModal-sm toggleId="showModal{{ $role->id }}">
-        <x-slot name="modalTitle">
-         Acuse
-        </x-slot>
+        <x-slot name="modalTitle">Rol</x-slot>
         <x-slot name="dataList">
          <x-web.dataTerm>Nombre</x-web.dataTerm>
-         <x-web.dataDescription>{{ $role->id }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Fecha</x-web.dataTerm>
          <x-web.dataDescription>{{ $role->name }}</x-web.dataDescription>
 
+         <x-web.dataTerm>Permisos</x-web.dataTerm>
+          <x-web.dataDescription>
+            @foreach ($role->permissions as $per)
+          {{ __($per->name) }}
+          @if (!$loop->last)
+              |
+          @endif
+          @endforeach
+          </x-web>
         </x-slot>
 
         <x-slot name="modalActions">
@@ -62,11 +66,8 @@
              clip-rule="evenodd"></path>
            </svg>
           </x-slot>
-          Responder
+          Editar permisos
          </x-web.modalAnchor>
-         <x-web.modalButton>
-          Previsualizar
-         </x-web.modalButton>
         </x-slot>
        </x-web.detailModal-sm>
       </x-slot>
