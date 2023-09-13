@@ -33,5 +33,7 @@
     "permissions.store":"Guardar permisos",
     "permissions.update":"Actualizar permisos",
     "permissions.show":"Ver detalle permisos",
-    "permissions.destroy":"Eliminar permisos"
+    "permissions.destroy":"Eliminar permisos",
+
+    "responses.createFolio":"Solicitar folios"
 }

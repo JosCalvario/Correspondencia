@@ -61,6 +61,7 @@ Route::middleware([
     Route::prefix('/roles')->name('roles.')->group(function(){
         Route::get('/',[RoleController::class,'index'])->name('index')->middleware('can:roles.index');
         Route::post('/',[RoleController::class,'store'])->name('store')->middleware('can:roles.store');
+        Route::put('/',[RoleController::class,'updatePermissions'])->name('updatePermissions')->middleware('can:roles.update');
     });
 
     
