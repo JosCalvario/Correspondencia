@@ -139,7 +139,7 @@
        </x-web.formInput>
       </div>
       <div>
-       <x-web.formLabel for="date">Date</x-web.formLabel>
+       <x-web.formLabel for="date">Fecha</x-web.formLabel>
        <x-web.formInput type="date" name="date" id="date" required="true">
        </x-web.formInput>
       </div>

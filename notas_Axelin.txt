@@ -1,0 +1,6 @@
+1.- para correr el server
+ -php artisan serve (correr laravel)
+ -npm run dev (correr los estilos como laravel o tailwind)
+ abre el xampp amigo
+
+ 
