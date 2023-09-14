@@ -17,8 +17,8 @@ Poner mensaje de status arriba de las tablas (success, status)
 -//Falta arreglar las vistas y controladores para que funcione correctamente
 
 Revisar la parte de subir las contestaciones y ver cómo se van a mostrar
-Cambiar colores en la tabla según Fecha
-Edición de permisos de roles
+-Cambiar colores en la tabla según Fecha
+-Edición de permisos de roles
 Checar los reportes
 Modals con búsqueda
 Cancelar folios

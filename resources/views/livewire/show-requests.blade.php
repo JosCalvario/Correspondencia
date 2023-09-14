@@ -35,10 +35,20 @@
   <x-web.table headers="Número|Nombre|Tipo|Fecha|Remitente|Asunto|Área asignada|Documento|Contestación">
    <x-slot name="data">
     @foreach ($requests as $request)
+
+    @php
+        $date = \Carbon\Carbon::parse($request->date);
+        $today = \Carbon\Carbon::today();
+        $color = 'sc_greeny';
+        if($date->addDays(5)<=$today)
+          $color='sc_sandy';
+        if($date->addDays(7)<=$today)
+          $color='sc_red';
+    @endphp
      <x-web.tableRow options="true">
 
       <x-slot name="tableData">
-       <x-web.tableData label='Número'>{{ $request->number }}</x-web.tableData>
+       <x-web.tableData label='Número' color="bg-{{$color}}">{{ $request->number }}</x-web.tableData>
        <x-web.tableData label='Nombre'>{{ $request->name }}</x-web.tableData>
        <x-web.tableData label='Tipo de documento'>{{ $request->document_type }}</x-web.tableData>
        <x-web.tableData label='Fecha'>{{ $request->date }}</x-web.tableData>
