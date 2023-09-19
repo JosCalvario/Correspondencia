@@ -38,11 +38,11 @@ class UsersSeeder extends Seeder
             'area_id' => null
         ])->assignRole('Administrador');
         
-        $user = User::create([
-            'name' => 'rodos',
-            'email' => 'rodos@correo.com',
-            'password' => Hash::make('1234'),
-            'area_id' => 2
-        ])->assignRole('Analista');
+        // $user = User::create([
+        //     'name' => 'rodos',
+        //     'email' => 'rodos@correo.com',
+        //     'password' => Hash::make('1234'),
+        //     'area_id' => 2
+        // ])->assignRole('Analista');
     }
 }
