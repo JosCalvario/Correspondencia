@@ -1,5 +1,6 @@
 @props([
     'options' => 'false',
+    'edit' => 'false',
     'extra' => 'false'
 ])
 
@@ -11,6 +12,12 @@
    {{ $detailModal }}
   </td>
  @endif
+ 
+ @if ($edit == 'true')
+ <td class="px-4 py-3 flex items-center justify-end">
+{{ $editModal }}
+</td>
+@endif
 
  @if ($extra == 'true')
      <td class="px-4 py-3 flex items-center justify-end">

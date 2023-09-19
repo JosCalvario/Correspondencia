@@ -50,6 +50,7 @@ Route::middleware([
     Route::prefix('/areas')->name('areas.')->group(function(){
         Route::get('/',[AreaController::class,'index'])->name('index')->middleware('can:areas.index');
         Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store');
+        Route::put('/',[AreaController::class,'update'])->name('update')->middleware('can:areas.update');
     });
 
     Route::prefix('/users')->name('users.')->group(function(){

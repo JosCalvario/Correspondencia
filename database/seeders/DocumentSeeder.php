@@ -20,27 +20,67 @@ class DocumentSeeder extends Seeder
     public function run()
     {
         Unit::create([
-            'name'=>'asd',
+            'name'=>'Secretaría de cultura',
             'abbr'=>'SC'
         ]);
         Area::create([
-            'name'=>'Area 1',
+            'name'=>'Dirección',
             'manager_id'=> 1,
+            'phone' => '1234567890',
+            'address'=>'Dirección 1',
+            'unit_id'=>1,
+            'abbr' =>'DA'
+        ]);
+        Area::create([
+            'name'=>'Subdirección',
+            'manager_id'=> 2,
+            'phone' => '1234567891',
+            'address'=>'Dirección 2',
+            'unit_id'=>1,
+            'abbr' =>'SUB'
+        ]);
+        Area::create([
+            'name'=>'Recursos Materiales y Servicios Generales',
+            'manager_id'=> null,
+            'phone' => '1234567890',
+            'address'=>'Dirección 1',
+            'unit_id'=>1,
+            'abbr' =>'RMySG'
+        ]);
+        Area::create([
+            'name'=>'Recursos Humanos',
+            'manager_id'=> null,
+            'phone' => '1234567891',
+            'address'=>'Dirección 2',
+            'unit_id'=>1,
+            'abbr' =>'RH'
+        ]);
+        Area::create([
+            'name'=>'Planeación y Tecnologías de la Información',
+            'manager_id'=> null,
             'phone' => '1234567890',
             'address'=>'Dirección 1',
             'unit_id'=>1,
             'abbr' =>'DGCP'
         ]);
         Area::create([
-            'name'=>'Area 2',
-            'manager_id'=> 2,
+            'name'=>'Presupuesto y Contabilidad',
+            'manager_id'=> null,
             'phone' => '1234567891',
             'address'=>'Dirección 2',
             'unit_id'=>1,
-            'abbr' =>'ABC'
+            'abbr' =>'PyC'
+        ]);
+        Area::create([
+            'name'=>'Unis',
+            'manager_id'=> null,
+            'phone' => '1234567891',
+            'address'=>'Dirección 2',
+            'unit_id'=>1,
+            'abbr' =>'UNIS'
         ]);
         Request::create([
-            'folio' => 1,
+            'folio' => 5000,
             'name'=> 'Memo-SC-CG-2023',
             'document_type'=> 'Memorándum',
             'dependency' => 'SC',
@@ -57,7 +97,7 @@ class DocumentSeeder extends Seeder
         ]);
 
         Request::create([
-            'folio' => 2,
+            'folio' => 5002,
             'name'=> 'Oficio-SC-CG-2023',
             'document_type'=> 'Oficio',
             'dependency' => 'SC',
@@ -73,7 +113,7 @@ class DocumentSeeder extends Seeder
             'document'=>'assd'
         ]);
         Request::create([
-            'folio' => 3,
+            'folio' => 5003,
             'name'=> 'Oficio-SC-3-2023',
             'document_type'=> 'Oficio',
             'dependency' => 'SC',

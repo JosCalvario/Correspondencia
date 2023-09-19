@@ -72,10 +72,10 @@ class AreaController extends Controller
         return redirect()->action([AreaController::class,'index']);
     }
 
-    public function update(UpdateAreaRequest $request, $id)
+    public function update(UpdateAreaRequest $request)
     {
         $input=$request->all();
-        $data=Area::find($id);
+        $data=Area::find($request->get('area_id'));
         foreach($this->files as $file){
             if($request->hasFile($file)){
                 $oldFile=$this->storage.$data->{$file};

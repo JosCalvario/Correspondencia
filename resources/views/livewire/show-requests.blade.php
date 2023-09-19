@@ -32,7 +32,7 @@
  </x-slot>
 
  <x-slot name="Table">
-  <x-web.table headers="Número|Nombre|Tipo|Fecha|Remitente|Asunto|Área asignada|Documento|Contestación">
+  <x-web.table headers="Folio|Número interno|Nombre|Tipo|Fecha|Remitente|Asunto|Área asignada|Documento|Contestación">
    <x-slot name="data">
     @foreach ($requests as $request)
 
@@ -50,7 +50,8 @@
      <x-web.tableRow options="true">
 
       <x-slot name="tableData">
-       <x-web.tableData label='Número' color="bg-{{$color}}">{{ $request->number }}</x-web.tableData>
+       <x-web.tableData label='Folio' color="bg-{{$color}}">{{ $request->folio }}</x-web.tableData>
+       <x-web.tableData label='Nombre'>{{ $request->number }}</x-web.tableData>
        <x-web.tableData label='Nombre'>{{ $request->name }}</x-web.tableData>
        <x-web.tableData label='Tipo de documento'>{{ $request->document_type }}</x-web.tableData>
        <x-web.tableData label='Fecha'>{{ $request->date }}</x-web.tableData>
