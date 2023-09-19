@@ -52,7 +52,9 @@ class Request extends Model
     }
 
     static function getAllWithoutResponseOrFolio(){
-        return Request::doesntHave('responses')->where('assigned_area','=',auth()->user()->area->id)->get();
+        $area = auth()->user()->area?->id ?? 0;
+
+        return Request::doesntHave('responses')->where('assigned_area','=',$area)->get();
         
     }
 }

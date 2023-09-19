@@ -78,7 +78,7 @@ class DocumentSeeder extends Seeder
             'document_type'=> 'Oficio',
             'dependency' => 'SC',
             'department' => 'CG',
-            'date' => Carbon::parse('2023/09/08'),
+            'date' => Carbon::parse('2023/09/8'),
             'number'=> 3,
             'sender'=>'Rodolfo Pulido',
             'sender_position' => 'Administrador',

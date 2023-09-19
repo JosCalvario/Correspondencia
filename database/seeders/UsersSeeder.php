@@ -20,16 +20,24 @@ class UsersSeeder extends Seeder
         $user->name = "cpa";
         $user->email = "cpa@correo.com";
         $user->password=Hash::make('1234');
-        $user->area_id=1;
+        $user->area_id=null;
         $user->save();
         $user->assignRole('Administrador');
 
         $user = User::create([
-            'name' => 'rodo',
-            'email' => 'rodo@correo.com',
+            'name' => 'Ana Karen Mora',
+            'email' => 'ana.mora@puebla.gob.mx',
             'password' => Hash::make('1234'),
-            'area_id' => 2
+            'area_id' => null
         ])->assignRole('Recepcionista');
+
+        $user = User::create([
+            'name' => 'Marcela Mejía Zepeda',
+            'email' => 'marcela.mejia@puebla.gob.mx',
+            'password' => Hash::make('1234'),
+            'area_id' => null
+        ])->assignRole('Administrador');
+        
         $user = User::create([
             'name' => 'rodos',
             'email' => 'rodos@correo.com',

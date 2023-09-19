@@ -3,4 +3,12 @@
  -npm run dev (correr los estilos como laravel o tailwind)
  abre el xampp amigo
 
- 
+Se usa livewire, para añadir la plantilla de vistas con tablas
+Solicitudes
+Departamentos
+Usuarios
+Roles
+
+Agregar en la carpeta de controladores los requests
+@can('') sirve para verificar que el usuario logeado tenga permiso para realizar alguna acción
+

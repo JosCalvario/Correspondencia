@@ -39,11 +39,13 @@
     @php
         $date = \Carbon\Carbon::parse($request->date);
         $today = \Carbon\Carbon::today();
+        $days = $today->diffInDays($date);
         $color = 'sc_greeny';
-        if($date->addDays(5)<=$today)
-          $color='sc_sandy';
-        if($date->addDays(7)<=$today)
-          $color='sc_red';
+        if($days >= 5)
+          $color = 'sc_sandy';
+        if($days >= 7)
+          $color = 'sc_red';
+
     @endphp
      <x-web.tableRow options="true">
 
@@ -56,7 +58,7 @@
        <x-web.tableData label='Asunto'>{{ $request->subject }}</x-web.tableData>
        <x-web.tableData label='Departamento'>{{ $request->area->name }}</x-web.tableData>
        @if ($request->document != '')
-        <x-web.tableDataFile>{{ $request->number }}</x-web.tableDataFile>
+        <x-web.tableDataFile>{{ $request->document }}</x-web.tableDataFile>
        @else
         <td></td>
        @endif
