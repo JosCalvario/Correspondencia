@@ -29,7 +29,7 @@ corregir vista mobile en home
 Funcionalidad en notificaciones home
 terminar animacion de error en sho request
 número con estado en registro show request
-FIltros (Completados, pendientes, etc)
+Filtros (Completados, pendientes, etc)
 matar botones de acciones
 mostrar contestación
 mensaje de éxito al enviar folio
@@ -41,3 +41,12 @@ asignar usuarios a departamentos
 Agregar rol nuevo
 Matar busqueda acciones 
 Agregar contestación en requests
+
+
+urgentes
+agregar contestacion a requests
+asignar usuarios a departamentos
+editar docuemntos salientes (SUBIR CONTESTACIÓN)
+EDITAR USUARIOS
+
+boton cancelar en documentos salientes: saldrá otro modal con input de Observaciones

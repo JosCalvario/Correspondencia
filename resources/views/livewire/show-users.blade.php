@@ -1,4 +1,4 @@
-<x-web.container title="Usuarios" search="true" actions="true" filters="true" add="true">
+<x-web.container title="Usuarios" search="true" actions="false" filters="true" add="true">
 
     <x-slot name="searchInput">
         <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option" searchModel="search"></x-web.searchInput>
@@ -41,7 +41,7 @@
        <x-web.tableData>{{ $user->email }}</x-web.tableData>
        <x-web.tableData>{{ $user->area != null ? $user->area->name : '' }}</x-web.tableData>
        @can('permissions.update')
-           <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-4 py-3 sm:table-cell block before:block before:font-semibold"><button type="button" data-modal-toggle="editPermissions{{$user->id}}" class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer">Editar</button></td>
+           <td data-label="Fecha" class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-0 py-3 sm:table-cell block before:block before:font-semibold"><button type="button" data-modal-toggle="editPermissions{{$user->id}}" class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer">Cont</button></td>
         @endcan
 
       </x-slot>
