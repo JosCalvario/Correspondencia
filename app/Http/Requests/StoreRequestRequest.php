@@ -31,7 +31,7 @@ class StoreRequestRequest extends FormRequest
         'sender'=>'required',
         'subject'=>'required',
         'assigned_area'=>'required|exists:areas,id',
-        'observations'=>'required|max:200',
+        'observations'=>'max:200',
         'document' => 'required|file'
         ];
     }

@@ -1,4 +1,4 @@
-<x-web.container title="Roles" search="true" actions="true" filters="true" add="false" nav="false">
+<x-web.container title="Roles" search="false" actions="false" filters="false" add="false" nav="false">
 
  <x-slot name="searchInput">
   <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option" searchModel="search"></x-web.searchInput>

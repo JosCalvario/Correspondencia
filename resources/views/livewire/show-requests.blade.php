@@ -1,4 +1,4 @@
-<x-web.container title="Solicitudes" search="true" actions="true" filters="true" add="true">
+<x-web.container title="Solicitudes" search="true" actions="false" filters="true" add="true">
 
  <x-slot name="searchInput">
   <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option"
@@ -35,22 +35,23 @@
   <x-web.table headers="Folio|Número interno|Nombre|Tipo|Fecha|Remitente|Asunto|Área asignada|Documento|Contestación">
    <x-slot name="data">
     @foreach ($requests as $request)
-
-    @php
-        $date = \Carbon\Carbon::parse($request->date);
-        $today = \Carbon\Carbon::today();
-        $days = $today->diffInDays($date);
-        $color = 'sc_greeny';
-        if($days >= 5)
+     @php
+      $date = \Carbon\Carbon::parse($request->date);
+      $today = \Carbon\Carbon::today();
+      $days = $today->diffInDays($date);
+      $color = 'sc_greeny';
+      if ($days >= 5) {
           $color = 'sc_sandy';
-        if($days >= 7)
+      }
+      if ($days >= 7) {
           $color = 'sc_red';
-
-    @endphp
+      }
+      
+     @endphp
      <x-web.tableRow options="true">
 
       <x-slot name="tableData">
-       <x-web.tableData label='Folio' color="bg-{{$color}}">{{ $request->folio }}</x-web.tableData>
+       <x-web.tableData label='Folio' color="text-{{ $color }}">{{ $request->folio }}</x-web.tableData>
        <x-web.tableData label='Nombre'>{{ $request->number }}</x-web.tableData>
        <x-web.tableData label='Nombre'>{{ $request->name }}</x-web.tableData>
        <x-web.tableData label='Tipo de documento'>{{ $request->document_type }}</x-web.tableData>
@@ -92,22 +93,11 @@
         </x-slot>
 
         <x-slot name="modalActions">
-
-         <x-web.modalAnchor>
-          <x-slot name="icon">
-           <svg aria-hidden="true" class="mr-1 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
-            <path fill-rule="evenodd"
-             d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-             clip-rule="evenodd"></path>
-           </svg>
-          </x-slot>
-          Responder
-         </x-web.modalAnchor>
-         <x-web.modalButton>
-          Previsualizar
-         </x-web.modalButton>
+         @if ($request->document != '')
+          <x-web.modalButton doc="{{ $request->document }}">
+           Previsualizar
+          </x-web.modalButton>
+         @endif
         </x-slot>
        </x-web.detailModal-sm>
       </x-slot>
@@ -143,12 +133,12 @@
       </div>
       <div>
        <x-web.formLabel for="dependency">Dependencia</x-web.formLabel>
-       <x-web.formInput type="text" name="dependency" id="dependency" required="true">
+       <x-web.formInput type="text" name="dependency" id="dependency" required="false">
        </x-web.formInput>
       </div>
       <div>
        <x-web.formLabel for="department">Departamento</x-web.formLabel>
-       <x-web.formInput type="text" name="department" id="department" required="true">
+       <x-web.formInput type="text" name="department" id="department" required="false">
        </x-web.formInput>
       </div>
       <div>
@@ -172,11 +162,11 @@
        <x-web.formInput type="text" name="sender_position" id="sender_position" required="true">
        </x-web.formInput>
       </div>
-      <div class="sm:col-span-2">
+      {{-- <div class="sm:col-span-2">
        <x-web.formLabel for="theme">Tema</x-web.formLabel>
        <x-web.formInput type="text" name="theme" id="subject" required="true">
        </x-web.formInput>
-      </div>
+      </div> --}}
       <div class="sm:col-span-2">
        <x-web.formLabel for="subject">Asunto</x-web.formLabel>
        <x-web.formInput type="text" name="subject" id="subject" required="true">
@@ -198,7 +188,7 @@
 
       <div class="sm:col-span-2">
        <x-web.formLabel for="observations">Observaciones</x-web.formLabel>
-       <x-web.formInput type="textarea" name="observations" id="observations" rows="2" required="true"
+       <x-web.formInput type="textarea" name="observations" id="observations" rows="2" required="false"
         placeholder="Observaciones del documento">
        </x-web.formInput>
       </div>
@@ -220,3 +210,10 @@
   {{ $requests->links() }}
  </x-slot>
 </x-web.container>
+
+{{-- Errores de formulaio --}}
+@foreach ($errors->all() as $error)
+ <div
+  class="bg-red-400 absolute bottom-0 right-0 w-60 text-white font-semibold flex items-center justify-center mr-5 mb-5 h-14 text-base rounded-lg">
+  {{ $error }}</div>
+@endforeach

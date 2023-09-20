@@ -121,11 +121,8 @@
              clip-rule="evenodd"></path>
            </svg>
           </x-slot>
-          Responder
+          Editar
          </x-web.modalAnchor>
-         <x-web.modalButton>
-          Previsualizar
-         </x-web.modalButton>
         </x-slot>
        </x-web.detailModal-sm>
       </x-slot>

@@ -1,4 +1,4 @@
-<x-web.container title="Documentos salientes" search="true" actions="true" filters="true" add="false">
+<x-web.container title="Documentos salientes" search="true" actions="false" filters="true" add="false">
 
     <x-slot name="searchInput">
      <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option"
@@ -122,9 +122,11 @@
              </x-slot>
              Responder
             </x-web.modalAnchor>
-            <x-web.modalButton>
-             Previsualizar
-            </x-web.modalButton>
+            @if ($response->document != '')
+            <x-web.modalButton doc="{{ $response->document }}">
+                Previsualizar
+                </x-web.modalButton>
+            @endif
            </x-slot>
           </x-web.detailModal-sm>
          </x-slot>

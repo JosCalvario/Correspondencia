@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('folio');
             $table->string('name');
             $table->string('document_type');
-            $table->string('dependency');
-            $table->string('department');
+            $table->string('dependency')->nullable();
+            $table->string('department')->nullable();
             $table->date('date');
             $table->string('number');
             $table->string('sender');
             $table->string('sender_position');
-            $table->string('theme');
+            // $table->string('theme')->nullable();
             $table->string('subject');
             $table->unsignedBigInteger('assigned_area');
             $table->foreign('assigned_area')->references('id')->on('areas');

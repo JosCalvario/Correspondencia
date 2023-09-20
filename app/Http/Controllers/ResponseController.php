@@ -34,7 +34,10 @@ class ResponseController extends Controller
         $data['status'] = 'Vigente';
         
         $response = Response::create($data);
-        $response->requests()->sync($data['requests']);
+        if (isset($data['requests'])) {
+            $response->requests()->sync($data['requests']);
+        }
+        
         return redirect()->action([ResponseController::class,'createFolioRequisition'])->with(['success' => 'Tu número de folio es: '.$folio]);
     }
 

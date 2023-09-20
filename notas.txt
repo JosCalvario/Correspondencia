@@ -22,3 +22,22 @@ Revisar la parte de subir las contestaciones y ver cómo se van a mostrar
 Checar los reportes
 Modals con búsqueda
 Cancelar folios
+
+
+Revisión
+corregir vista mobile en home
+Funcionalidad en notificaciones home
+terminar animacion de error en sho request
+número con estado en registro show request
+FIltros (Completados, pendientes, etc)
+matar botones de acciones
+mostrar contestación
+mensaje de éxito al enviar folio
+Checar opciones de documentos salientes
+
+Editar de: docuemntos salientes, departamentos, usuarios
+
+asignar usuarios a departamentos
+Agregar rol nuevo
+Matar busqueda acciones 
+Agregar contestación en requests
