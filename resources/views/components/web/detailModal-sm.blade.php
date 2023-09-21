@@ -1,11 +1,18 @@
-<button data-modal-toggle="{{$toggleId}}"
-class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-type="button">
-<svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
- xmlns="http://www.w3.org/2000/svg">
- <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-</svg>
-</button>
+@props([
+    'button' => 'true',
+    'toggleId'])
+@if($button == 'true')
+
+    <button data-modal-toggle="{{$toggleId}}"
+    class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+    type="button">
+    <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+     xmlns="http://www.w3.org/2000/svg">
+     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+    </svg>
+    </button>
+@endif
+
 <div id="{{$toggleId}}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
   <div class="relative p-4 w-full max-w-xl h-full md:h-auto">
       <!-- Modal content -->

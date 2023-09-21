@@ -26,6 +26,9 @@ module.exports = {
                 sc_gravel: '#BBBABA',
                 sc_quartz: '#FFFFFF',
                 
+                sc_bg_green: 'rgb(222,247,236)',
+                sc_bg_yellow: 'rgb(253,253,234)',
+                sc_bg_red: 'rgb(253,232,232)',
             }
         },
 
