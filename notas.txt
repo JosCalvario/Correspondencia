@@ -27,7 +27,7 @@ Cancelar folios
 Revisión
 corregir vista mobile en home
 Funcionalidad en notificaciones home
-terminar animacion de error en sho request
+terminar animacion de error en show request
 número con estado en registro show request
 Filtros (Completados, pendientes, etc)
 matar botones de acciones

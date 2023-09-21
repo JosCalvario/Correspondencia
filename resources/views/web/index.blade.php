@@ -13,7 +13,7 @@
   </div>
     
     
-    <div class="grid grid-cols-2 gap-4 mb-4">
+    <div class="grid md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 mb-4">
       <div class="bg-sc_greeny rounded-lg h-48 p-6 md:h-72 flex justify-between">
         <div>
           <h2 class="font-bold text-4xl text-sc_quartz mb-3 font-sans">Solicitudes</h2>
