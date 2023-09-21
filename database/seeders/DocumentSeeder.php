@@ -23,9 +23,18 @@ class DocumentSeeder extends Seeder
             'name'=>'Secretaría de cultura',
             'abbr'=>'SC'
         ]);
+        
+        Area::create([
+            'name'=>'Global',
+            'manager_id'=> 1,
+            'phone' => '1',
+            'address'=>'1',
+            'unit_id'=>1,
+            'abbr' =>'GL'
+        ]);
         Area::create([
             'name'=>'Dirección',
-            'manager_id'=> 1,
+            'manager_id'=> null,
             'phone' => '1234567890',
             'address'=>'Dirección 1',
             'unit_id'=>1,

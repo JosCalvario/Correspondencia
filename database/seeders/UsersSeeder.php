@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
         $user->name = "cpa";
         $user->email = "cpa@correo.com";
         $user->password=Hash::make('1234');
-        $user->area_id=null;
+        $user->area_id=1;
         $user->save();
         $user->assignRole('Administrador');
 
@@ -28,14 +28,14 @@ class UsersSeeder extends Seeder
             'name' => 'Ana Karen Mora',
             'email' => 'ana.mora@puebla.gob.mx',
             'password' => Hash::make('1234'),
-            'area_id' => null
+            'area_id' => 1
         ])->assignRole('Recepcionista');
 
         $user = User::create([
             'name' => 'Marcela Mejía Zepeda',
             'email' => 'marcela.mejia@puebla.gob.mx',
             'password' => Hash::make('1234'),
-            'area_id' => null
+            'area_id' => 1
         ])->assignRole('Administrador');
         
         // $user = User::create([

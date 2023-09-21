@@ -31,7 +31,7 @@ class ShowRequests extends Component
     public function render()
     {
         $requests = $this->search();
-        $areas = Area::all();
+        $areas = Area::all()->except([1]);
         $folio = Request::getFolioForRequest();
         $options = $this->options;
 

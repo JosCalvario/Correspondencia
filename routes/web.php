@@ -57,8 +57,8 @@ Route::middleware([
     Route::prefix('/users')->name('users.')->group(function(){
         Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
         Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
-        Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
         Route::put('/',[UserController::class,'update'])->name('update')->middleware('can:users.update');
+        Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
     });
 
     Route::prefix('/roles')->name('roles.')->group(function(){
