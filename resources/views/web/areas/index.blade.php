@@ -1,3 +1,4 @@
 <x-app-layout>
-    @livewire('show-areas')
+  @livewire('test')
+    {{-- @livewire('show-areas') --}}
   </x-app-layout>
