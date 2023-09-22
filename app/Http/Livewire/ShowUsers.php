@@ -14,6 +14,8 @@ class ShowUsers extends Component
     use WithPagination;
     use Search;
 
+    public $open = true;
+    
     public function __construct(){
 
         $this->model = User::class;
