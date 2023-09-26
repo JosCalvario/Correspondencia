@@ -34,6 +34,12 @@ class UserController extends Controller
         return redirect()->action([UserController::class,'index'])->with('success','Usuario actualizado exitosamente');
     }
 
+    function editRoles($id){
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('web.users.editRoles',['user'=>$user,'roles'=>$roles]);
+    }
+
     function updateRoles(UpdateUserRolesRequest $request){
         $data = $request->all();
         $roles = $request->input('roles');

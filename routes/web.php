@@ -50,8 +50,8 @@ Route::middleware([
     Route::prefix('/areas')->name('areas.')->group(function(){
         Route::get('/',[AreaController::class,'index'])->name('index')->middleware('can:areas.index');
         Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store');
-        Route::put('/',[AreaController::class,'update'])->name('update')->middleware('can:areas.update');
         Route::put('/',[AreaController::class,'assignUsers'])->name('assignUsers')->middleware('can:areas.update');
+        Route::put('/',[AreaController::class,'update'])->name('update')->middleware('can:areas.update');
     });
 
     Route::prefix('/users')->name('users.')->group(function(){
@@ -59,6 +59,7 @@ Route::middleware([
         Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
         Route::put('/',[UserController::class,'update'])->name('update')->middleware('can:users.update');
         Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
+        Route::get('/{id}',[UserController::class,'editRoles'])->name('editRoles')->middleware('can:users.update');
     });
 
     Route::prefix('/roles')->name('roles.')->group(function(){
