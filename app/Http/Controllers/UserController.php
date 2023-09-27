@@ -25,7 +25,13 @@ class UserController extends Controller
         return redirect()->action([UserController::class,'index'])->with('success','Usuario creado exitosamente');
     }
 
-    function update(UpdateUserRequest $request){
+    function edit($id)
+    {
+        $user = User::find($id);
+        return view('web.users.edit',['user' => $user]);
+    }
+
+    function update(UpdateUserRequest $request,$id){
         $data = $request->all();
         unset($data['password_confirmation']);
         $user = User::find($data['user_id']);

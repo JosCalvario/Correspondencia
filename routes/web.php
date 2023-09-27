@@ -38,8 +38,8 @@ Route::middleware([
 
     Route::prefix('/responses')->name('responses.')->group(function(){
         Route::get('/',[ResponseController::class,'index'])->name('index')->middleware('can:responses.index');
-        Route::post('/',[ResponseController::class,'store'])->name('store')->middleware('can:responses.store'); //Agregar respuesta
-        Route::put('/',[ResponseController::class,'update'])->name('update')->middleware('can:responses.update'); //Cancelar
+        Route::get('/{id}',[ResponseController::class,'edit'])->name('edit')->middleware('can:responses.update');   //Vista agregar doc
+        Route::put('/{id}',[ResponseController::class,'storeResponse'])->name('storeResponse')->middleware('can:responses.update'); //Agregar doc
     });
 
     Route::prefix('/folios')->name('folios.')->group(function(){
@@ -50,14 +50,16 @@ Route::middleware([
     Route::prefix('/areas')->name('areas.')->group(function(){
         Route::get('/',[AreaController::class,'index'])->name('index')->middleware('can:areas.index');
         Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store');
-        Route::put('/',[AreaController::class,'assignUsers'])->name('assignUsers')->middleware('can:areas.update');
+        Route::get('/{id}',[AreaController::class,'editUsers'])->name('editUsers')->middleware('can:areas.update');
+        Route::put('/{id}',[AreaController::class,'assignUsers'])->name('assignUsers')->middleware('can:areas.update');
         Route::put('/',[AreaController::class,'update'])->name('update')->middleware('can:areas.update');
     });
 
     Route::prefix('/users')->name('users.')->group(function(){
         Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
         Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
-        Route::put('/',[UserController::class,'update'])->name('update')->middleware('can:users.update');
+        Route::get('/{id}',[UserController::class,'edit'])->name('edit')->middleware('can:users.update');
+        Route::put('/{id}',[UserController::class,'update'])->name('update')->middleware('can:users.update');
         Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
         Route::get('/{id}',[UserController::class,'editRoles'])->name('editRoles')->middleware('can:users.update');
     });

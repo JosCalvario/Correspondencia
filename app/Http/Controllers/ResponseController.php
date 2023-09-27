@@ -17,6 +17,14 @@ class ResponseController extends Controller
         return view('web.responses.index');
     }
 
+    public function edit($id)
+    {
+        $data = Response::find($id);
+        return view('web.responses.edit',[
+            'response' => $data
+        ]);
+    }
+
     public function createFolioRequisition()
     {
         $requests = Request::getAllWithoutResponseOrFolio();
