@@ -40,13 +40,13 @@ Editar de: docuemntos salientes, departamentos, usuarios
 asignar usuarios a departamentos
 Agregar rol nuevo
 Matar busqueda acciones 
-Agregar contestación en requests
+-Agregar contestación en responses
 
 
 urgentes
-agregar contestacion a requests
+-agregar contestacion a responses
 asignar usuarios a departamentos
-editar docuemntos salientes (SUBIR CONTESTACIÓN)
+-editar docuemntos salientes (SUBIR CONTESTACIÓN)
 EDITAR USUARIOS
 
 boton cancelar en documentos salientes: saldrá otro modal con input de Observaciones

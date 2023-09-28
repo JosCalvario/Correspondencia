@@ -1,3 +1,4 @@
+<x-validation-errors></x-validation-errors>
 <x-web.container title="Documentos salientes" search="true" actions="false" filters="true" add="false">
 
  <x-slot name="searchInput">
@@ -5,34 +6,26 @@
    searchModel="search"></x-web.searchInput>
  </x-slot>
 
-
- <x-slot name="actionsSelect">
-  <x-web.actionsSelect dropDownId="actionsDropdown">
-   <x-slot name="actions">
-    <x-web.actionAnchor actionModel="xd">acción 1</x-web.actionAnchor>
-   </x-slot>
-
-   <x-slot name="mainAction">
-    <x-web.mainActionAnchor actionModel="xd">acción principal</x-web.mainActionAnchor>
-   </x-slot>
-  </x-web.actionsSelect>
- </x-slot>
-
  <x-slot name="filtersSelect">
+
   <x-web.filtersSelect dropDownId="filterDropdown">
    <x-slot name="filterOptions">
-    <x-web.filterOption filterModel="xd">filtro 1</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.status" value="all">Todos</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.status" value="Contestado">Contestados</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.status" value="Vigente">Vigente</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.status" value="Cancelado">Cancelados</x-web.filterOption>
    </x-slot>
   </x-web.filtersSelect>
  </x-slot>
 
  <x-slot name="Table">
-  <x-web.table headers="Folio|Fecha|Solicitud(es)|Asunto|Solicitante de folio|Estado|Documento">
+  <x-web.table headers="Tipo de documento|Folio|Fecha|Solicitud(es)|Asunto|Solicitante de folio|Estado|Documento">
    <x-slot name="data">
     @foreach ($responses as $response)
      <x-web.tableRow options="true">
 
       <x-slot name="tableData">
+       <x-web.tableData label='Estado'>{{ $response->document_type }}</x-web.tableData>
        <x-web.tableData label='Folio'>{{ $response->folio }}</x-web.tableData>
        <x-web.tableData label='Fecha'>{{ $response->date }}</x-web.tableData>
        <x-web.tableData label='Solicitudes'>
@@ -57,7 +50,7 @@
 
        {{-- Modal agregar documento ================================== --}}
 
-       @if (true)
+       @if ($response->document == null)
         <td data-label="Fecha"
          class=" before:content-[attr(data-label)] text-left before:mb-2 sm:before:content-none px-3 py-3 sm:table-cell block before:block before:font-semibold">
          <button type="button" data-modal-toggle="doc{{ $response->id }}"
@@ -87,10 +80,10 @@
             </button>
            </div>
            <!-- Modal body -->
-           <form action="{{ route('requests.store') }}" method="POST">
+           <form action="{{ route('responses.storeResponse',[$response->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
+            <input type="hidden" name="id" value="{{$response->id}}">
             <div class="grid gap-4 mb-4 sm:grid-cols-1">
              <x-web.formLabel for="document">Documento</x-web.formLabel>
              <x-web.formInput type="file" name="document" id="document" required="true">
@@ -107,7 +100,7 @@
          </div>
         </div>
        @else
-       <x-web.tableDataFile>{{ $response->document }}</x-web.tableDataFile>
+       <x-web.tableDataFile storage="responses">{{ $response->document }}</x-web.tableDataFile>
        @endif
 
       </x-slot>

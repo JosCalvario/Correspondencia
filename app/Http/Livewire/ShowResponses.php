@@ -20,7 +20,10 @@ class ShowResponses extends Component
             'document_type' => 'Tipo de documento',
             'status' => 'Estado'
         ];
-        
+        $this->filter=true;
+        $this->filters=[
+            'status' => 'all'
+        ];
     }
 
     public function updatingSearch()
@@ -30,12 +33,13 @@ class ShowResponses extends Component
 
     public function render()
     {
+        // $responses = $this->get($this->query()
+        // ->orderByRaw("FIELD(status , 'Vigente', 'Contestado', 'Cancelado') ASC"));
         $responses = $this->search();
         $areas = Area::all();
-        $folio = Response::all();
         $options = $this->options;
 
-        return view('livewire.show-responses', compact('responses','areas', 'folio', 'options'));
+        return view('livewire.show-responses', compact('responses','areas', 'options'));
     }
 
 }

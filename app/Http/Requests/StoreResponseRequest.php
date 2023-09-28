@@ -25,7 +25,7 @@ class StoreResponseRequest extends FormRequest
     {
         return [
             'id' => 'required|exists:responses,id',
-            'folio' => 'required|exists:responses,folio',
+            // 'folio' => 'required|exists:responses,folio',
             // 'email' => 'required|email',
             // 'date' => 'required|date',  //Manual
             // 'recieves' => 'required', //Manual

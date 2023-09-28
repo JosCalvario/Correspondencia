@@ -63,7 +63,7 @@
        <x-web.tableData label='Asunto'>{{ $request->subject }}</x-web.tableData>
        <x-web.tableData label='Departamento'>{{ $request->area->name }}</x-web.tableData>
        @if ($request->document != '')
-        <x-web.tableDataFile>{{ $request->document }}</x-web.tableDataFile>
+        <x-web.tableDataFile storage="requests">{{ $request->document }}</x-web.tableDataFile>
        @else
         <td></td>
        @endif

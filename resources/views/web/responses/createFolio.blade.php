@@ -31,14 +31,16 @@
      <div>
       <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de
        documento</label>
-      <input type="text" name="document_type" id="document_type"
+      <select type="text" name="document_type" id="document_type"
        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
        required="" list="document_types">
       <datalist id="document_types">
-       <option value="Oficio"></option>
-       <option value="Memorándum"></option>
-       <option value="Circular"></option>
+        <option disabled selected hidden>Selecciona</option>
+       <option value="Oficio">Oficio</option>
+       <option value="Memorándum">Memorándum</option>
+       <option value="Circular">Circular</option>
       </datalist>
+      </select>
      </div>
      <div class="">
       <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>

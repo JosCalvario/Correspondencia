@@ -88,7 +88,7 @@
       <x-slot name="editModal">
         <x-web.createModal-lg createmodalId="editModal{{$area->id}}" title="Editar departamento" permission="areas.update">
           <x-slot name="form">
-           <form action="{{ route('areas.update') }}" method="POST" class="h-full">
+           <form action="{{ route('areas.update',[$area->id]) }}" method="POST" class="h-full">
             @csrf
             @method('PUT')
             

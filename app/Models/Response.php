@@ -41,9 +41,10 @@ class Response extends Model
         return $this->belongsTo(User::class,'applicant_id','id');
     }
 
-    static function getFolioForResponse(){
+    static function getFolioForResponse($type){
         $thisYear = Carbon::today()->toDateString();
-        $response = Response::whereDate('created_at',$thisYear)->get()->last();
+        $response = Response::whereDate('created_at',$thisYear)->
+        where('document_type',$type)->get()->last();
         if($response == null){
             return 1;
         }

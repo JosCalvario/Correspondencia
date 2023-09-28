@@ -37,7 +37,7 @@ class ResponseController extends Controller
     public function storeFolioRequisition(CreateFolioRequest $request)
     {
         $data = $request->all();
-        $folio = Response::getFolioForResponse();
+        $folio = Response::getFolioForResponse($data['document_type']);
         $data['folio'] = $folio;
         $data['status'] = 'Vigente';
         
@@ -49,10 +49,10 @@ class ResponseController extends Controller
         return redirect()->action([ResponseController::class,'createFolioRequisition'])->with(['success' => 'Tu número de folio es: '.$folio]);
     }
 
-    public function storeResponse(StoreResponseRequest $request)
+    public function storeResponse(StoreResponseRequest $request,$id)
     {
         $data = $request->all();
-        $response = Response::find($data['id']);
+        $response = Response::find($id);
 
         $data['status'] = 'Contestado';
 

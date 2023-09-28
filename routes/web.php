@@ -52,7 +52,7 @@ Route::middleware([
         Route::post('/',[AreaController::class,'store'])->name('store')->middleware('can:areas.store');
         Route::get('/{id}',[AreaController::class,'editUsers'])->name('editUsers')->middleware('can:areas.update');
         Route::put('/{id}',[AreaController::class,'assignUsers'])->name('assignUsers')->middleware('can:areas.update');
-        Route::put('/',[AreaController::class,'update'])->name('update')->middleware('can:areas.update');
+        Route::put('/{id}',[AreaController::class,'update'])->name('update')->middleware('can:areas.update');
     });
 
     Route::prefix('/users')->name('users.')->group(function(){
