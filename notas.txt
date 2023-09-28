@@ -49,4 +49,7 @@ asignar usuarios a departamentos
 -editar docuemntos salientes (SUBIR CONTESTACIÓN)
 EDITAR USUARIOS
 
+Cambiar de contestado a atendido
+Mostrar información en solicitudes cuando ya se suba contestación
+
 boton cancelar en documentos salientes: saldrá otro modal con input de Observaciones

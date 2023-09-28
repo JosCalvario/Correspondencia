@@ -1,4 +1,4 @@
-<x-web.container title="Departamentos" search="true" actions="true" filters="true" add="true">
+<x-web.container title="Departamentos" search="true" actions="false" filters="true" add="true">
 
  <x-slot name="searchInput">
   <x-web.searchInput placeholder="Nombre departamento o abreviatura" :optionsModel="$options" optionModel="option"
@@ -26,7 +26,7 @@
  <x-slot name="filtersSelect">
   <x-web.filtersSelect dropDownId="filterDropdown">
    <x-slot name="filterOptions">
-    <x-web.filterOption filterModel="xd">filtro 1</x-web.filterOption>
+    <x-web.filterOption filterModel="xd" value="0">filtro 1</x-web.filterOption>
    </x-slot>
   </x-web.filtersSelect>
  </x-slot>
