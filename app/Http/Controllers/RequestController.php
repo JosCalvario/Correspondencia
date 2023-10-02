@@ -29,6 +29,19 @@ class RequestController extends Controller
         return view($this->viewRoutes['index']);
     }
 
+    function show($id)
+    {
+        $request = Request::find($id);
+        return view('web.requests.show',['request' => $request]);
+    }
+
+    function response($id)
+    {
+        $request = Request::find($id);
+        $response = $request->responses;
+        return view('web.requests.response',['request' => $request, 'response' => $response]);
+    }
+
     public function store(StoreRequestRequest $request)
     {
         $data = $request->all();

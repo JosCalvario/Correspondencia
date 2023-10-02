@@ -71,77 +71,23 @@
        {{-- Bóton ver contestación ============================================== --}}
        <td data-label="Contestación"
         class=" before:content-[attr(data-label)] text-left before:mb-2 sm:before:content-none sm:px-10 px-3 py-3 sm:table-cell before:block before:font-semibold flex flex-col justify-center">
-        <button type="button" data-modal-toggle="answer{{ $request->id }}"
-         class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</button>
+        <a href="{{ route('requests.response', $request->id) }}"
+         class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</a>
        </td>
 
-       <x-web.detailModal-sm button="false" toggleId="answer{{ $request->id }}">
-        <x-slot name="modalTitle">
-         Contestación
-        </x-slot>
-        <x-slot name="modalHeader">
-         Folio: {{ $request->folio }}
-        </x-slot>
-        <x-slot name="dataList">
-         <x-web.dataTerm>Nombre</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->name }}</x-web.dataDescription>
+       <td class="flex justify-end items-center">
+        <a href="{{ route('requests.show', $request->id) }}"
+          class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+          type="button">
+          <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+           <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+          </svg>
+         </a>
 
-         <x-web.dataTerm>Fecha</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->date }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Remitente</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->sender }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Asunto</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->subject }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Departamento asignado</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->area->name }}</x-web.dataDescription>
-        </x-slot>
-
-        <x-slot name="modalActions">
-         @if ($request->document != '')
-          <x-web.modalButton doc="{{ $request->document }}">
-           Visualizar
-          </x-web.modalButton>
-         @endif
-        </x-slot>
-       </x-web.detailModal-sm>
+      </td>
       </x-slot>
 
       <x-slot name="detailModal">
-       <x-web.detailModal-sm toggleId="showModal{{ $request->id }}">
-        <x-slot name="modalTitle">
-         Acuse
-        </x-slot>
-        <x-slot name="modalHeader">
-         Folio: {{ $request->folio }}
-        </x-slot>
-        <x-slot name="dataList">
-         <x-web.dataTerm>Nombre</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->name }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Fecha</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->date }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Remitente</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->sender }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Asunto</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->subject }}</x-web.dataDescription>
-
-         <x-web.dataTerm>Departamento asignado</x-web.dataTerm>
-         <x-web.dataDescription>{{ $request->area->name }}</x-web.dataDescription>
-        </x-slot>
-
-        <x-slot name="modalActions">
-         @if ($request->document != '')
-          <x-web.modalButton doc="{{ $request->document }}">
-           Visualizar
-          </x-web.modalButton>
-         @endif
-        </x-slot>
-       </x-web.detailModal-sm>
       </x-slot>
 
      </x-web.tableRow>

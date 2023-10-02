@@ -33,6 +33,8 @@ Route::middleware([
 
     Route::prefix('/requests')->name('requests.')->group(function(){
         Route::get('/', [RequestController::class,'index'])->name('index')->middleware('can:requests.index');
+        Route::get('/response/{id}', [RequestController::class,'response'])->name('response')->middleware('can:requests.index');
+        Route::get('/{id}', [RequestController::class,'show'])->name('show')->middleware('can:requests.index');
         Route::post('/',[RequestController::class,'store'])->name('store')->middleware('can:requests.store');
     });
 
