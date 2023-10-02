@@ -17,6 +17,12 @@ class UserController extends Controller
         return view('web.users.index');
     }
 
+    function show($id)
+    {
+        $user = User::find($id);
+        return view('web.users.show',['user' => $user]);
+    }
+
     function store(StoreUserRequest $request) {
         $data = $request->all();
         unset($data['password_confirmation']);

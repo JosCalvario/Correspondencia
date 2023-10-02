@@ -31,13 +31,6 @@ class AreaController extends Controller
 
     ];
 
-    public function __construct()
-    {
-        //Ponemos el permiso y luego el método que protege
-        foreach($this->permissions as $per){
-            $this->middleware('can:'.$this->variableP.'.'.$per)->only($per);
-        }
-    }
     public function index()
     {
         $data=Area::paginate(12);
@@ -51,6 +44,13 @@ class AreaController extends Controller
             ]
         );
     }
+
+    function show($id)
+    {
+        $area = Area::find($id);
+        return view('web.areas.show',['area' => $area]);
+    }
+
 
     public function store(StoreAreaRequest $request)
     {
