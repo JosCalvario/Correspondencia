@@ -61,7 +61,7 @@ Route::middleware([
         Route::get('/{id}',[UserController::class,'edit'])->name('edit')->middleware('can:users.update');
         Route::put('/{id}',[UserController::class,'update'])->name('update')->middleware('can:users.update');
         Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
-        Route::get('/{id}',[UserController::class,'editRoles'])->name('editRoles')->middleware('can:users.update');
+        Route::get('/editRoles/{id}',[UserController::class,'editRoles'])->name('editRoles')->middleware('can:users.update');
     });
 
     Route::prefix('/roles')->name('roles.')->group(function(){
