@@ -1,4 +1,4 @@
-<x-web.container title="Departamentos" search="true" actions="false" filters="true" add="true">
+<x-web.container title="Departamentos" search="true" actions="false" filters="false" add="true">
 
  <x-slot name="searchInput">
   <x-web.searchInput placeholder="Nombre departamento o abreviatura" :optionsModel="$options" optionModel="option"
@@ -7,7 +7,7 @@
 
  <x-slot name="addbutton">
   @can('areas.store')
-   <x-web.addTableButton createModalId="createModal">Agregar área</x-web.addTableButton>
+   <x-web.addTableButton createModalId="createModal">Agregar departamento</x-web.addTableButton>
   @endcan
  </x-slot>
 

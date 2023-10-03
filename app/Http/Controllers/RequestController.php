@@ -38,7 +38,7 @@ class RequestController extends Controller
     function response($id)
     {
         $request = Request::find($id);
-        $response = $request->responses;
+        $response = $request->responses()->first();
         return view('web.requests.response',['request' => $request, 'response' => $response]);
     }
 

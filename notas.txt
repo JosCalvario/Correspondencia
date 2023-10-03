@@ -2,54 +2,54 @@
 -Formulario para generar folios
 -Solo un usuario de cada área puede subir respuestas
 -El usuario puede ver sus folios generados y puede cancelarlos
-Cuando se sube la respuesta ya no se muestra el folio de respuesta
+-Cuando se sube la respuesta ya no se muestra el folio de respuesta
 -Hay 3 tipos de documenos principales que son Oficios, memorandums, Circulares, pero puede haber otra opción que sea otros y sea editable
 
 -Dependencia, departamento, número de documento
 -Remitente y puesto
 -Tema de documento
 
-Poner mensaje de status arriba de las tablas (success, status)
 
 -Se puede solicitar folio aunque no haya documento de entrada
 -Se puede solicitar folio para 2 o más documentos de entrada
 -//Ya se arregló la base de datos para estos cambios
 -//Falta arreglar las vistas y controladores para que funcione correctamente
 
-Revisar la parte de subir las contestaciones y ver cómo se van a mostrar
+-Revisar la parte de subir las contestaciones y ver cómo se van a mostrar
 -Cambiar colores en la tabla según Fecha
 -Edición de permisos de roles
-Checar los reportes
-Modals con búsqueda
-Cancelar folios
-
+-Modals con búsqueda
 
 Revisión
 corregir vista mobile en home
 Funcionalidad en notificaciones home
 terminar animacion de error en show request
 número con estado en registro show request
-Filtros (Completados, pendientes, etc)
-matar botones de acciones
-mostrar contestación
-mensaje de éxito al enviar folio
-Checar opciones de documentos salientes
+-Filtros (Completados, pendientes, etc)
+-matar botones de acciones
+-mostrar contestación
 
-Editar de: docuemntos salientes, departamentos, usuarios
-
-asignar usuarios a departamentos
-Agregar rol nuevo
-Matar busqueda acciones 
+-Matar busqueda acciones 
 -Agregar contestación en responses
 
-
-urgentes
 -agregar contestacion a responses
-asignar usuarios a departamentos
 -editar docuemntos salientes (SUBIR CONTESTACIÓN)
-EDITAR USUARIOS
 
-Cambiar de contestado a atendido
-Mostrar información en solicitudes cuando ya se suba contestación
+-Cambiar de contestado a atendido
+-Mostrar información en solicitudes cuando ya se suba contestación
+    Revisar cuando se cancela y se pide otro folio de contestacion
 
-boton cancelar en documentos salientes: saldrá otro modal con input de Observaciones
+
+Completar vistas de show de: 
+Solicitudes (No tiene uso)
+Documentos salientes (Vista, agregar respuesta, cancelar folio)
+Departamentos (Editar encargado de departamento, Editar usuarios, Editar departamento)
+Usuarios (Editar usuario, Cambiar área)
+
+Componente de mensaje de status(Error y success)
+
+Aplicar filtros en tablas:
+Solicitudes
+Usuarios
+
+Reportes

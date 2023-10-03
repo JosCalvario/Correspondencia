@@ -54,7 +54,7 @@ class ResponseController extends Controller
         $data = $request->all();
         $response = Response::find($id);
 
-        $data['status'] = 'Contestado';
+        $data['status'] = 'Atendido';
 
         $file = 'document';
         $newFile=$request->file($file);

@@ -8,7 +8,7 @@
    @foreach (explode('|', $headers) as $header)
     <th scope="col" class="hidden sm:table-cell px-2 py-3">{{ $header }}</th>
    @endforeach  
-   @if ($options == true)
+   @if ($options == 'true')
     <th scope="col" class="hidden w-12 sm:table-cell px-2 py-3">Opciones</th>
    @endif
    </th>

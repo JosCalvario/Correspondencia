@@ -24,7 +24,7 @@
         <x-web.dataDescription>{{ $area->abbr }}</x-web.dataDescription>
 
         <x-web.dataTerm>Encargado de área</x-web.dataTerm>
-        <x-web.dataDescription>{{ $area->manager?->name }}</x-web.dataDescription>
+        <x-web.dataDescription>{{ $area->manager?->name ?? 'Sin encargado asignado' }}</x-web.dataDescription>
 
         <x-web.dataTerm>Teléfono</x-web.dataTerm>
         <x-web.dataDescription>{{ $area->phone }}</x-web.dataDescription>

@@ -101,7 +101,7 @@ class DocumentSeeder extends Seeder
             'subject'=> 'Documentar',
             'assigned_area' => 1,
             'observations' => 'os',
-            'document'=>'asd'
+            'document'=>'document20230919212016.pdf'
         ]);
 
         Request::create([
@@ -117,7 +117,7 @@ class DocumentSeeder extends Seeder
             'subject'=> 'Documentar',
             'assigned_area' => 2,
             'observations' => 'os',
-            'document'=>'assd'
+            'document'=>'document20230919212016.pdf'
         ]);
         Request::create([
             'folio' => 5003,
@@ -132,7 +132,7 @@ class DocumentSeeder extends Seeder
             'subject'=> 'Documentar',
             'assigned_area' => 1,
             'observations' => 'os',
-            'document'=>'assd'
+            'document'=>'document20230919212016.pdf'
         ]);
     }
 }
