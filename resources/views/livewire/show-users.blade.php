@@ -26,7 +26,10 @@
  <x-slot name="filtersSelect">
   <x-web.filtersSelect dropDownId="filterDropdown">
    <x-slot name="filterOptions">
-    <x-web.filterOption filterModel="xd" value="0">filtro 1</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.area_id" value="all">Todos</x-web.filterOption>
+    @foreach ($areas as $area)
+      <x-web.filterOption filterModel="filters.area_id" value="{{$area->id}}">{{$area->name}}</x-web.filterOption>
+    @endforeach
    </x-slot>
   </x-web.filtersSelect>
  </x-slot>

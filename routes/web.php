@@ -33,15 +33,15 @@ Route::middleware([
 
     Route::prefix('/requests')->name('requests.')->group(function(){
         Route::get('/', [RequestController::class,'index'])->name('index')->middleware('can:requests.index');
-        Route::get('/response/{id}', [RequestController::class,'response'])->name('response')->middleware('can:requests.index');
-        Route::get('/{id}', [RequestController::class,'show'])->name('show')->middleware('can:requests.index');
         Route::post('/',[RequestController::class,'store'])->name('store')->middleware('can:requests.store');
+        Route::get('/{id}', [RequestController::class,'show'])->name('show')->middleware('can:requests.index');
+        Route::get('/{id}/response', [RequestController::class,'response'])->name('response')->middleware('can:requests.index');
     });
 
     Route::prefix('/responses')->name('responses.')->group(function(){
         Route::get('/',[ResponseController::class,'index'])->name('index')->middleware('can:responses.index');
-        Route::get('/{id}',[ResponseController::class,'edit'])->name('edit')->middleware('can:responses.update');   //Vista agregar doc
-        Route::put('/{id}',[ResponseController::class,'storeResponse'])->name('storeResponse')->middleware('can:responses.update'); //Agregar doc
+        Route::get('/{id}',[ResponseController::class,'show'])->name('show')->middleware('can:responses.index');
+        Route::put('/{id}',[ResponseController::class,'storeResponse'])->name('storeResponse')->middleware('can:responses.update');
     });
 
     Route::prefix('/folios')->name('folios.')->group(function(){

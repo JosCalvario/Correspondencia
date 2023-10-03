@@ -49,7 +49,7 @@ Usuarios (Editar usuario, Cambiar área)
 Componente de mensaje de status(Error y success)
 
 Aplicar filtros en tablas:
-Solicitudes
-Usuarios
+-Solicitudes
+-Usuarios
 
 Reportes

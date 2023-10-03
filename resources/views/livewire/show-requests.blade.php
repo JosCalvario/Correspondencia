@@ -25,9 +25,19 @@
 
  <x-slot name="filtersSelect">
   <x-web.filtersSelect dropDownId="filterDropdown">
-   <x-slot name="filterOptions">
-    <x-web.filterOption filterModel="xd" value="0">filtro 1</x-web.filterOption>
-   </x-slot>
+    <x-slot name="filterOptions">
+      @php
+          $fiveDays = \Carbon\Carbon::today()->subDays(5)->format('Y-m-d');
+          $sevenDays = \Carbon\Carbon::today()->subDays(7)->format('Y-m-d');
+          $fiftDays = \Carbon\Carbon::today()->subDays(15)->format('Y-m-d');
+          $thirtDays = \Carbon\Carbon::today()->subDays(30)->format('Y-m-d');
+      @endphp
+      <x-web.filterOption filterModel="filters.date" value="all">Todos</x-web.filterOption>
+      <x-web.filterOption filterModel="filters.date" value="{{$fiveDays}}">Hace 5 días</x-web.filterOption>
+      <x-web.filterOption filterModel="filters.date" value="{{$sevenDays}}">Hace 7 días</x-web.filterOption>
+      <x-web.filterOption filterModel="filters.date" value="{{$fiftDays}}">Hace 15 días</x-web.filterOption>
+      <x-web.filterOption filterModel="filters.date" value="{{$thirtDays}}">Hace 30 días</x-web.filterOption>
+     </x-slot>
   </x-web.filtersSelect>
  </x-slot>
 

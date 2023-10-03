@@ -25,6 +25,14 @@ class ResponseController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $data = Response::find($id);
+        return view('web.responses.show',[
+            'response' => $data
+        ]);
+    }
+
     public function createFolioRequisition()
     {
         $requests = Request::getAllWithoutResponseOrFolio();

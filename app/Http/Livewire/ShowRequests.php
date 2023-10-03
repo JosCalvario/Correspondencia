@@ -20,6 +20,11 @@ class ShowRequests extends Component
             'name' => 'Nombre',
             'document_type' => 'Tipo de documento'
         ];
+
+        $this->filter = true;
+        $this->filters = [
+            'date' => 'all'
+        ];
         
     }
 
@@ -30,7 +35,8 @@ class ShowRequests extends Component
 
     public function render()
     {
-        $requests = $this->search();
+        $query = $this->query();
+        $requests = $this->get($query,'>');
         $areas = Area::all()->except([1]);
         $folio = Request::getFolioForRequest();
         $options = $this->options;

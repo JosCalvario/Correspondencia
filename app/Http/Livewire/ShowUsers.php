@@ -25,6 +25,10 @@ class ShowUsers extends Component
             'email' => 'Correo electrónico',
             'area_id' => 'Departamento'
         ];
+        $this->filter = true;
+        $this->filters = [
+            'area_id' => 'all'
+        ];
         
     }
 

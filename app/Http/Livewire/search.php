@@ -96,7 +96,7 @@ trait Search
         return $data;
     }
 
-    private function get($query)
+    private function get($query, $fil = '=')
     {
         if($this->filter)
         {
@@ -105,7 +105,7 @@ trait Search
                 if($value=='all')
                     break;
                     
-                $query->where($filter, $value);
+                $query->where($filter, $fil, $value);
             }
         }
         
