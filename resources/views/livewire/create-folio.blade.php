@@ -13,26 +13,26 @@
      <div class="">
       <label for="applicant" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
       <input type="text" name="applicant" id="applicant"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
        disabled readonly value="{{ auth()->user()->name }}">
      </div>
      <div class="">
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
       <input type="text" name="email" id="email"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
        readonly value="{{ auth()->user()->email }}">
      </div>
      <div class="">
       <label for="area" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Departamento</label>
       <input type="text" name="area" id="area"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
        readonly disabled value="{{ auth()->user()->area?->name }}">
      </div>
      <div>
       <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de
        documento</label>
       <select type="text" name="document_type" id="document_type"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
        required="" list="document_types">
        <datalist id="document_types">
         <option disabled selected hidden>Selecciona</option>
@@ -45,29 +45,29 @@
      <div class="">
       <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha</label>
       <input type="date" name="date" id="date"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
      </div>
      <div class="">
       <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asunto</label>
       <input type="text" name="subject" id="subject"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
      </div>
      <div class="">
       <label for="recieves" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Receptor</label>
       <input type="text" name="recieves" id="recieves"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
      </div>
      <div class="">
       <label for="position" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cargo del
        receptor</label>
       <input type="text" name="position" id="position"
-       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sc_greeny focus:border-sc_greeny block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
      </div>
      <div class="sm:col-span-3 flex flex-col gap-3 w-full">
       @if (count($requests) > 0)
        <label for="request_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona las
         solicitudes a responder</label>
-        <input class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300" wire:model="searchF" type="text" placeholder="Buscar">
+        <input class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-sc_greeny focus:border-sc_greeny" wire:model="searchF" type="text" placeholder="Buscar">
        @foreach ($requests as $request)
         @php
          $name = 'Folio: ' . $request->folio . ' | Nombre: ' . $request->name . ' | ';

@@ -136,13 +136,13 @@
     <form action="{{ route('areas.store') }}" method="POST" class="h-full">
      @csrf
      @method('POST')
-     <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-scroll h-[calc(100%-8rem)] relative p-1">
-      <div>
+     <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-auto h-fit relative p-1 items-start justify-start ">
+      <div class="">
        <x-web.formLabel for="name">Nombre</x-web.formLabel>
        <x-web.formInput type="text" name="name" id="name" required="true">
        </x-web.formInput>
       </div>
-      <div>
+      <div class=""> 
        <x-web.formLabel for="abbr">Abreviatura</x-web.formLabel>
        <x-web.formInput type="text" name="abbr" id="abbr" required="true">
        </x-web.formInput>
