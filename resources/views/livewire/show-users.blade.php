@@ -45,10 +45,10 @@
        <x-web.tableData>{{ $user->email }}</x-web.tableData>
        <x-web.tableData>{{ $user->area != null ? $user->area->name : '' }}</x-web.tableData>
        @can('permissions.update')
-        <td data-label="Fecha"
-         class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none px-0 py-3 sm:table-cell block before:block before:font-semibold">
+        <td data-label="Rol"
+         class=" before:content-[attr(data-label)] text-left  before:mb-2  sm:before:content-none sm:px-0 sm:py-3 sm:table-cell block before:block before:font-semibold p-3">
          <a href="{{ route('users.editRoles', $user->id) }}" type="button"
-          class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer">Editar</a>
+          class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer sm:w-fit w-full">Editar</a>
         </td>
        @endcan
         <td class="flex justify-end items-center">
