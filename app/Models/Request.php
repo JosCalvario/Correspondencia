@@ -61,4 +61,15 @@ class Request extends Model
         return Request::doesntHave('responses')->where('assigned_area','=',$area)->get();
         
     }
+
+    static function findWithoutResponseOrFolio($id){
+        $area = auth()->user()->area?->id ?? 0;
+
+        if($area == 1)
+        {
+            return Request::doesntHave('responses')->get();
+        }
+        return Request::doesntHave('responses')->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->get();
+        
+    }
 }

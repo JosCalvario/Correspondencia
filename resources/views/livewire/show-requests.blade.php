@@ -73,16 +73,22 @@
        <x-web.tableData label='Asunto'>{{ $request->subject }}</x-web.tableData>
        <x-web.tableData label='Departamento'>{{ $request->area->name }}</x-web.tableData>
        @if ($request->document != '')
+       
         <x-web.tableDataFile storage="requests">{{ $request->document }}</x-web.tableDataFile>
+    
        @else
         <td></td>
        @endif
 
        {{-- Bóton ver contestación ============================================== --}}
+
        <td data-label="Contestación"
         class=" before:content-[attr(data-label)] text-left before:mb-2 sm:before:content-none sm:px-10 px-3 py-3 sm:table-cell before:block before:font-semibold flex flex-col justify-center">
+        @can('responses.index')
         <a href="{{ route('requests.response', $request->id) }}"
-         class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</a>
+          class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</a>
+        @endcan
+        
        </td>
 
        <td class="flex justify-end items-center">

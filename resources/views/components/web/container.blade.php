@@ -1,6 +1,6 @@
 @props(['title', 'search' => 'true', 'add' => 'true', 'actions' => 'false', 'filters' => 'false', 'nav' => 'true'])
 
-<div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+<div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-visible">
  <h2 class="text-lg pt-4 pl-4 font-medium text-gray-900 dark:text-white">{{ $title }}</h2>
  <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
 
