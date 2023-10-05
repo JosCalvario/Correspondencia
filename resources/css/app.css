@@ -22,3 +22,20 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+.bluebag {
+    opacity: 0; 
+    animation: opacityOn 5s normal forwards;
+}
+
+@keyframes opacityOn {
+    0% {
+        opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

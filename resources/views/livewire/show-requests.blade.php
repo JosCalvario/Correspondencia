@@ -25,19 +25,27 @@
 
  <x-slot name="filtersSelect">
   <x-web.filtersSelect dropDownId="filterDropdown">
-    <x-slot name="filterOptions">
-      @php
-          $fiveDays = \Carbon\Carbon::today()->subDays(5)->format('Y-m-d');
-          $sevenDays = \Carbon\Carbon::today()->subDays(7)->format('Y-m-d');
-          $fiftDays = \Carbon\Carbon::today()->subDays(15)->format('Y-m-d');
-          $thirtDays = \Carbon\Carbon::today()->subDays(30)->format('Y-m-d');
-      @endphp
-      <x-web.filterOption filterModel="filters.date" value="all">Todos</x-web.filterOption>
-      <x-web.filterOption filterModel="filters.date" value="{{$fiveDays}}">Hace 5 días</x-web.filterOption>
-      <x-web.filterOption filterModel="filters.date" value="{{$sevenDays}}">Hace 7 días</x-web.filterOption>
-      <x-web.filterOption filterModel="filters.date" value="{{$fiftDays}}">Hace 15 días</x-web.filterOption>
-      <x-web.filterOption filterModel="filters.date" value="{{$thirtDays}}">Hace 30 días</x-web.filterOption>
-     </x-slot>
+   <x-slot name="filterOptions">
+    @php
+     $fiveDays = \Carbon\Carbon::today()
+         ->subDays(5)
+         ->format('Y-m-d');
+     $sevenDays = \Carbon\Carbon::today()
+         ->subDays(7)
+         ->format('Y-m-d');
+     $fiftDays = \Carbon\Carbon::today()
+         ->subDays(15)
+         ->format('Y-m-d');
+     $thirtDays = \Carbon\Carbon::today()
+         ->subDays(30)
+         ->format('Y-m-d');
+    @endphp
+    <x-web.filterOption filterModel="filters.date" value="all">Todos</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.date" value="{{ $fiveDays }}">Hace 5 días</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.date" value="{{ $sevenDays }}">Hace 7 días</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.date" value="{{ $fiftDays }}">Hace 15 días</x-web.filterOption>
+    <x-web.filterOption filterModel="filters.date" value="{{ $thirtDays }}">Hace 30 días</x-web.filterOption>
+   </x-slot>
   </x-web.filtersSelect>
  </x-slot>
 
@@ -59,12 +67,13 @@
           $color = 'sc_red';
           $bgColor = 'bg-sc_bg_red';
       }
-
+      
      @endphp
      <x-web.tableRow options="true">
 
       <x-slot name="tableData">
-       <x-web.tableData label='Folio' bgColor="{{ $bgColor }}" color="text-{{ $color }}">{{ $request->folio }}</x-web.tableData>
+       <x-web.tableData label='Folio' bgColor="{{ $bgColor }}"
+        color="text-{{ $color }}">{{ $request->folio }}</x-web.tableData>
        <x-web.tableData label='Nombre'>{{ $request->number }}</x-web.tableData>
        <x-web.tableData label='Nombre'>{{ $request->name }}</x-web.tableData>
        <x-web.tableData label='Tipo de documento'>{{ $request->document_type }}</x-web.tableData>
@@ -73,9 +82,7 @@
        <x-web.tableData label='Asunto'>{{ $request->subject }}</x-web.tableData>
        <x-web.tableData label='Departamento'>{{ $request->area->name }}</x-web.tableData>
        @if ($request->document != '')
-       
         <x-web.tableDataFile storage="requests">{{ $request->document }}</x-web.tableDataFile>
-    
        @else
         <td></td>
        @endif
@@ -85,22 +92,23 @@
        <td data-label="Contestación"
         class=" before:content-[attr(data-label)] text-left before:mb-2 sm:before:content-none sm:px-10 px-3 py-3 sm:table-cell before:block before:font-semibold flex flex-col justify-center">
         @can('responses.index')
-        <a href="{{ route('requests.response', $request->id) }}"
+         <a href="{{ route('requests.response', $request->id) }}"
           class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</a>
         @endcan
-        
+
        </td>
 
        <td class="flex justify-end items-center">
         <a href="{{ route('requests.show', $request->id) }}"
-          class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-          type="button">
-          <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-           <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-          </svg>
-         </a>
+         class="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+         type="button">
+         <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+         </svg>
+        </a>
 
-      </td>
+       </td>
       </x-slot>
 
       <x-slot name="detailModal">
@@ -216,8 +224,17 @@
 </x-web.container>
 
 {{-- Errores de formulaio --}}
-@foreach ($errors->all() as $error)
- <div
-  class="bg-red-400 absolute bottom-0 right-0 w-60 text-white font-semibold flex items-center justify-center mr-5 mb-5 h-14 text-base rounded-lg">
-  {{ $error }}</div>
-@endforeach
+
+
+<div class="absolute bottom-0 right-0 z-50 flex flex-col justify-center items-center mr-5 bluebag gap-1">
+ @foreach ($errors->all() as $error)
+  <div
+   class="bg-red-600 w-full text-white font-semibold flex items-center justify-center m-5 mt-0 p-3 text-base rounded-lg gap-2 z-50">
+   <i class="bi bi-x-circle"></i>
+   Error:
+   {{ $error }}
+
+  </div>
+ @endforeach
+
+</div>
