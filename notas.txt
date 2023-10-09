@@ -43,8 +43,8 @@ número con estado en registro show request
 Completar vistas de show de: 
 Solicitudes (No tiene uso)
 Documentos salientes (Vista, agregar respuesta, cancelar folio)
-Departamentos (Editar encargado de departamento, Editar usuarios, Editar departamento)
-Usuarios (Editar usuario, Cambiar área)
+-Departamentos (Editar encargado de departamento, Editar usuarios, Editar departamento)
+-Usuarios (Editar usuario, Cambiar área)
 
 Componente de mensaje de status(Error y success)
 

@@ -3,9 +3,18 @@
   <div class="py-4 px-4 mx-auto w-4/5 lg:py-12">
    <h2 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">Solicita un folio de respuesta</h2>
    <h3 class="mb-4 text-md text-gray-700 dark:text-white">Ingresa los datos para ingresar tu solicitud</h3>
-   @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-   @endforeach
+   <div class="absolute bottom-0 right-0 z-50 flex flex-col justify-center items-center mr-5 bluebag gap-1">
+    @foreach ($errors->all() as $error)
+     <div
+      class="bg-red-600 w-full text-white font-semibold flex items-center justify-center m-5 mt-0 p-3 text-base rounded-lg gap-2 z-50">
+      <i class="bi bi-x-circle"></i>
+      Error:
+      {{ $error }}
+   
+     </div>
+    @endforeach
+   
+   </div>
    <form action="{{ route('folios.store') }}" method="POST">
     @csrf
     @method('POST')
