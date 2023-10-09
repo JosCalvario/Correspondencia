@@ -20,7 +20,8 @@ class UserController extends Controller
     function show($id)
     {
         $user = User::find($id);
-        return view('web.users.show',['user' => $user]);
+        $areas = Area::all();
+        return view('web.users.show',['user' => $user, 'areas' => $areas]);
     }
 
     function store(StoreUserRequest $request) {

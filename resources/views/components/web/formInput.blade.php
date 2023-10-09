@@ -6,7 +6,8 @@
     'required' => 'false',
     'list' => '',
     'placeholder' => '',
-    'rows' => ''
+    'rows' => '',
+    'selectEdit' => 'true'
 ])
 
 
@@ -60,7 +61,9 @@
 @endif
 
 @if ($type == 'select')
-    <option selected disabled hidden>{{$placeholder}}</option>
+    <option 
+    {{$selectEdit == 'true' ? 'selected' : '' }}
+     disabled hidden>{{$placeholder}}</option>
     {{$options}}
 </select>
 @endif

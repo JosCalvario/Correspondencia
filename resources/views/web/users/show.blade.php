@@ -28,10 +28,76 @@
 
     <x-web.dataTerm>Area asignada</x-web.dataTerm>
     <x-web.dataDescription>{{ $user->area != null ? $user->area->name : '' }}</x-web.dataDescription>
+
    </dl>
+
+   <button data-modal-toggle="editUser" type="button"
+    class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer sm:w-fit w-full">Editar</button>
+
+   <x-web.detailModal-sm button="false" toggleId="editUser">
+    <x-slot name="modalTitle">Usuario</x-slot>
+    <x-slot name="dataList">
+     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
+      @csrf
+      @method('POST')
+      <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-auto h-[calc(100%-8rem)] content-start relative p-1">
+
+       <div class="sm:col-span-2">
+        <x-web.formLabel for="name">Nombre</x-web.formLabel>
+        <x-web.formInput type="text" name="name" id="name" required="true">
+            {{ $user->name }}
+        </x-web.formInput>
+       </div>
+       <div>
+        <x-web.formLabel for="email">Correo</x-web.formLabel>
+        <x-web.formInput type="text" name="email" id="email" required="true">
+            {{ $user->email }}
+        </x-web.formInput>
+       </div>
+       <div>
+        <x-web.formLabel for="area_id">Departamento</x-web.formLabel>
+        <x-web.formInput type="select" name="area_id" id="area_id" required="true"
+         placeholder="Asigna un departamento" selectEdit="false">
+            
+         <x-slot name="options">
+          @foreach ($areas as $area)
+            @if ($area->name == $user->area)
+            <option selected value="{{ $area->id }}">{{ $area->name }}</option> 
+            @else
+            <option value="{{ $area->id }}">{{ $area->name }}</option>
+            @endif
+          @endforeach
+         </x-slot>
+        </x-web.formInput>
+       </div>
+       <div>
+        <x-web.formLabel for="password">Nueva contraseña</x-web.formLabel>
+        <x-web.formInput type="password" name="password" id="password" required="true">
+        </x-web.formInput>
+       </div>
+       <div>
+        <x-web.formLabel for="password_confirmation">Confirmación de contraseña</x-web.formLabel>
+        <x-web.formInput type="password" name="password_confirmation" id="password_confirmation" required="true">
+        </x-web.formInput>
+       </div>
+
+      </div>
+      <x-slot name="modalActions">
+       <div class="flex items-center sm:justify-end relative text-center">
+        <button type="submit"
+         class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600  dark:hover:bg-primary-700 sm:w-auto w-full dark:focus:ring-primary-800">
+         Guardar
+        </button>
+       </div>
+      </x-slot>
+
+     </form>
+    </x-slot>
+
+   </x-web.detailModal-sm>
    <div class="flex justify-between items-center">
     <div class="flex items-center space-x-3 sm:space-x-4">
-     
+
     </div>
    </div>
   </div>
