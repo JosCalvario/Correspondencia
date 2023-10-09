@@ -48,7 +48,9 @@ class AreaController extends Controller
     function show($id)
     {
         $area = Area::find($id);
-        return view('web.areas.show',['area' => $area]);
+        $units = Unit::all();
+        $users = User::whereNull('area_id')->get();
+        return view('web.areas.show',['area' => $area, 'units' => $units, 'users' => $users]);
     }
 
 
