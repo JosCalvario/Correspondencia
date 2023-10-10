@@ -49,7 +49,7 @@ class AreaController extends Controller
     {
         $area = Area::find($id);
         $units = Unit::all();
-        $users = User::whereNull('area_id')->get();
+        $users = User::all();
         return view('web.areas.show',['area' => $area, 'units' => $units, 'users' => $users]);
     }
 
@@ -57,14 +57,6 @@ class AreaController extends Controller
     public function store(StoreAreaRequest $request)
     {
         $data = $request->all();
-
-        foreach($this->files as $file){
-            $newFile=$request->file($file);
-            $extension=$newFile->getClientOriginalExtension();
-            $fileName=$file.date('YmdHis').'.'.$extension;
-            $newFile->move($this->storage, $fileName);
-            $data[$file]=$fileName;
-        }
 
         $area = Area::create($data);
         $user = User::find($data['manager_id']);
@@ -78,23 +70,7 @@ class AreaController extends Controller
     {
         $input=$request->all();
         $data=Area::find($id);
-        foreach($this->files as $file){
-            if($request->hasFile($file)){
-                $oldFile=$this->storage.$data->{$file};
-                File::delete(public_path($oldFile));
-
-                $newFile=$request->file($file);
-                $extension=$newFile->getClientOriginalExtension();
-                //Nombre de imagen en base de datos 
-                $fileName=$file.date('YmdHis').'.'.$extension;
-
-                $newFile->move($this->storage, $fileName);
-                $data[$file]=$fileName;
-            }
-            else{
-                unset($input[$file]);
-            }
-        }
+        
         $data->update($input);
 
         return redirect()->action([AreaController::class,'index']);

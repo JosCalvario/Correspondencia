@@ -41,7 +41,15 @@ class UserController extends Controller
     function update(UpdateUserRequest $request,$id){
         $data = $request->all();
         unset($data['password_confirmation']);
-        $user = User::find($data['user_id']);
+        $user = User::find($id);
+        if($data['password'] == null)
+        {
+            unset($data['password']);
+        }
+        else
+        {
+            $data['password'] = Hash::make($data['password']);
+        }
         $user->update($data);
 
         return redirect()->action([UserController::class,'index'])->with('success','Usuario actualizado exitosamente');

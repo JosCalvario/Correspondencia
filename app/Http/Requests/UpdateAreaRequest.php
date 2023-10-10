@@ -26,10 +26,9 @@ class UpdateAreaRequest extends FormRequest
         return [
         'name'=>'required',
         'manager_id'=>'nullable|exists:users,id',
-        'phone'=>'required|digits:10',
+        'phone'=>'required',
         'address'=>'required',
-        'unit_id'=>'required|exists:units,id',
-        'area_id' => 'required|exists:areas,id'
+        'unit_id'=>'required|exists:units,id'
         ];
     }
 

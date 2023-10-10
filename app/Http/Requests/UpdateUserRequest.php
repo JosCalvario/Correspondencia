@@ -29,7 +29,7 @@ class UpdateUserRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users','email')->ignore($user->id)
+                Rule::unique('users','email')->ignore($this->id)
             ],
             'area_id' => 'nullable|exists:areas,id',
             'password' => 'nullable|confirmed'

@@ -37,9 +37,9 @@
    <x-web.detailModal-sm button="false" toggleId="editUser">
     <x-slot name="modalTitle">Usuario</x-slot>
     <x-slot name="dataList">
-     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
+     <form action="{{ route('users.update',$user->id) }}" method="POST" enctype="multipart/form-data" class="h-full">
       @csrf
-      @method('POST')
+      @method('PUT')
       <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-auto h-[calc(100%-8rem)] content-start relative p-1">
 
        <div class="sm:col-span-2">
@@ -72,23 +72,24 @@
        </div>
        <div>
         <x-web.formLabel for="password">Nueva contraseña</x-web.formLabel>
-        <x-web.formInput type="password" name="password" id="password" required="true">
+        <x-web.formInput type="password" name="password" id="password">
         </x-web.formInput>
        </div>
        <div>
         <x-web.formLabel for="password_confirmation">Confirmación de contraseña</x-web.formLabel>
-        <x-web.formInput type="password" name="password_confirmation" id="password_confirmation" required="true">
+        <x-web.formInput type="password" name="password_confirmation" id="password_confirmation">
         </x-web.formInput>
        </div>
 
       </div>
-      <x-slot name="modalActions">
-       <div class="flex items-center sm:justify-end relative text-center">
+      <div class="flex items-center space-x-4 p-5 justify-end m-0">
         <button type="submit"
-         class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600  dark:hover:bg-primary-700 sm:w-auto w-full dark:focus:ring-primary-800">
-         Guardar
+         class="text-white bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+         Actualizar
         </button>
        </div>
+      <x-slot name="modalActions">
+        
       </x-slot>
 
      </form>

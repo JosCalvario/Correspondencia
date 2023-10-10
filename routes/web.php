@@ -62,7 +62,6 @@ Route::middleware([
         Route::get('/',[UserController::class,'index'])->name('index')->middleware('can:users.index');
         Route::post('/',[UserController::class,'store'])->name('store')->middleware('can:users.store');
         Route::get('/{id}',[UserController::class,'show'])->name('show')->middleware('can:users.index');
-        Route::get('/{id}/edit',[UserController::class,'edit'])->name('edit')->middleware('can:users.update');
         Route::put('/{id}',[UserController::class,'update'])->name('update')->middleware('can:users.update');
         Route::put('/',[UserController::class,'updateRoles'])->name('updateRoles')->middleware('can:users.update');
         Route::get('/editRoles/{id}',[UserController::class,'editRoles'])->name('editRoles')->middleware('can:users.update');

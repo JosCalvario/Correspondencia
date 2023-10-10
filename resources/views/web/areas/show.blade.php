@@ -1,4 +1,5 @@
 <x-app-layout>
+<x-validation-errors></x-validation-errors>
  <div tabindex="-1" aria-hidden="true"
   class="m-0 overflow-y-auto overflow-x-hidden right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-full">
   <!-- Modal content -->
@@ -6,7 +7,7 @@
    <!-- Modal header -->
    <div class="flex justify-between mb-4 rounded-t sm:mb-5 w-full">
     <div class="flex justify-start items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 w-full">
-     <a href="{{ URL::previous() }}" type="button"
+     <a href="{{ route('areas.index') }}" type="button"
       class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mr-2 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
       <i class="bi bi-chevron-left"></i>
       <span class="sr-only">Close modal</span>
@@ -20,8 +21,11 @@
     </div>
    </div>
    <dl>
-    <x-web.dataTerm>Abreviatura</x-web.dataTerm>
-    <x-web.dataDescription>{{ $area->abbr }}</x-web.dataDescription>
+     <x-web.dataTerm>Nombre</x-web.dataTerm>
+     <x-web.dataDescription>{{ $area->name }}</x-web.dataDescription>
+
+     <x-web.dataTerm>Abreviatura</x-web.dataTerm>
+     <x-web.dataDescription>{{ $area->abbr }}</x-web.dataDescription>
 
     <x-web.dataTerm>Encargado de área</x-web.dataTerm>
     <x-web.dataDescription>{{ $area->manager?->name ?? 'Sin encargado asignado' }}</x-web.dataDescription>
@@ -38,9 +42,9 @@
    <x-web.detailModal-sm button="false" toggleId="editArea">
     <x-slot name="modalTitle">Departamento</x-slot>
     <x-slot name="dataList">
-     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data" class="h-full">
+     <form action="{{ route('areas.update',$area->id) }}" method="POST" enctype="multipart/form-data" class="h-full">
       @csrf
-      @method('POST')
+      @method('PUT')
       <div class="grid gap-2 mb-4 sm:grid-cols-2 overflow-y-auto h-[calc(100%-8rem)] content-start relative p-1">
 
        <div class="sm:col-span-2">
@@ -89,14 +93,14 @@
          <div>
           <x-web.formLabel for="manger_id">Asignar
            Encargado</x-web.formLabel>
-          <x-web.formInput type="select" name="manager_id" id="manager_id" required="true"
-           placeholder="Asigna un encargado" selectEdit="false">
-          @if ($area->manager?->id != null)
-               <option selected value="{{$area->manager?->id}}">{{ $area->manager?->name }}</option>
-          @endif
+          <x-web.formInput type="select" name="manager_id" id="manager_id"
+           placeholder="Asigna un encargado" selectEdit="true">
+          
            <x-slot name="options">
+               <option value="{{null}}" selected>Sin encargado</option>
+
             @foreach ($users as $user)
-             <option value="{{ $user->id }}">{{ $user->name }}</option>
+             <option value="{{ $user->id }}" {{$user->id == $area->manager->id ? 'selected' : ''}}>{{ $user->name }}</option>
             @endforeach
            </x-slot>
           </x-web.formInput>
@@ -105,13 +109,14 @@
          
 
       </div>
+      <div class="flex items-center sm:justify-end relative text-center">
+          <button type="submit"
+           class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600  dark:hover:bg-primary-700 sm:w-auto w-full dark:focus:ring-primary-800">
+           Guardar
+          </button>
+         </div>
       <x-slot name="modalActions">
-       <div class="flex items-center sm:justify-end relative text-center">
-        <button type="submit"
-         class="text-white inline-flex items-center bg-sc_greeny hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600  dark:hover:bg-primary-700 sm:w-auto w-full dark:focus:ring-primary-800">
-         Guardar
-        </button>
-       </div>
+
       </x-slot>
 
      </form>
