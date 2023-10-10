@@ -6,7 +6,7 @@
       <!-- Modal header -->
       <div class="flex justify-between mb-4 rounded-t sm:mb-5 w-full">
        <div class="flex justify-start items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 w-full">
-        <a href="{{ route('requests.index') }}" type="button"
+        <a href="{{ route('responses.index') }}" type="button"
          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mr-2 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
          <i class="bi bi-chevron-left"></i>
         </a>
@@ -52,10 +52,11 @@
                     <a href="{{asset('/responses/'. $response->document)}}">Documento</a> 
                @endif
           </dl>
-      <div class="flex justify-between items-center">
-       <div class="flex items-center space-x-3 sm:space-x-4">
-        
-       </div>
+      <div class="flex gap-4 items-center">
+          <button data-modal-toggle="editUser" type="button"
+    class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer sm:w-fit w-full">Agregar respuesta</button>
+    <button data-modal-toggle="editUser" type="button"
+    class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_red rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer sm:w-fit w-full">Cancelar folio</button>
       </div>
      </div>
     </div>
