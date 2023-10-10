@@ -44,7 +44,7 @@ class RoleAndPermissionSeeder extends Seeder
          
         Role::create([
             'name' => 'Recepcionista'
-        ])->givePermissionTo($permissions['requests']);
+        ])->givePermissionTo($permissions['requests'],$permissions['responses']['index']);
         Role::create([
             'name' => 'Encargado de área'
         ])->givePermissionTo([$permissions['requests']['index'],$permissions['responses']]);
