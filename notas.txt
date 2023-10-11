@@ -54,3 +54,5 @@ Aplicar filtros en tablas:
 -Usuarios
 
 Reportes
+
+Recepcionista y administrador deben poder editar los requests

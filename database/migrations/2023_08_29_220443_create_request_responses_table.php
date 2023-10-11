@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('request_id')->constrained();
             $table->foreignId('response_id')->constrained();
-            $table->boolean('canceled')->default(0);
         });
     }
 

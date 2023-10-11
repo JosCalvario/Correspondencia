@@ -29,7 +29,8 @@ class Request extends Model
         'subject',
         'assigned_area',
         'observations',
-        'document'
+        'document',
+        'knowledge'
     ];
 
 
@@ -56,9 +57,13 @@ class Request extends Model
 
         if($area == 1)
         {
-            return Request::doesntHave('responses')->get();
+            $canceled =  Request::whereRelation('responses', 'canceled', true)->get();
+            $requests = Request::doesntHave('responses')->get();
+            return $canceled->merge($requests);
         }
-        return Request::doesntHave('responses')->where('assigned_area','=',$area)->get();
+        $canceled =  Request::whereRelation('responses', 'canceled', true)->where('assigned_area','=',$area)->get();
+        $requests = Request::doesntHave('responses')->where('assigned_area','=',$area)->get();
+        return $canceled->merge($requests);
         
     }
 
@@ -67,9 +72,12 @@ class Request extends Model
 
         if($area == 1)
         {
-            return Request::doesntHave('responses')->get();
+        $canceled =  Request::whereRelation('responses', 'canceled', true)->where('name','like', '%' . $id . '%')->get();
+        $requests = Request::doesntHave('responses')->where('name','like', '%' . $id . '%')->get();
+        return $canceled->merge($requests);  
         }
-        return Request::doesntHave('responses')->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->get();
-        
+        $canceled =  Request::whereRelation('responses', 'canceled', true)->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->get();
+        $requests = Request::doesntHave('responses')->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->get();
+        return $canceled->merge($requests);        
     }
 }

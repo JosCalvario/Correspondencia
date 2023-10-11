@@ -85,12 +85,10 @@ class ResponseController extends Controller
         $response = Response::find($id);
 
         $data['status'] = 'Cancelado';
-        $response->update($data);
 
-        foreach ($response->requests as $request) 
-        {
-            $request->pivot->canceled = true;
-        }
+        $response->requests()->sync([]);
+        
+        $response->update($data);
 
         return redirect()->action([ResponseController::class,'index'])->with(['success' => 'Se ha cancelado el documento']);
     }
