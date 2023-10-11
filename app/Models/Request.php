@@ -38,7 +38,7 @@ class Request extends Model
     }
 
     function responses(){
-        return $this->belongsToMany(Response::class);
+        return $this->belongsToMany(Response::class)->withPivot('canceled');
     }
 
     static function getFolioForRequest(){

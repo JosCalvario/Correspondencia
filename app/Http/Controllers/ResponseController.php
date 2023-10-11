@@ -28,6 +28,7 @@ class ResponseController extends Controller
     public function show($id)
     {
         $data = Response::find($id);
+        
         return view('web.responses.show',[
             'response' => $data
         ]);
@@ -78,15 +79,20 @@ class ResponseController extends Controller
         return redirect()->action([ResponseController::class,'index'])->with(['success' => 'Se ha subido el documento']);
     }
 
-
-    public function cancelFolioRequisition(CancelFolioRequest $request)
+    function cancelFolio(CancelFolioRequest $request, $id)
     {
         $data = $request->all();
-        $data['status'] = 'Cancelado';
+        $response = Response::find($id);
 
-        $response = Response::find($data['id']);
+        $data['status'] = 'Cancelado';
         $response->update($data);
 
-        return redirect()->action([ResponseController::class,'index'])->with(['success' => 'Se ha cancelado el folio']);
+        foreach ($response->requests as $request) 
+        {
+            $request->pivot->canceled = true;
+        }
+
+        return redirect()->action([ResponseController::class,'index'])->with(['success' => 'Se ha cancelado el documento']);
     }
+
 }

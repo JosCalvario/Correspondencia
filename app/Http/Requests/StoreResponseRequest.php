@@ -24,7 +24,6 @@ class StoreResponseRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:responses,id',
             // 'folio' => 'required|exists:responses,folio',
             // 'email' => 'required|email',
             // 'date' => 'required|date',  //Manual

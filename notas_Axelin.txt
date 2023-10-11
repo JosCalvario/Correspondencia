@@ -12,3 +12,7 @@ Roles
 Agregar en la carpeta de controladores los requests
 @can('') sirve para verificar que el usuario logeado tenga permiso para realizar alguna acción
 
+get  -> No se desean hacer cambios en la / manda datos en la url
+post -> Cuando se desean crear registros / manda los datos "escondidos"
+put -> Actualizar registros
+delete -> Borrar registros 

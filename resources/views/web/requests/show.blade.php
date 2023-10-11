@@ -6,7 +6,7 @@
    <!-- Modal header -->
    <div class="flex justify-between mb-4 rounded-t sm:mb-5 w-full">
     <div class="flex justify-start items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600 w-full">
-     <a href="{{ URL::previous() }}" type="button"
+     <a href="{{ route('requests.index') }}" type="button"
       class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 mr-2 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
       <i class="bi bi-chevron-left"></i>
       <span class="sr-only">Close modal</span>

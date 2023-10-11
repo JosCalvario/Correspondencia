@@ -24,7 +24,8 @@ class CancelFolioRequest extends FormRequest
     public function rules()
     {
         return [
-            'document' => 'prohibited'
+            'document' => 'prohibited',
+            'cancelation' => 'required'
         ];
     }
 }

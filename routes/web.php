@@ -47,6 +47,7 @@ Route::middleware([
     Route::prefix('/folios')->name('folios.')->group(function(){
         Route::get('/createFolio',[ResponseController::class,'createFolioRequisition'])->name('create')->middleware('can:responses.createFolio');
         Route::post('/createFolio',[ResponseController::class,'storeFolioRequisition'])->name('store')->middleware('can:responses.createFolio');
+        Route::put('/cancelFolio/{id}',[ResponseController::class,'cancelFolio'])->name('cancelFolio')->middleware('can:responses.update');
     });
 
     Route::prefix('/areas')->name('areas.')->group(function(){

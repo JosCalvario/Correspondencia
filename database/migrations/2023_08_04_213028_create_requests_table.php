@@ -30,6 +30,7 @@ return new class extends Migration
             $table->foreign('assigned_area')->references('id')->on('areas');
             $table->string('observations')->nullable();
             $table->string('document')->nullable();
+            $table->boolean('knowledge')->default(0);
             $table->timestamps();
         });
     }
