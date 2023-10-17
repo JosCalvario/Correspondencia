@@ -32,7 +32,8 @@ class RequestController extends Controller
     function show($id)
     {
         $request = Request::find($id);
-        return view('web.requests.show',['request' => $request]);
+        $areas = Area::all()->except([1]);
+        return view('web.requests.show',['request' => $request, 'areas' => $areas]);
     }
 
     function response($id)
@@ -65,7 +66,12 @@ class RequestController extends Controller
     public function update(UpdateRequestRequest $request, $id)
     {
         $input=$request->all();
-        $data=Request::find($id);
+        
+        $area = Area::find($input['assigned_area']);
+        // $unit = Unit::find($area->unit_id);
+        $unit = $area->unit;
+        $year = Carbon::parse($input['date'])->format('Y');
+        $data = Request::find($id);
         foreach($this->files as $file){
             if($request->hasFile($file)){
                 $oldFile=$this->storage.$data->{$file};
@@ -83,6 +89,8 @@ class RequestController extends Controller
                 unset($input[$file]);
             }
         }
+        $data['name'] = $unit->abbr.'-'.$area->abbr.'-'.$data['number'].'-'.$year;
+
         $data->update($input);
 
         return redirect()->action([RequestController::class,'index']);

@@ -36,6 +36,8 @@ class RoleAndPermissionSeeder extends Seeder
             ];
         }
         $permissions['responses']['createFolio'] = Permission::create(['name'=> 'responses.createFolio']);
+        $permissions['reports']['index'] = Permission::create(['name'=> 'reports.index']);
+        $permissions['reports']['closing'] = Permission::create(['name'=> 'reports.closing']);
 
         //Roles y asignación de permisos
         Role::create([

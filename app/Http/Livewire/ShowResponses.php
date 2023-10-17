@@ -33,9 +33,8 @@ class ShowResponses extends Component
 
     public function render()
     {
-        // $responses = $this->get($this->query()
-        // ->orderByRaw("FIELD(status , 'Vigente', 'Contestado', 'Cancelado') ASC"));
-        $responses = $this->search();
+        $responses = $this->get($this->query()
+        ->orderByRaw("FIELD(status , 'Vigente', 'Contestado', 'Cancelado') ASC"));
         $areas = Area::all();
         $options = $this->options;
 

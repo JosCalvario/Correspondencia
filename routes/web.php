@@ -10,6 +10,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware([
         Route::get('/', [RequestController::class,'index'])->name('index')->middleware('can:requests.index');
         Route::post('/',[RequestController::class,'store'])->name('store')->middleware('can:requests.store');
         Route::get('/{id}', [RequestController::class,'show'])->name('show')->middleware('can:requests.index');
+        Route::put('/{id}', [RequestController::class,'update'])->name('update')->middleware('can:requests.update');
         Route::get('/{id}/response', [RequestController::class,'response'])->name('response')->middleware('can:requests.index');
     });
 
@@ -72,6 +74,11 @@ Route::middleware([
         Route::get('/',[RoleController::class,'index'])->name('index')->middleware('can:roles.index');
         Route::post('/',[RoleController::class,'store'])->name('store')->middleware('can:roles.store');
         Route::put('/',[RoleController::class,'updatePermissions'])->name('updatePermissions')->middleware('can:roles.update');
+    });
+
+    Route::prefix('/reports')->name('reports.')->group(function(){
+        Route::get('/',[ReportController::class,'index'])->name('index')->middleware('can:reports.index');
+        Route::get('/closing',[ReportController::class,'closing'])->name('closing')->middleware('can:reports.index');
     });
 
     

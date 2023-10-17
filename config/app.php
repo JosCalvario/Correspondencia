@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sistema de correspondencia'),
+    'name' => env('Sistema de correspondencia'),
 
     /*
     |--------------------------------------------------------------------------

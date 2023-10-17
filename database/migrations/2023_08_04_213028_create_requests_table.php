@@ -24,13 +24,13 @@ return new class extends Migration
             $table->string('number');
             $table->string('sender');
             $table->string('sender_position');
-            // $table->string('theme')->nullable();
             $table->string('subject');
             $table->unsignedBigInteger('assigned_area');
             $table->foreign('assigned_area')->references('id')->on('areas');
             $table->string('observations')->nullable();
             $table->string('document')->nullable();
             $table->boolean('knowledge')->default(0);
+            $table->boolean('closing')->default(0);
             $table->timestamps();
         });
     }

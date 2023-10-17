@@ -41,18 +41,19 @@ número con estado en registro show request
 
 
 Completar vistas de show de: 
-Solicitudes (No tiene uso)
-Documentos salientes (Vista, agregar respuesta, cancelar folio)
+-Solicitudes (Editar)
+-Documentos salientes (Vista, agregar respuesta, cancelar folio)
 Después de subir documento solo el admin puede modificar
 -Departamentos (Editar encargado de departamento, Editar departamento)
 -Usuarios (Editar usuario, Cambiar área)
 
-Componente de mensaje de status(Error y success)
+Componente de mensaje de status(-Error y success)
 
-Aplicar filtros en tablas:
+-Aplicar filtros en tablas:
 -Solicitudes
 -Usuarios
 
-Reportes
+Reportes:
+Corte de solicitudes
 
-Recepcionista y administrador deben poder editar los requests
+-Recepcionista y administrador deben poder editar los requests

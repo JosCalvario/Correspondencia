@@ -67,6 +67,12 @@
           $color = 'sc_red';
           $bgColor = 'bg-sc_bg_red';
       }
+
+      if($request->knowledge == 1)
+      {
+        $color = 'black';
+        $bgColor = 'bg-sc_quartz';
+      }
       
      @endphp
      <x-web.tableRow options="true">
@@ -92,10 +98,18 @@
        <td data-label="Contestación"
         class=" before:content-[attr(data-label)] text-left before:mb-2 sm:before:content-none sm:px-10 px-3 py-3 sm:table-cell before:block before:font-semibold flex flex-col justify-center">
         @can('responses.index')
-        @if (count($request->responses)>0)
-        <a href="{{ route('requests.response', $request->id) }}"
-            class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</a>
+        @if ($request->knowledge == 1)
+            De conocimiento
+        @else
+            @if (count($request->responses)>0)
+            <a href="{{ route('requests.response', $request->id) }}"
+                class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener hover:cursor-pointer">Ver</a>
+
+            @else
+            Sin atender
+            @endif
         @endif
+        
          
         @endcan
 
@@ -203,9 +217,9 @@
         <x-web.formLabel for="assigned_area">¿Es de conocimiento?</x-web.formLabel>
 
         <div class="h-11 flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-            <input id="bordered-radio-1" type="radio" value="{{true}}" name="knowledge" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input id="bordered-radio-1" type="radio" value="1" name="knowledge" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="bordered-radio-1" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Si</label>
-            <input checked id="bordered-radio-2" type="radio" value="{{false}}" name="knowledge" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <input checked id="bordered-radio-2" type="radio" value="0" name="knowledge" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label for="bordered-radio-2" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No</label>
         </div>
 

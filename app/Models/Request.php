@@ -30,7 +30,8 @@ class Request extends Model
         'assigned_area',
         'observations',
         'document',
-        'knowledge'
+        'knowledge',
+        'closing'
     ];
 
 
@@ -39,7 +40,7 @@ class Request extends Model
     }
 
     function responses(){
-        return $this->belongsToMany(Response::class)->withPivot('canceled');
+        return $this->belongsToMany(Response::class);
     }
 
     static function getFolioForRequest(){
@@ -57,13 +58,9 @@ class Request extends Model
 
         if($area == 1)
         {
-            $canceled =  Request::whereRelation('responses', 'canceled', true)->get();
-            $requests = Request::doesntHave('responses')->get();
-            return $canceled->merge($requests);
+            return Request::doesntHave('responses')->where('knowledge',0)->get();
         }
-        $canceled =  Request::whereRelation('responses', 'canceled', true)->where('assigned_area','=',$area)->get();
-        $requests = Request::doesntHave('responses')->where('assigned_area','=',$area)->get();
-        return $canceled->merge($requests);
+        return Request::doesntHave('responses')->where('assigned_area','=',$area)->where('knowledge',0)->get();
         
     }
 
@@ -72,12 +69,16 @@ class Request extends Model
 
         if($area == 1)
         {
-        $canceled =  Request::whereRelation('responses', 'canceled', true)->where('name','like', '%' . $id . '%')->get();
-        $requests = Request::doesntHave('responses')->where('name','like', '%' . $id . '%')->get();
-        return $canceled->merge($requests);  
+        return Request::doesntHave('responses')->where('name','like', '%' . $id . '%')->where('knowledge',0)->get();
         }
-        $canceled =  Request::whereRelation('responses', 'canceled', true)->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->get();
-        $requests = Request::doesntHave('responses')->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->get();
-        return $canceled->merge($requests);        
+        return Request::doesntHave('responses')->where('assigned_area','=',$area)->where('name','like', '%' . $id . '%')->where('knowledge',0)->get();
+    }
+
+    public static function getClosing()
+    {
+        $date = Carbon::today()->toDateString();
+        $data = Request::whereDate('date',$date)->get();
+        
+        return $data;
     }
 }

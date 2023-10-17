@@ -49,7 +49,7 @@
  @endif
  
  @if ($type == 'textarea')
- ></textarea>
+ >{{$slot}}</textarea>
  @else
  > 
  @endif
