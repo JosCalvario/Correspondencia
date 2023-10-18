@@ -142,4 +142,6 @@
  <x-slot name="navigation">
   {{ $users->links() }}
  </x-slot>
+
+ 
 </x-web.container>

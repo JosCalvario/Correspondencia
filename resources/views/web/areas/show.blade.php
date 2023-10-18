@@ -100,7 +100,7 @@
                <option value="{{null}}" selected>Sin encargado</option>
 
             @foreach ($users as $user)
-             <option value="{{ $user->id }}" {{$user->id == $area->manager->id ? 'selected' : ''}}>{{ $user->name }}</option>
+             <option value="{{ $user->id }}" {{$user->id == $area->manager?->id ? 'selected' : ''}}>{{ $user->name }}</option>
             @endforeach
            </x-slot>
           </x-web.formInput>
