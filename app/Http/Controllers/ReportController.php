@@ -15,13 +15,15 @@ class ReportController extends Controller
     }
     public function closing()
     {
-        $data = Request::getClosing()->toArray();
-        $pdf = Pdf::loadView('reports.closing',$data);
+        $data = Request::getClosing();
+        $pdf = Pdf::loadView('reports.closing',compact($data));
         return $pdf->stream();
     }
 
-    public function checkClosing(CheckClosingRequest $request)
+    public function checkClosing()
     {
-        
+        Request::checkClosing();
+
+        return redirect()->back()->with('success', 'Se ha realizado el corte');
     }
 }

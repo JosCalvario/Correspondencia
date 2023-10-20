@@ -77,8 +77,19 @@ class Request extends Model
     public static function getClosing()
     {
         $date = Carbon::today()->toDateString();
-        $data = Request::whereDate('date',$date)->get();
+        $data = Request::where('closing',0)->get();
         
         return $data;
+    }
+
+    public static function checkClosing()
+    {
+
+        $data = Request::getClosing();
+        foreach ($data as $key){
+            $key->closing = 1;
+            $key->save();
+        }
+
     }
 }

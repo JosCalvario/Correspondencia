@@ -57,3 +57,7 @@ Reportes:
 Corte de solicitudes
 
 -Recepcionista y administrador deben poder editar los requests
+
+agregar campo a solicitudes de margen de tiempo
+número puede no llenarse
+azul después de 5 días, rojo de urgente
