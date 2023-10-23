@@ -44,7 +44,7 @@
    <button data-modal-toggle="editRequest" type="button"
    class="px-3 py-2 text-sm font-medium text-center text-white bg-sc_greeny rounded-lg hover:bg-sc_greener focus:ring-4 focus:outline-none hover:cursor-pointer sm:w-fit w-full">Editar</button>
 
-   <x-web.createModal-lg createmodalId="editRequest" title="Agregar documento" permission="requests.update">
+   <x-web.createModal-lg createmodalId="editRequest" title="Editar documento" permission="requests.update">
     <x-slot name="form">
      <form action="{{ route('requests.update',$request->id) }}" method="POST" enctype="multipart/form-data" class="h-full">
       @csrf
