@@ -94,14 +94,31 @@ class DocumentSeeder extends Seeder
             'document_type'=> 'Memorándum',
             'dependency' => 'SC',
             'department' => 'CG',
-            'date' => Carbon::parse('2023/08/28'),
+            'date' => Carbon::today()->subDays(3)->toDateString(),
             'number'=> 1,
             'sender'=>'Rodolfo Pulido',
             'sender_position' => 'Administrador',
             'subject'=> 'Documentar',
             'assigned_area' => 1,
             'observations' => 'os',
-            'document'=>'document20230919212016.pdf'
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->subDay()->toDateString()
+        ]);
+        Request::create([
+            'folio' => 5001,
+            'name'=> 'Oficio-SCA-CG-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::today()->subDays(1)->toDateString(),
+            'number'=> 2,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'subject'=> 'Documentar',
+            'assigned_area' => 2,
+            'observations' => 'os',
+            'document'=>'document20230919212016.pdf',
+            'knowledge' => 1
         ]);
 
         Request::create([
@@ -110,14 +127,15 @@ class DocumentSeeder extends Seeder
             'document_type'=> 'Oficio',
             'dependency' => 'SC',
             'department' => 'CG',
-            'date' => Carbon::parse('2023/09/7'),
+            'date' => Carbon::today()->subDays(2)->toDateString(),
             'number'=> 2,
             'sender'=>'Rodolfo Pulido',
             'sender_position' => 'Administrador',
             'subject'=> 'Documentar',
             'assigned_area' => 2,
             'observations' => 'os',
-            'document'=>'document20230919212016.pdf'
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->toDateString()
         ]);
         Request::create([
             'folio' => 5003,
@@ -132,7 +150,8 @@ class DocumentSeeder extends Seeder
             'subject'=> 'Documentar',
             'assigned_area' => 1,
             'observations' => 'os',
-            'document'=>'document20230919212016.pdf'
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->addDays(5)->toDateString()
         ]);
     }
 }

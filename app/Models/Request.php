@@ -31,7 +31,8 @@ class Request extends Model
         'observations',
         'document',
         'knowledge',
-        'closing'
+        'closing',
+        'response_date'
     ];
 
 

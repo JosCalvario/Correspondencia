@@ -54,24 +54,35 @@
    <x-slot name="data">
     @foreach ($requests as $request)
      @php
-      $date = \Carbon\Carbon::parse($request->date);
+      $response_date = \Carbon\Carbon::parse($request->response_date);
       $today = \Carbon\Carbon::today();
-      $days = $today->diffInDays($date);
-      $color = 'sc_greeny';
-      $bgColor = 'bg-sc_bg_green';
-      if ($days >= 5) {
-          $color = 'sc_sandy';
-          $bgColor = 'bg-sc_bg_yellow';
-      }
-      if ($days >= 7) {
-          $color = 'sc_red';
-          $bgColor = 'bg-sc_bg_red';
-      }
-
       if($request->knowledge == 1)
       {
         $color = 'black';
         $bgColor = 'bg-sc_quartz';
+      }
+      elseif (count($request->responses)>0) {
+        if ($request->responses->first()->document!='') {
+            $color = 'sc_greeny';
+            $bgColor = 'bg-sc_bg_green';
+        }
+        else {
+            $color = 'sc_green';
+            $bgColor = 'bg-sc_greeny';
+        }
+        
+      }
+      elseif ($request->urgent == 1) {
+        $color = 'sc_red';
+        $bgColor = 'bg-sc_bg_red';
+      }
+      elseif ($response_date >= $today) {
+        $color = 'yellow-800';
+        $bgColor = 'bg-yellow-200';
+      }
+      else{
+        $color = 'blue-800';
+        $bgColor = 'bg-blue-300';
       }
       
      @endphp

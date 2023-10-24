@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('dependency')->nullable();
             $table->string('department')->nullable();
             $table->date('date');
-            $table->string('number');
+            $table->string('number')->nullable();
             $table->string('sender');
             $table->string('sender_position');
             $table->string('subject');
@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('document')->nullable();
             $table->boolean('knowledge')->default(0);
             $table->boolean('closing')->default(0);
+            $table->date('response_date')->nullable();
+            $table->boolean('urgent')->default(0);
             $table->timestamps();
         });
     }
