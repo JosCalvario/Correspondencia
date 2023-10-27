@@ -77,8 +77,8 @@
         $bgColor = 'bg-sc_bg_red';
       }
       elseif ($response_date >= $today) {
-        $color = 'yellow-800';
-        $bgColor = 'bg-yellow-200';
+        $color = 'yellow-700';
+        $bgColor = 'bg-[#EBE3B2]';
       }
       else{
         $color = 'blue-800';
