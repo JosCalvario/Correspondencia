@@ -63,11 +63,11 @@
       }
       elseif (count($request->responses)>0) {
         if ($request->responses->first()->document!='') {
-            $color = 'sc_greeny';
+            $color = 'sc_quartz';
             $bgColor = 'bg-sc_bg_green';
         }
         else {
-            $color = 'sc_greener';
+            $color = 'sc_quartz';
             $bgColor = 'bg-sc_greeny';
         }
         

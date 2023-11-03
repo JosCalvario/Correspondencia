@@ -14,26 +14,30 @@
     
     
     <div class="grid md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 mb-4">
-      <div class="bg-sc_greeny rounded-lg h-48 p-6 md:h-72 flex justify-between">
+      <a href="{{route('requests.index')}}" class="bg-sc_greeny rounded-lg h-48 p-6 md:h-72 flex justify-between hover:scale-95 ease-in-out duration-200">
         <div>
           <h2 class="font-bold text-4xl text-sc_quartz mb-3 font-sans">Solicitudes</h2>
-          <p class="text-base text-sc_quartz">Tienes 3 solicitudes pendientes para esta semana</p>
+          <p class="text-base text-sc_quartz">
+            {{$countPending == 1 ? 'Tienes ' . $countPending . ' solicitud pendiente para esta semana' : 'Tienes ' . $countPending . ' solicitudes pendientes para esta semana'}}
+            </p>
         </div>
         <div class="rounded-full flex items-center justify-center bg-white w-8 h-8 ">
-          <p class="block font-bold text-sc_rat">3</p>
+          <p class="block font-bold text-sc_rat">{{$countPending}}</p>
         </div>
-      </div>
-      <div class="bg-sc_sandy rounded-lg h-48 p-6 md:h-72 flex justify-between">
+      </a>
+      <a href="{{route('responses.index')}}" class="bg-sc_sandy rounded-lg h-48 p-6 md:h-72 flex justify-between hover:scale-95 ease-in-out duration-200">
         <div>
           <h2 class="font-bold text-4xl text-sc_quartz mb-3 font-sans">Folios</h2>
-          <p class="text-base text-sc_quartz">Tienes 2 folios por vencer</p>
+          <p class="text-base text-sc_quartz">
+            {{$countDate == 1 ? 'Tienes ' . $countDate . ' folio por vencer' : 'Tienes ' . $countDate . ' folios por vencer'}}</p>
         </div>
         <div class="rounded-full flex items-center justify-center bg-white w-8 h-8 ">
-          <p class="block font-bold text-sc_rat">2</p>
+          <p class="block font-bold text-sc_rat">
+            {{$countDate}}</p>
         </div>
-      </div>
+      </a>
     </div>
     
   </main>
-
+  
 </x-app-layout>
