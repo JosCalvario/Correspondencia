@@ -16,7 +16,7 @@ class ReportController extends Controller
     public function closing()
     {
         $data = Request::getClosing();
-        $pdf = Pdf::loadView('reports.closing',compact($data));
+        $pdf = Pdf::loadView('reports.closing',['data' => $data]);
         return $pdf->stream();
     }
 

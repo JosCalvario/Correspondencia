@@ -1,4 +1,4 @@
-<x-web.container title="Solicitudes" search="true" actions="false" filters="true" add="true">
+<x-web.container title="Solicitudes" search="true" actions="false" filters="false" add="true">
 
  <x-slot name="searchInput">
   <x-web.searchInput placeholder="Nombre documento, número o asunto" :optionsModel="$options" optionModel="option"

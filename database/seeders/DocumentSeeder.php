@@ -153,5 +153,85 @@ class DocumentSeeder extends Seeder
             'document'=>'document20230919212016.pdf',
             'response_date' => Carbon::today()->addDays(5)->toDateString()
         ]);
+        Request::create([
+            'folio' => 5004,
+            'name'=> 'Oficio-SC-3-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::today()->toDateString(),
+            'number'=> 3,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'subject'=> 'Documentar',
+            'assigned_area' => 1,
+            'observations' => 'os',
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->addDays(5)->toDateString()
+        ]);
+        Request::create([
+            'folio' => 5005,
+            'name'=> 'Oficio-SC-3-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::today()->toDateString(),
+            'number'=> 3,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'subject'=> 'Documentar',
+            'assigned_area' => 1,
+            'observations' => 'os',
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->addDays(5)->toDateString()
+        ]);
+        Request::create([
+            'folio' => 5006,
+            'name'=> 'Oficio-SC-3-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::today()->toDateString(),
+            'number'=> 3,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'subject'=> 'Documentar',
+            'assigned_area' => 1,
+            'observations' => 'os',
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->addDays(5)->toDateString()
+        ]);
+        Request::create([
+            'folio' => 5007,
+            'name'=> 'Oficio-SC-3-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::today()->toDateString(),
+            'number'=> 3,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'subject'=> 'Documentar',
+            'assigned_area' => 1,
+            'observations' => 'os',
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->addDays(5)->toDateString()
+        ]);
+        Request::create([
+            'folio' => 5008,
+            'name'=> 'Oficio-SC-3-2023',
+            'document_type'=> 'Oficio',
+            'dependency' => 'SC',
+            'department' => 'CG',
+            'date' => Carbon::today()->toDateString(),
+            'number'=> 3,
+            'sender'=>'Rodolfo Pulido',
+            'sender_position' => 'Administrador',
+            'subject'=> 'Documentar',
+            'assigned_area' => 1,
+            'observations' => 'os',
+            'document'=>'document20230919212016.pdf',
+            'response_date' => Carbon::today()->addDays(5)->toDateString()
+        ]);
     }
 }
