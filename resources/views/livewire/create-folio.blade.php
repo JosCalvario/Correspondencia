@@ -12,8 +12,19 @@
       {{ $error }}
    
      </div>
+
+     
     @endforeach
-   
+    @isset($success)
+    <div
+     class="bg-green-500 w-full text-white font-semibold flex items-center justify-center m-5 mt-0 p-3 text-base rounded-lg gap-2 z-50">
+     <i class="bi bi-x-circle"></i>
+     Mensaje:
+     {{ $success }}
+  
+    </div>
+    @endisset
+    
    </div>
    <form action="{{ route('folios.store') }}" method="POST">
     @csrf

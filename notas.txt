@@ -22,7 +22,7 @@
 
 Revisión
 -corregir vista mobile en home
-Funcionalidad en notificaciones home
+-Funcionalidad en notificaciones home
 -terminar animacion de error en show request
 número con estado en registro show request
 -Filtros (Completados, pendientes, etc)
@@ -47,17 +47,17 @@ Después de subir documento solo el admin puede modificar
 -Departamentos (Editar encargado de departamento, Editar departamento)
 -Usuarios (Editar usuario, Cambiar área)
 
-Componente de mensaje de status(-Error y success)
+-Componente de mensaje de status(-Error y success)
 
 -Aplicar filtros en tablas:
 -Solicitudes
 -Usuarios
 
 Reportes:
-Corte de solicitudes
+-Corte de solicitudes
 
 -Recepcionista y administrador deben poder editar los requests
 
 -agregar campo a solicitudes de margen de tiempo
-número puede no llenarse
+-número puede no llenarse
 -azul después de 5 días, rojo de urgente

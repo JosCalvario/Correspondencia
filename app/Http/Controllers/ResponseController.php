@@ -36,11 +36,7 @@ class ResponseController extends Controller
 
     public function createFolioRequisition()
     {
-        $requests = Request::getAllWithoutResponseOrFolio();
-
-        return view('web.responses.createFolio',[
-            'requests' => $requests
-        ]);
+        return view('web.responses.createFolio');
     }
 
     public function storeFolioRequisition(CreateFolioRequest $request)
