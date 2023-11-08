@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Area;
 use App\Models\Request;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -15,7 +16,8 @@ class RequestExport implements FromView,ShouldAutoSize
     public function view():View
     {
         return view('reports.requests',[
-            'data' => Request::all()
+            'data' => Request::getRequestReport(),
+            'areas' => Area::all()
         ]);
     }
 }

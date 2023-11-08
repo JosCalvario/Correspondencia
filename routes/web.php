@@ -11,6 +11,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportController;
+use App\Models\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,9 @@ Route::middleware([
         Route::get('/closing',[ReportController::class,'closing'])->name('closing')->middleware('can:reports.index');
         Route::get('/checkClosing',[ReportController::class,'checkClosing'])->name('checkClosing')->middleware('can:reports.index');
 
+        Route::get('/req',function(){
+            Request::getRequestReport();
+        });
         Route::get('/requests', [ReportController::class, 'exportRequests'])->name('requests')->middleware('can:reports.index');
     });
 

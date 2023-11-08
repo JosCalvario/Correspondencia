@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Response;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class Request extends Model
@@ -92,5 +93,32 @@ class Request extends Model
             $key->save();
         }
 
+    }
+
+    public static function getRequestReport()
+    {
+        $data = [];
+
+        $areas = Area::all();
+        foreach($areas as $area)
+        {
+            $data[$area->name]['Atendidos'] = count(Request::whereHas('responses',function(Builder $query){
+                $query->where('document','!=',null);
+            })
+            ->where('assigned_area',$area->id)
+            ->get());
+
+            $data[$area->name]['Conocimiento'] = count(Request::where('knowledge',1)->where('assigned_area',$area->id)->get());
+
+            $data[$area->name]['Sin Respuesta'] = count(Request::whereDoesntHave('responses')->where('assigned_area',$area->id)->where('knowledge',0)->get()) + 
+            count(Request::whereHas('responses',function(Builder $query){
+                $query->where('document','');
+            })
+            ->where('assigned_area',$area->id)
+            ->get());;
+
+            $data[$area->name]['Total'] = count(Request::where('assigned_area',$area->id)->get());
+        }
+        return $data;
     }
 }
