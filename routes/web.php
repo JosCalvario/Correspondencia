@@ -80,6 +80,7 @@ Route::middleware([
         Route::get('/',[ReportController::class,'index'])->name('index')->middleware('can:reports.index');
         Route::get('/closing',[ReportController::class,'closing'])->name('closing')->middleware('can:reports.index');
         Route::get('/checkClosing',[ReportController::class,'checkClosing'])->name('checkClosing')->middleware('can:reports.index');
+        Route::get('/requests', [ReportController::class,'requests'])->name('requests')->middleware('can:reports.index');
     });
 
     

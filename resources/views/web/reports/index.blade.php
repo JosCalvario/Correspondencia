@@ -3,12 +3,21 @@
     @if(session('success'))
     <x-success-message>{{session('success')}}</x-success-message>
     @endif
-    <div href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Corte de solicitudes</h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">Genera un reporte de los últimos documentos entrantes</p>
-        <a href="{{route('reports.closing')}}" target="_BLANK" class="mt-8 inline-block text-sc_greener bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Generar</a>
-        <button type="button" data-modal-toggle="checkClosing" class="mt-8 inline-block text-white bg-sc_greeny border focus:outline-none hover:bg-sc_greener font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Realizar corte</button>
+    <div class="grid sm:grid-cols-2 grid-cols-1 gap-3">
+        <div href="#" class="block p-6 bg-white border border-gray-200 rounded-lg">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Corte de solicitudes</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Genera un reporte de los últimos documentos entrantes</p>
+            <a href="{{route('reports.closing')}}" target="_BLANK" class="mt-8 inline-block text-sc_greener bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Generar</a>
+            <button type="button" data-modal-toggle="checkClosing" class="mt-2 inline-block text-white bg-sc_greeny border focus:outline-none hover:bg-sc_greener font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Realizar corte</button>
+        </div>
+    
+        <div href="#" class="block p-6 bg-white border border-gray-200 rounded-lg">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Reporte de solicitudes</h5>
+            <p class="font-normal text-gray-700 dark:text-gray-400">Genera un reporte de estadísticas de todas las solicitudes del sistema</p>
+            <a href="{{route('reports.requests')}}" target="_BLANK" class="mt-8 inline-block text-sc_greener bg-white border border-gray-300 hover:bg-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Generar Excel</a>
+        </div>
     </div>
+    
 
   
   <div id="checkClosing" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
